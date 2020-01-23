@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuController : MonoBehaviour
+public class PauseMenuController : MonoBehaviour
 {
 
     public GameObject mainMenu;
@@ -11,30 +11,26 @@ public class MenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Pause();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (mainMenu.activeSelf == false)
+        if (mainMenu.activeSelf == false && Input.GetKeyDown("escape"))
         {
-            if (pauseMenu.activeSelf == true && Input.GetKeyDown("escape"))    // Closes the pause menu when pressing esc
+            if (pauseMenu.activeSelf == true)   // Closes the pause menu when pressing esc
             {
                 pauseMenu.SetActive(false);
                 Resume();
             }
 
-            if (Input.GetKeyDown("escape"))     // Opens the pause menu if esc is pressed
+            else     // Opens the pause menu if esc is pressed
             {
                 pauseMenu.SetActive(true);
                 Pause();
             }
-
-            
         }
-
-        
     }
 
     public void Resume()
