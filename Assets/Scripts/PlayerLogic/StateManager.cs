@@ -4,9 +4,11 @@ using UnityEngine;
 
 namespace SA
 {
+    //players movement/animation states happen in this class
     public class StateManager : MonoBehaviour
     {
         public GameObject activeModel;
+
         [Header("inputs")]
         public float vertical;
         public float horizontal;
@@ -28,6 +30,8 @@ namespace SA
         public Rigidbody rigid;
         [HideInInspector]
         public AnimationMove a_move;
+        [HideInInspector]
+        public ActionManager a_man;
         Transform mTransform;
         [HideInInspector]
         public float delta;
@@ -44,6 +48,9 @@ namespace SA
             rigid.angularDrag = 999;
             rigid.drag = 4;
 
+            a_man = GetComponent<ActionManager>();
+            a_man.Init();
+
             a_move = activeModel.AddComponent<AnimationMove>();
             a_move.Init(this);
 
@@ -51,6 +58,7 @@ namespace SA
             ignoreLayers = ~(1 << 9);
         }
 
+        //sets up the animator for the current model in use
         void SetupAnimator()
         {
             if (activeModel == null)
@@ -72,6 +80,7 @@ namespace SA
             anim.applyRootMotion = false;
         }
 
+        //handles updating and checking states in fixedupdate
         public void FixedTick(float d)
         {
             delta = d;            
@@ -122,6 +131,7 @@ namespace SA
             MovementAnimationHandler();
         }
 
+        //checks what action/animation can be done according to given conditions
         public void CheckAction()
         {
             if(canMove == false)
@@ -135,14 +145,14 @@ namespace SA
             }
 
             string targetAnim = null;
-            if (x)
+
+            Action slot = a_man.GetActionSlot(this);
+            if(slot == null)
             {
-                targetAnim = ("oh_attack_1");
+                return;
             }
-            if (rb)
-            {
-                targetAnim = ("shield");
-            }
+            targetAnim = slot.targetAnim;
+
             if (string.IsNullOrEmpty(targetAnim))
             {
                 return;
@@ -151,8 +161,8 @@ namespace SA
             canMove = false;
             inAction = true;            
             
-            anim.CrossFade(targetAnim, 0.4f);         
-
+            anim.CrossFade(targetAnim, 0.2f);
+            //rigid.velocity = Vector3.zero;
         }
 
         public void Tick(float d)
@@ -161,12 +171,14 @@ namespace SA
             onGround = OnGround();
         }
 
+        //plays movement animations
         void MovementAnimationHandler()
         {
             anim.SetFloat("vertical", moveAmount, 0.2f, delta);
 
         }
 
+        //checks if player is on ground and not airborne using raycasting
         public bool OnGround()
         {
             bool r = false;
