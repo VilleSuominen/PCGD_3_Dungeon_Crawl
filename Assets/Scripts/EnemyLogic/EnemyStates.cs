@@ -16,8 +16,11 @@ namespace SA
 
         private void Update()
         {
-            if(isInvincible)
-            isInvincible = !anim.GetBool("canMove");
+            if (isInvincible)
+            {
+                isInvincible = !anim.GetBool("canMove");
+            }
+            
         }
 
         public void DoDamage(float v)
@@ -29,7 +32,8 @@ namespace SA
 
             health -= v;
             isInvincible = true;
-            anim.Play("damage animation here");
+            Debug.Log("diddamage"+health);
+            //anim.Play("damage animation here");
         }
 
 

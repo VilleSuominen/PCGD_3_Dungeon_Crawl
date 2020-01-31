@@ -19,6 +19,10 @@ namespace SA
 
         void OnAnimatorMove()
         {
+            if(states == null)
+            {
+                return;
+            }
             if (states.canMove)
             {
                 return;
@@ -35,12 +39,22 @@ namespace SA
         //these are triggered through the animation event system
         public void EnableDamageColliders()
         {
+            if(states == null)
+            {
+                return;
+            }
             states.weaponManager.currentWeapon.wDo.EnableDamageColliders();
+            
         }
 
         public void DisableDamageColliders()
         {
+            if(states == null)
+            {
+                return;
+            }
             states.weaponManager.currentWeapon.wDo.DisableDamageColliders();
+            
         }
 
     }

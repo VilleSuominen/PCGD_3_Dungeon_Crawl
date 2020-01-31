@@ -27,6 +27,7 @@ namespace SA
         public bool inAction;
         public bool canMove;
         public bool isTwoHanded;
+        public bool isBlocking;
 
         [HideInInspector]
         public Animator anim;
@@ -92,10 +93,12 @@ namespace SA
         //handles updating and checking states in fixedupdate
         public void FixedTick(float d)
         {
-            delta = d;            
+            delta = d;
+
+            isBlocking = false;
 
             CheckAction();
-
+            anim.SetBool("block", isBlocking);            
             if (inAction)
             {
                 anim.applyRootMotion = true;
@@ -114,7 +117,7 @@ namespace SA
 
             canMove = anim.GetBool("canMove");
             //canMove = true;
-
+            
             if (!canMove)
             {
                 return;
@@ -124,7 +127,15 @@ namespace SA
             rigid.drag = (moveAmount > 0 || onGround == false) ? 0 : 4;
 
             if (onGround)
-            {
+            {                
+                if(isBlocking == true)
+                {
+                    moveSpeed = 1f;
+                }
+                else
+                {
+                    moveSpeed = 5f;
+                }
                 rigid.velocity = moveDir * (moveSpeed * moveAmount);
             }
             
@@ -153,13 +164,29 @@ namespace SA
                 return;
             }
 
-            string targetAnim = null;
+            
 
             Action slot = a_man.GetActionSlot(this);
             if(slot == null)
             {
                 return;
             }
+            switch (slot.type)
+            {
+                case ActionTypes.attack:
+                    AttackAction(slot);
+                    break;
+                case ActionTypes.block:
+                    BlockAction(slot);
+                    break;
+            }
+            
+            
+        }
+
+        void AttackAction(Action slot)
+        {
+            string targetAnim = null;
             targetAnim = slot.targetAnim;
 
             if (string.IsNullOrEmpty(targetAnim))
@@ -169,9 +196,14 @@ namespace SA
 
             canMove = false;
             inAction = true;            
-            
+
             anim.CrossFade(targetAnim, 0.2f);
             //rigid.velocity = Vector3.zero;
+        }
+
+        void BlockAction(Action slot)
+        {            
+            isBlocking = true;
         }
 
         public void Tick(float d)

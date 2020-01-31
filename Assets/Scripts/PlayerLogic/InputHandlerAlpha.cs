@@ -51,7 +51,7 @@ namespace SA
             v_rotation = Input.GetAxis("v_rot");
             h_rotation = Input.GetAxis("h_rot");
             x_input = Input.GetButtonDown("x_input");
-            rb_input = Input.GetButtonDown("RB");
+            rb_input = Input.GetButton("RB");
             lb_input = Input.GetButtonDown("LB");
         }
 

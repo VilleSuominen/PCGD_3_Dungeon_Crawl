@@ -27,8 +27,9 @@ namespace SA
 
             for (int i = 0; i < w.actions.Count; i++)
             {
-                Action a = GetAction(w.actions[i].input);
+                Action a = GetAction(w.actions[i].input);                
                 a.targetAnim = w.actions[i].targetAnim;
+                
             }
         }
 
@@ -41,6 +42,7 @@ namespace SA
             {
                 Action a = GetAction(w.twoHandedActions[i].input);
                 a.targetAnim = w.twoHandedActions[i].targetAnim;
+                a.type = w.twoHandedActions[i].type;
             }
         }
 
@@ -50,6 +52,7 @@ namespace SA
             {
                 Action a = GetAction((ActionInput)i);
                 a.targetAnim = null;
+                a.type = ActionTypes.attack;
             }
         }
 
@@ -108,10 +111,16 @@ namespace SA
         x,rb,lb
     }
 
+    public enum ActionTypes
+    {
+        attack, block
+    }
+
     [System.Serializable]
     public class Action
     {
         public ActionInput input;
+        public ActionTypes type;
         public string targetAnim;
     }
 }
