@@ -6,11 +6,51 @@ namespace SA
 {
     public class ActionManager : MonoBehaviour
     {
-        public List<Action> actionSlots = new List<Action>();
+        public List<Action> actionSlots = new List<Action>();//list to hold actions shown in the inspector
 
-        public void Init()
+        StateManager states;
+
+        
+
+        public void Init(StateManager st)
         {
-           
+            states = st;
+
+            UpdateActionsOneHanded();
+            UpdateActionsTwoHanded();
+        }
+
+        public void UpdateActionsOneHanded()
+        {
+            //SlotToEmpty();
+            Weapon w = states.weaponManager.currentWeapon;
+
+            for (int i = 0; i < w.actions.Count; i++)
+            {
+                Action a = GetAction(w.actions[i].input);
+                a.targetAnim = w.actions[i].targetAnim;
+            }
+        }
+
+        public void UpdateActionsTwoHanded()
+        {
+            //SlotToEmpty();
+            Weapon w = states.weaponManager.currentWeapon;
+
+            for (int i = 0; i < w.twoHandedActions.Count; i++)
+            {
+                Action a = GetAction(w.twoHandedActions[i].input);
+                a.targetAnim = w.twoHandedActions[i].targetAnim;
+            }
+        }
+
+        void SlotToEmpty()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Action a = GetAction((ActionInput)i);
+                a.targetAnim = null;
+            }
         }
 
         ActionManager()
@@ -42,7 +82,7 @@ namespace SA
             return null;
         }
 
-        public ActionInput GetActionInput(StateManager st)
+        public ActionInput GetActionInput(StateManager st)//gets the inputs from the statemanager
         {
             
 

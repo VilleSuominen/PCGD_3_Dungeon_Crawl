@@ -12,6 +12,9 @@ namespace SA
         [Header("inputs")]
         public float vertical;
         public float horizontal;
+        public float v_rot;
+        public float h_rot;
+        public Vector3 lookDir;
         public bool rb, lb, x;
         public Vector3 moveDir;
         public float moveSpeed = 5f;
@@ -23,6 +26,7 @@ namespace SA
         public bool onGround;
         public bool inAction;
         public bool canMove;
+        public bool isTwoHanded;
 
         [HideInInspector]
         public Animator anim;
@@ -32,6 +36,8 @@ namespace SA
         public AnimationMove a_move;
         [HideInInspector]
         public ActionManager a_man;
+        [HideInInspector]
+        public WeaponManager weaponManager;
         Transform mTransform;
         [HideInInspector]
         public float delta;
@@ -48,8 +54,11 @@ namespace SA
             rigid.angularDrag = 999;
             rigid.drag = 4;
 
+            weaponManager = GetComponent<WeaponManager>();
+            weaponManager.Init();
+
             a_man = GetComponent<ActionManager>();
-            a_man.Init();
+            a_man.Init(this);
 
             a_move = activeModel.AddComponent<AnimationMove>();
             a_move.Init(this);
@@ -119,7 +128,7 @@ namespace SA
                 rigid.velocity = moveDir * (moveSpeed * moveAmount);
             }
             
-            Vector3 lookDir = moveDir;
+            Vector3 lookDirection = lookDir;
             if (lookDir == Vector3.zero)
             {
                 //lookDir = mTransform.forward;
@@ -196,6 +205,20 @@ namespace SA
                 //targetPosition.y += toGround;
             }
             return r;
+        }
+
+        public void HandleTwoHanded()
+        {
+            anim.SetBool("two_handed", isTwoHanded);
+
+            if (isTwoHanded)
+            {
+                a_man.UpdateActionsTwoHanded();
+            }
+            else
+            {
+                a_man.UpdateActionsOneHanded();
+            }
         }
     }
 }

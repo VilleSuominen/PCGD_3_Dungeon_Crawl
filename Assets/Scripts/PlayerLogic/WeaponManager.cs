@@ -5,16 +5,20 @@ namespace SA
 {
     public class WeaponManager : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        public Weapon currentWeapon;
+
+        public void Init()
         {
-
+            //currentWeapon.wDo.DisableDamageColliders();
         }
+    }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+    [System.Serializable]
+    public class Weapon
+    {
+        public List<Action> actions;
+        public List<Action> twoHandedActions;
+        public GameObject weaponModel;
+        public WeaponDo wDo;
     }
 }

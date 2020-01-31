@@ -32,10 +32,16 @@ namespace SA
             Vector3 v = (delta * multiplier) / states.delta;
             states.rigid.velocity = v;
         }
+        //these are triggered through the animation event system
+        public void EnableDamageColliders()
+        {
+            states.weaponManager.currentWeapon.wDo.EnableDamageColliders();
+        }
 
-        //public void LateTick()
-        //{
-        //    if(states)
-        //}
+        public void DisableDamageColliders()
+        {
+            states.weaponManager.currentWeapon.wDo.DisableDamageColliders();
+        }
+
     }
 }
