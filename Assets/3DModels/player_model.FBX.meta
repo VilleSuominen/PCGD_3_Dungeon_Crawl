@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 090a77328bce03a47a81ea33cbcbbc7c
+guid: 236171dc9a7fb5342b5501562eb83ed4
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable: []
@@ -75,40 +75,45 @@ ModelImporter:
     serializedVersion: 3
     human: []
     skeleton:
-    - name: char_rig_cat_v1(Clone)
+    - name: player_model(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: p
-      parentName: char_rig_cat_v1(Clone)
+      parentName: player_model(Clone)
       position: {x: -1.0959552e-15, y: 0.20513678, z: -0.000000009536743}
       rotation: {x: -0.7071068, y: 0.000000061817246, z: 0.000000061817246, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
+    - name: CATRigRoot
+      parentName: player_model(Clone)
+      position: {x: -2.2500125e-17, y: -9.5147575e-15, z: 1.4901161e-10}
+      rotation: {x: -0.7071068, y: -3.9887425e-14, z: 4.9936014e-14, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
     - name: Hip
-      parentName: char_rig_cat_v1(Clone)
-      position: {x: 9.5568e-15, y: 0.2152642, z: -0.0017359302}
-      rotation: {x: 0.50000006, y: -0.5, z: -0.4999999, w: 0.5}
+      parentName: CATRigRoot
+      position: {x: 3.6948875e-14, y: 0.0017359304, z: 0.2152642}
+      rotation: {x: 0.7071068, y: -0.000000053385072, z: -0.7071067, w: -0.000000053385083}
       scale: {x: 1, y: 1, z: 1}
     - name: UpperLegL
       parentName: Hip
       position: {x: 0.009243679, y: 8.9406965e-10, z: 0.032593664}
-      rotation: {x: -0.04362541, y: 0.99904794, z: -0.00003338742, w: -0.0002815957}
+      rotation: {x: -0.04362541, y: 0.99904794, z: -0.00003338767, w: -0.00028159155}
       scale: {x: 1, y: 1, z: 1}
     - name: KneeL
       parentName: UpperLegL
-      position: {x: -0.09272027, y: -0.0000000166893, z: 0.0000000834465}
-      rotation: {x: 0.011143714, y: 0.001439924, z: 0.09757956, w: 0.99516433}
+      position: {x: -0.09272027, y: -0.0000000166893, z: 0.00000008106232}
+      rotation: {x: 0.011143646, y: 0.0014398779, z: 0.09757979, w: 0.99516433}
       scale: {x: 1, y: 1, z: 1}
     - name: AnkleL
       parentName: KneeL
-      position: {x: -0.08090514, y: 0.000000037550926, z: 0.0000000047683715}
-      rotation: {x: -0.010348604, y: -0.003159649, z: -0.29914078, w: 0.95414764}
+      position: {x: -0.08090515, y: -0.00000003993511, z: -0.0000000047683715}
+      rotation: {x: -0.0103486525, y: -0.0031597135, z: -0.29914072, w: 0.9541477}
       scale: {x: 1, y: 1, z: 1}
     - name: CATRigLLegDigit11
       parentName: AnkleL
-      position: {x: -0.028035318, y: 0, z: 0}
-      rotation: {x: 0.00043503128, y: -0.0007330217, z: -0.5104382, w: 0.859914}
+      position: {x: -0.028035318, y: 0.0000000023841857, z: 0}
+      rotation: {x: 0.0004350314, y: -0.00073302176, z: -0.5104382, w: 0.859914}
       scale: {x: 1, y: 1, z: 1}
     - name: CATRigLLegDigit12
       parentName: CATRigLLegDigit11
@@ -158,17 +163,17 @@ ModelImporter:
     - name: ShoulderL
       parentName: CATRigLArmCollarbone
       position: {x: -0.03738041, y: -3.7252902e-11, z: 0}
-      rotation: {x: -0.000000016763806, y: -0, z: 0.040758252, w: 0.9991691}
+      rotation: {x: -0.0000000037252899, y: -0, z: 0.04075822, w: 0.9991691}
       scale: {x: 1, y: 1, z: 1}
     - name: ElbowL
       parentName: ShoulderL
       position: {x: -0.06769471, y: -0.0000000011920929, z: 0}
-      rotation: {x: 0.0000000037233177, y: 0.0000000011866006, z: -0.07977726, w: 0.9968127}
+      rotation: {x: 1.5650276e-10, y: -0.00000017867154, z: -0.07977708, w: 0.9968128}
       scale: {x: 1, y: 1, z: 1}
     - name: PalmL
       parentName: ElbowL
-      position: {x: -0.057306383, y: 0.000000011920928, z: 0}
-      rotation: {x: 0.000000014952464, y: -0.000000082830994, z: 0.08586299, w: 0.99630696}
+      position: {x: -0.057306383, y: -0.000000007152557, z: 0}
+      rotation: {x: 0.000000014927066, y: -0.00000008279961, z: 0.08586313, w: 0.99630696}
       scale: {x: 1, y: 1, z: 1}
     - name: CATRigRArmCollarbone
       parentName: CATRigHub004
@@ -178,19 +183,19 @@ ModelImporter:
     - name: ShoulderR
       parentName: CATRigRArmCollarbone
       position: {x: -0.03738041, y: 3.7252902e-11, z: 0}
-      rotation: {x: 0.000000005587935, y: -0.00000008940696, z: 0.040758397, w: 0.999169}
+      rotation: {x: -0.0000000037252894, y: -0.00000014901158, z: 0.040758416, w: 0.999169}
       scale: {x: 1, y: 1, z: 1}
     - name: ElbowR
       parentName: ShoulderR
       position: {x: -0.067694694, y: -5.9604643e-10, z: 0.000000038146972}
-      rotation: {x: -0.000000039423746, y: 0.000000030703927, z: -0.07977707, w: 0.99681276}
+      rotation: {x: -0.0000000044526405, y: 3.723244e-12, z: -0.07977767, w: 0.9968127}
       scale: {x: 1, y: 1, z: 1}
     - name: PalmR
       parentName: ElbowR
-      position: {x: -0.057306383, y: 0.000000026226044, z: 0}
-      rotation: {x: -0.000000014977802, y: 0.0000000828624, z: 0.08586283, w: 0.99630696}
+      position: {x: -0.057306383, y: -0.000000009536743, z: 0}
+      rotation: {x: -0.000000014888602, y: 0.000000082754894, z: 0.08586339, w: 0.99630696}
       scale: {x: 1, y: 1, z: 1}
-    - name: CATRigHub004Bone001
+    - name: CATRigHead
       parentName: CATRigHub004
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 2.162214e-21, y: 0, z: -0, w: 1}

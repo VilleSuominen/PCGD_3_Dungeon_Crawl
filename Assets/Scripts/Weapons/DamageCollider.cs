@@ -13,10 +13,11 @@ namespace SA
 
             if(eState == null)
             {
+                Debug.Log("null");
                 return;
             }
 
-            eState.DoDamage(5);
+            eState.DoDamage(10);
         }
     }
 }
