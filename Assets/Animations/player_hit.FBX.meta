@@ -59,15 +59,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.30939227
-        functionName: EnableDamageColliders
+      - time: 0.45027623
+        functionName: DisableDamageColliders
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.45027623
-        functionName: DisableDamageColliders
+      - time: 0.23920637
+        functionName: EnableDamageColliders
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

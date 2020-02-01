@@ -110,7 +110,7 @@ namespace SA
             health -= v;
             isInvincible = true;
             Debug.Log("diddamage"+health);
-            anim.Play("Damage");
+            //anim.Play("Damage");
             anim.applyRootMotion = true;
         }
 
