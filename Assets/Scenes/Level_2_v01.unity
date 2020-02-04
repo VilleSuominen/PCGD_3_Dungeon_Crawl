@@ -753,7 +753,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -1242,6 +1242,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   agent: {fileID: 0}
+--- !u!1 &361031138 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 679054119, guid: 311f33f030c05ff4a849b798c752d5c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7170940648174726455}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &540819887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4535,7 +4541,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -6252,6 +6258,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 347017735, guid: 311f33f030c05ff4a849b798c752d5c9, type: 3}
+      propertyPath: damageCollider.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 347017735, guid: 311f33f030c05ff4a849b798c752d5c9, type: 3}
+      propertyPath: damageCollider.Array.data[0]
+      value: 
+      objectReference: {fileID: 361031138}
+    - target: {fileID: 1820375947919815989, guid: 311f33f030c05ff4a849b798c752d5c9,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2801959212193851696, guid: 311f33f030c05ff4a849b798c752d5c9,
         type: 3}
       propertyPath: moveAnchor
