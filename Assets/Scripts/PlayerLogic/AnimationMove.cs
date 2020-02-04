@@ -10,90 +10,32 @@ namespace SA
     {
         Animator anim;
         StateManager states;
-        Rigidbody rigid;
-        EnemyStates eStates;
-        float d;
 
-        public void Init(StateManager st, EnemyStates eSt)
+        public void Init(StateManager st)
         {
             states = st;
-            eStates = eSt;
-            //anim = st.anim;            
-            if(st != null)
-            {
-                anim = st.anim;
-                rigid = st.rigid;
-                d = st.delta;
-            }
-            if(eSt != null)
-            {
-                anim = eSt.anim;
-                rigid = eSt.rigid;
-                d = eSt.delta;
-
-            }
+            anim = st.anim;
         }
 
         void OnAnimatorMove()
         {
-            if(states == null && eStates == null)
-            {
-                return;
-            }
-            if(states != null)
-            {
-                return;
-            }
-            if(rigid == null)
+            if (states.canMove)
             {
                 return;
             }
 
-            if (states !=null)
-            {
-                if(states.canMove)
-                {
-                    return;
-                }
-                d = states.delta;
-            }
-            if(eStates != null)
-            {
-                if (eStates.canMove)
-                {
-                    return;                    
-                }
-                d = eStates.delta;
-            }
-
-            rigid.drag = 0;
+            states.rigid.drag = 0;
             float multiplier = 1;
 
             Vector3 delta = anim.deltaPosition;
             delta.y = 0;
-            Vector3 v = (delta * multiplier) / d;
-            rigid.velocity = v;
-        }
-        //these are triggered through the animation event system
-        public void EnableDamageColliders()
-        {
-            if(states == null)
-            {
-                return;
-            }
-            states.weaponManager.currentWeapon.wDo.EnableDamageColliders();
-            
+            Vector3 v = (delta * multiplier) / states.delta;
+            states.rigid.velocity = v;
         }
 
-        public void DisableDamageColliders()
-        {
-            if(states == null)
-            {
-                return;
-            }
-            states.weaponManager.currentWeapon.wDo.DisableDamageColliders();
-            
-        }
-
+        //public void LateTick()
+        //{
+        //    if(states)
+        //}
     }
 }

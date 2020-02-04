@@ -6,54 +6,11 @@ namespace SA
 {
     public class ActionManager : MonoBehaviour
     {
-        public List<Action> actionSlots = new List<Action>();//list to hold actions shown in the inspector
+        public List<Action> actionSlots = new List<Action>();
 
-        StateManager states;
-
-        
-
-        public void Init(StateManager st)
+        public void Init()
         {
-            states = st;
-
-            UpdateActionsOneHanded();
-            UpdateActionsTwoHanded();
-        }
-
-        public void UpdateActionsOneHanded()
-        {
-            //SlotToEmpty();
-            Weapon w = states.weaponManager.currentWeapon;
-
-            for (int i = 0; i < w.actions.Count; i++)
-            {
-                Action a = GetAction(w.actions[i].input);                
-                a.targetAnim = w.actions[i].targetAnim;
-                
-            }
-        }
-
-        public void UpdateActionsTwoHanded()
-        {
-            //SlotToEmpty();
-            Weapon w = states.weaponManager.currentWeapon;
-
-            for (int i = 0; i < w.twoHandedActions.Count; i++)
-            {
-                Action a = GetAction(w.twoHandedActions[i].input);
-                a.targetAnim = w.twoHandedActions[i].targetAnim;
-                a.type = w.twoHandedActions[i].type;
-            }
-        }
-
-        void SlotToEmpty()
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                Action a = GetAction((ActionInput)i);
-                a.targetAnim = null;
-                a.type = ActionTypes.attack;
-            }
+           
         }
 
         ActionManager()
@@ -85,7 +42,7 @@ namespace SA
             return null;
         }
 
-        public ActionInput GetActionInput(StateManager st)//gets the inputs from the statemanager
+        public ActionInput GetActionInput(StateManager st)
         {
             
 
@@ -111,16 +68,10 @@ namespace SA
         x,rb,lb
     }
 
-    public enum ActionTypes
-    {
-        attack, block
-    }
-
     [System.Serializable]
     public class Action
     {
         public ActionInput input;
-        public ActionTypes type;
         public string targetAnim;
     }
 }
