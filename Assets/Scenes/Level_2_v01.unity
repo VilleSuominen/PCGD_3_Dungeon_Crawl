@@ -5251,6 +5251,11 @@ PrefabInstance:
       propertyPath: moveAnchor
       value: 
       objectReference: {fileID: 663122858}
+    - target: {fileID: 5221074436589493470, guid: 311f33f030c05ff4a849b798c752d5c9,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3de4b5866d3351c449af627117e16ba5, type: 2}
     - target: {fileID: 7170940648384676025, guid: 311f33f030c05ff4a849b798c752d5c9,
         type: 3}
       propertyPath: m_LocalPosition.x
