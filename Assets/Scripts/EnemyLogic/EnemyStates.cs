@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 namespace SA
 {
     public class EnemyStates : MonoBehaviour
@@ -9,29 +10,38 @@ namespace SA
         public float health;
         public bool canMove;
         public bool isDead;
+        public bool isAttacking;
+        public bool hasDestination;
+        public Vector3 targetDestination;
 
         public Animator anim;
         AnimationMove a_move;
         public Rigidbody rigid;
         public float delta;
+        public NavMeshAgent agent;
+
+        public LayerMask ignoreLayers;
+
 
         List<Rigidbody> ragdollRigids = new List<Rigidbody>();
         List<Collider> ragdollColliders = new List<Collider>();
 
-        private void Start()
+        public void Init()
         {
             health = 100;
             anim = GetComponentInChildren<Animator>();
             rigid = GetComponent<Rigidbody>();
             a_move = anim.GetComponent<AnimationMove>();
+            agent = GetComponent<NavMeshAgent>();
+            rigid.isKinematic = true;
             if(a_move == null)
             {
                 a_move = anim.gameObject.AddComponent<AnimationMove>();
             }
             a_move.Init(null, this);
-
-            InitRagdoll();
             
+            InitRagdoll();
+            ignoreLayers = ~(1 << 9);
         }
 
         void InitRagdoll()
@@ -72,12 +82,12 @@ namespace SA
             this.enabled = false;
         }
 
-        private void Update()
+        public void Tick()
         {
             delta = Time.deltaTime;
             canMove = anim.GetBool("canMove");
-
-            if(health <= 0)
+            
+            if (health <= 0)
             {
                 if (!isDead)
                 {
@@ -95,6 +105,19 @@ namespace SA
             if(canMove == false)
             {
                 anim.applyRootMotion = false;
+                
+            }
+            
+        }
+
+        public void SetDestination(Vector3 d)
+        {
+            if (!hasDestination)
+            {
+                hasDestination = true;
+                agent.isStopped = false;
+                agent.SetDestination(d);
+                targetDestination = d;
             }
             
         }
