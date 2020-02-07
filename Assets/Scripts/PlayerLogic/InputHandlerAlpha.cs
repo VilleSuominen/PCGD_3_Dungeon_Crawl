@@ -41,6 +41,7 @@ namespace SA
         {
             delta = Time.deltaTime;
             states.Tick(delta);
+            
         }
 
         //Gets the user input
@@ -52,7 +53,8 @@ namespace SA
             h_rotation = Input.GetAxis("h_rot");
             x_input = Input.GetButtonDown("x_input");
             rb_input = Input.GetButton("RB");
-            lb_input = Input.GetButtonDown("LB");
+            lb_input = Input.GetButtonDown("LB");                  
+            
         }
 
         //updates player action states from the statemanager

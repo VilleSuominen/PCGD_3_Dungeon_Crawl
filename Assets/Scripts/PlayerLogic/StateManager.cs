@@ -17,7 +17,7 @@ namespace SA
         public Vector3 lookDir;
         public bool rb, lb, x;
         public Vector3 moveDir;
-        public float moveSpeed = 5f;
+        public float moveSpeed = 2f;
         public float rotateSpeed = .02f;
         public float moveAmount;
         public float toGround = .5f;
@@ -54,7 +54,7 @@ namespace SA
         {            
             SetupAnimator();
             floorMask = LayerMask.GetMask("Floor");
-            rigid = GetComponent<Rigidbody>();
+            rigid = GetComponent<Rigidbody>();            
             mTransform = this.transform;
             rigid.angularDrag = 999;
             rigid.drag = 4;
@@ -142,7 +142,7 @@ namespace SA
                 }
                 else
                 {
-                    moveSpeed = 5f;
+                    moveSpeed = 2f;
                 }
                 rigid.velocity = moveDir * (moveSpeed * moveAmount);
             }
@@ -151,11 +151,14 @@ namespace SA
             if (lookDir == Vector3.zero)
             {
                 //lookDir = mTransform.forward;
-                lookDir = transform.forward;
+                //lookDir = transform.forward;
+                Turning();
             }
-            Quaternion lookRotation = Quaternion.LookRotation(lookDir);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, delta / rotateSpeed);
-            //Turning();
+            else
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(lookDir);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, delta / rotateSpeed);
+            }
             MovementAnimationHandler();
         }
 
@@ -218,6 +221,7 @@ namespace SA
         {
             delta = d;
             onGround = OnGround();
+            
         }
 
         //plays movement animations
@@ -261,8 +265,9 @@ namespace SA
             }
         }
 
-        void Turning()
+        public void Turning()
         {
+
             // Create a ray from the mouse cursor on screen in the direction of the camera.
             Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             // Create a RaycastHit variable to store information about what was hit by the ray.
