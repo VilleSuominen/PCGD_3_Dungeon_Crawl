@@ -83,6 +83,7 @@ namespace SA
             }
             states.weaponManager.currentWeapon.wDo.EnableDamageColliders();
             
+
         }
 
         public void DisableDamageColliders()
@@ -93,6 +94,46 @@ namespace SA
             }
             states.weaponManager.currentWeapon.wDo.DisableDamageColliders();
             
+        }
+
+        public void EnableEnDamageColliders()
+        {
+            if (eStates == null)
+            {
+                return;
+            }
+            eStates.enemyWeaponManager.enemyWeapon.ewDo.EnableDamageEnColliders();
+            eStates.canBeParried = true;
+        }
+
+        public void DisableEnDamageColliders()
+        {
+            if (eStates == null)
+            {
+                return;
+            }
+            eStates.enemyWeaponManager.enemyWeapon.ewDo.DisableDamageEnColliders();
+            eStates.canBeParried = false;
+        }
+
+
+
+        public void EnableParryCollider()
+        {
+            if(states == null)
+            {
+                return;
+            }
+            states.weaponManager.currentWeapon.wDo.EnableParryCollider();
+        }
+
+        public void DisableParryCollider()
+        {
+            if(states == null)
+            {
+                return;
+            }
+            states.weaponManager.currentWeapon.wDo.DisableParryCollider();
         }
 
     }

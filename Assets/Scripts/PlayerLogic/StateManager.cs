@@ -21,6 +21,7 @@ namespace SA
         public float rotateSpeed = .02f;
         public float moveAmount;
         public float toGround = .5f;
+        public float health;
 
         int floorMask;
         float camRayLength = 100f;
@@ -31,6 +32,7 @@ namespace SA
         public bool canMove;
         public bool isTwoHanded;
         public bool isBlocking;
+        public bool isDead;
 
         [HideInInspector]
         public Animator anim;
@@ -58,6 +60,7 @@ namespace SA
             mTransform = this.transform;
             rigid.angularDrag = 999;
             rigid.drag = 4;
+            health = 100;
 
             weaponManager = GetComponent<WeaponManager>();
             weaponManager.Init();
@@ -221,7 +224,15 @@ namespace SA
         {
             delta = d;
             onGround = OnGround();
-            
+            if (health <= 0)
+            {
+                if (!isDead)
+                {
+                    isDead = true;
+                    Debug.Log("Blaaaaargh!!!");
+                    //EnableRagdoll();
+                }
+            }
         }
 
         //plays movement animations
@@ -290,6 +301,19 @@ namespace SA
 
 
             }
+        }
+
+        public void DoDamage(float v)
+        {
+            health -= v;
+            
+            Debug.Log("diddamage to player" + health);
+            if(health <= -100)
+            {
+                Debug.Log("Stoooop!!! He is already deeaaaaad!");
+            }            
+            //anim.Play("Damage");
+            anim.applyRootMotion = true;
         }
     }
 

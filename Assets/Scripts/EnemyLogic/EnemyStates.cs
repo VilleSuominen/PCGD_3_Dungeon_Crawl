@@ -11,6 +11,8 @@ namespace SA
         public bool canMove;
         public bool isDead;
         public bool isAttacking;
+        public bool canBeParried = false;
+
         public bool hasDestination;
         public Vector3 targetDestination;
 
@@ -19,7 +21,8 @@ namespace SA
         public Rigidbody rigid;
         public float delta;
         public NavMeshAgent agent;
-
+        [HideInInspector]
+        public EnWeaponManager enemyWeaponManager;
         public LayerMask ignoreLayers;
 
 
@@ -34,6 +37,8 @@ namespace SA
             a_move = anim.GetComponent<AnimationMove>();
             agent = GetComponent<NavMeshAgent>();
             rigid.isKinematic = true;
+            enemyWeaponManager = GetComponent<EnWeaponManager>();
+            enemyWeaponManager.Init();
             if(a_move == null)
             {
                 a_move = anim.gameObject.AddComponent<AnimationMove>();
@@ -86,7 +91,7 @@ namespace SA
         {
             delta = Time.deltaTime;
             canMove = anim.GetBool("canMove");
-            
+            Debug.Log(canBeParried);
             if (health <= 0)
             {
                 if (!isDead)
@@ -137,6 +142,27 @@ namespace SA
             anim.applyRootMotion = true;
         }
 
+        public void Parried()
+        {
+            //if(canBeParried == false || isInvincible){
+            //    return;
+            //}
+
+            //Vector3 dir = transform.position - target.position;
+            //dir.Normalize();
+            //float dot = Vector3.Dot(target.forward, dir);
+            //if(dot < 0)
+            //{
+            //    return;
+            //}
+
+            //isInvincible = true;
+            Debug.Log("Parried");
+            anim.Play("Stun");
+            anim.applyRootMotion = true;
+            anim.SetBool("canMove", false);
+
+        }
 
     }
 }

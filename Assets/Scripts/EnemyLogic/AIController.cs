@@ -63,7 +63,7 @@ namespace SA
             delta = Time.deltaTime;
             dist = distanceFromTarget();
             angle = angleToTarget();
-            Debug.Log(eStates.agent.isStopped);
+            //Debug.Log(eStates.agent.isStopped);
             if (target)
             {
                 targetDir = target.position - transform.position;

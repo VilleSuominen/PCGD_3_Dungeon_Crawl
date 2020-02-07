@@ -10,7 +10,10 @@ namespace SA
 
         public void Init()
         {
+            
             currentWeapon.wDo.DisableDamageColliders();
+            currentWeapon.wDo.DisableParryCollider();
+            
         }
     }
 

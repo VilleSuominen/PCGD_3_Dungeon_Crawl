@@ -57,6 +57,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3aee0fcce2464d41b94bb74e9138450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1062759890922769336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2169063683969154949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de5d619b1ad6f54d8202367e8957114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageCollider: []
+  parryCollider: {fileID: 8402611996186782674}
+--- !u!1 &4437793118099749213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6939604505737542848}
+  m_Layer: 0
+  m_Name: Colliders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6939604505737542848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437793118099749213}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.08989811, y: 1.0983338, z: 0.006828651}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1949184975847946548}
+  m_Father: {fileID: 7871134344162826502}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7871134344162826497
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +136,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2900694422441011227}
+  - {fileID: 6939604505737542848}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -222,19 +268,50 @@ MonoBehaviour:
     twoHandedActions: []
     weaponModel: {fileID: 2169063683969154949}
     wDo: {fileID: 1062759890922769336}
---- !u!114 &1062759890922769336
-MonoBehaviour:
+--- !u!1 &8402611996186782674
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2169063683969154949}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1949184975847946548}
+  - component: {fileID: 3180199299440902856}
+  m_Layer: 0
+  m_Name: ParryCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1949184975847946548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402611996186782674}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.094, y: 0.226, z: 0.337}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6939604505737542848}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3180199299440902856
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402611996186782674}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2de5d619b1ad6f54d8202367e8957114, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageCollider: []
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.61}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7871134344715249292
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -327,7 +404,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: d6eb0a68fb02f7a47b771197566b632d, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 236171dc9a7fb5342b5501562eb83ed4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -430,6 +507,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4021037395866711671}
     m_Modifications:
+    - target: {fileID: 160913404451967239, guid: c3ecc6a0226f1ff4882a07f6485dfd7c,
+        type: 3}
+      propertyPath: parryCollider
+      value: 
+      objectReference: {fileID: 8402611996186782674}
     - target: {fileID: 1782114452010973514, guid: c3ecc6a0226f1ff4882a07f6485dfd7c,
         type: 3}
       propertyPath: m_LocalPosition.x
