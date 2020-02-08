@@ -44,6 +44,8 @@ namespace SA
         public ActionManager a_man;
         [HideInInspector]
         public WeaponManager weaponManager;
+        [HideInInspector]
+        public StaminaController staminaController;
         Transform mTransform;
         [HideInInspector]
         public float delta;
@@ -64,6 +66,7 @@ namespace SA
 
             weaponManager = GetComponent<WeaponManager>();
             weaponManager.Init();
+            staminaController = GetComponent<StaminaController>();
 
             a_man = GetComponent<ActionManager>();
             a_man.Init(this);
@@ -142,10 +145,12 @@ namespace SA
                 if(isBlocking == true)
                 {
                     moveSpeed = 1f;
+                    staminaController.DrainStaminaOverTime();
                 }
                 else
                 {
                     moveSpeed = 2f;
+                    staminaController.drainTime = false;
                 }
                 rigid.velocity = moveDir * (moveSpeed * moveAmount);
             }
@@ -203,14 +208,14 @@ namespace SA
             string targetAnim = null;
             targetAnim = slot.targetAnim;
 
-            if (string.IsNullOrEmpty(targetAnim))
+            if (string.IsNullOrEmpty(targetAnim)||staminaController.stamina<=10f)
             {
                 return;
             }
 
             canMove = false;
-            inAction = true;            
-
+            inAction = true;
+            staminaController.RemoveStamina(10f);
             anim.CrossFade(targetAnim, 0.2f);
             //rigid.velocity = Vector3.zero;
         }
@@ -318,6 +323,7 @@ namespace SA
             Debug.Log("PlayerIsBlocking" +isBlocking);
             if(isBlocking == true)
             {
+                staminaController.RemoveStamina(5f);
                 return;
             }
             health -= v;

@@ -16,7 +16,7 @@ namespace SA
                 return;
             }
 
-            states.DoDamage(100);
+            states.DoDamage(25);
         }
     }
 }

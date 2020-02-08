@@ -22,6 +22,7 @@ namespace SA
         public Rigidbody rigid;
         public float delta;
         public NavMeshAgent agent;
+        public StateManager states;
         [HideInInspector]
         public EnWeaponManager enemyWeaponManager;
         public LayerMask ignoreLayers;
@@ -153,8 +154,9 @@ namespace SA
 
         public void Parried()
         {
-            
+
             //isInvincible = true;
+            states.staminaController.AddStamina(25f);
             Debug.Log("EnemyStunned");
             takesDamage = true;
             anim.Play("Stun");

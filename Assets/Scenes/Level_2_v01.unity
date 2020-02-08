@@ -2809,12 +2809,14 @@ MonoBehaviour:
   isDead: 0
   isAttacking: 0
   canBeParried: 0
+  takesDamage: 0
   hasDestination: 0
   targetDestination: {x: 0, y: 0, z: 0}
   anim: {fileID: 0}
   rigid: {fileID: 0}
   delta: 0
   agent: {fileID: 0}
+  states: {fileID: 1828393624}
   enemyWeaponManager: {fileID: 0}
   ignoreLayers:
     serializedVersion: 2
@@ -4875,7 +4877,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 7170940648174726455}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7170940648174726456}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bcae22ce9055757488ffceac88e51ea8, type: 3}
@@ -5818,3 +5820,25 @@ PrefabInstance:
       objectReference: {fileID: 1997446505}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 311f33f030c05ff4a849b798c752d5c9, type: 3}
+--- !u!1 &7170940648174726456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7170940648384676030, guid: 311f33f030c05ff4a849b798c752d5c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7170940648174726455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7170940648174726457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170940648174726456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8b1895b9715ed4caf3e9cbe4182030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stamina: 0
+  maxStamina: 100
+  minStamina: 0
+  drainTime: 0
