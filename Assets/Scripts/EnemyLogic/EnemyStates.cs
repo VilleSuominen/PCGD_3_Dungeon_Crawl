@@ -12,6 +12,7 @@ namespace SA
         public bool isDead;
         public bool isAttacking;
         public bool canBeParried = false;
+        public bool takesDamage = false;
 
         public bool hasDestination;
         public Vector3 targetDestination;
@@ -91,7 +92,7 @@ namespace SA
         {
             delta = Time.deltaTime;
             canMove = anim.GetBool("canMove");
-            Debug.Log(canBeParried);
+            //Debug.Log(canBeParried);
             if (health <= 0)
             {
                 if (!isDead)
@@ -106,7 +107,10 @@ namespace SA
                 isInvincible = !canMove;
                 
             }
-
+            if(canMove == true)
+            {
+                takesDamage = false;
+            }
             if(canMove == false)
             {
                 anim.applyRootMotion = false;
@@ -134,7 +138,12 @@ namespace SA
             //    Debug.Log("isinvincible");
             //    return;
             //}
-
+            if (!takesDamage)
+            {
+                Debug.Log("ShouldTakeDamage: "+ takesDamage);
+                return;
+            }
+            Debug.Log("ShouldTakeDamage: " + takesDamage);
             health -= v;
             isInvincible = true;
             Debug.Log("diddamage"+health);
@@ -144,20 +153,10 @@ namespace SA
 
         public void Parried()
         {
-            //if(canBeParried == false || isInvincible){
-            //    return;
-            //}
-
-            //Vector3 dir = transform.position - target.position;
-            //dir.Normalize();
-            //float dot = Vector3.Dot(target.forward, dir);
-            //if(dot < 0)
-            //{
-            //    return;
-            //}
-
+            
             //isInvincible = true;
-            Debug.Log("Parried");
+            Debug.Log("EnemyStunned");
+            takesDamage = true;
             anim.Play("Stun");
             anim.applyRootMotion = true;
             anim.SetBool("canMove", false);

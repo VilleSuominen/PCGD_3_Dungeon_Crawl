@@ -15,7 +15,7 @@ namespace SA
             for (int i = 0; i < damageCollider.Length; i++)
             {
                 damageCollider[i].SetActive(true);
-                Debug.Log("enemy collider enabled");
+                //Debug.Log("enemy collider enabled");
             }
         }
 
@@ -24,7 +24,7 @@ namespace SA
             for (int i = 0; i < damageCollider.Length; i++)
             {
                 damageCollider[i].SetActive(false);
-                Debug.Log("enemy collider disabled");
+                //Debug.Log("enemy collider disabled");
             }
         }
         

@@ -14,7 +14,7 @@ namespace SA
             for(int i = 0; i < damageCollider.Length; i++)
             {
                 damageCollider[i].SetActive(true);
-                Debug.Log("collider enabled");
+                //Debug.Log("collider enabled");
             }
         }
 
@@ -23,20 +23,20 @@ namespace SA
             for (int i = 0; i < damageCollider.Length; i++)
             {
                 damageCollider[i].SetActive(false);
-                Debug.Log("collider disabled");
+                //Debug.Log("collider disabled");
             }
         }
 
         public void EnableParryCollider()
         {
             parryCollider.SetActive(true);
-            Debug.Log("parry enabled");
+            //Debug.Log("parry enabled");
         }
 
         public void DisableParryCollider()
         {
             parryCollider.SetActive(false);
-            Debug.Log("parry disabled");
+            //Debug.Log("parry disabled");
         }
 
     }

@@ -305,6 +305,11 @@ namespace SA
 
         public void DoDamage(float v)
         {
+            Debug.Log("PlayerIsBlocking" +isBlocking);
+            if(isBlocking == true)
+            {
+                return;
+            }
             health -= v;
             
             Debug.Log("diddamage to player" + health);

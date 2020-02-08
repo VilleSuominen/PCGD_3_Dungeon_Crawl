@@ -7,12 +7,12 @@ namespace SA
     {
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("entered player collider");
+            //Debug.Log("entered player collider");
             StateManager states = other.transform.GetComponentInParent<StateManager>();
 
             if (states == null)
             {
-                Debug.Log("null");
+                //Debug.Log("null");
                 return;
             }
 
