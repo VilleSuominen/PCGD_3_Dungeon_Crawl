@@ -231,10 +231,20 @@ namespace SA
                     isDead = true;
                     Debug.Log("Blaaaaargh!!!");
                     //EnableRagdoll();
+                    Collider controllerCollider = rigid.gameObject.GetComponent<Collider>();
+                    controllerCollider.enabled = false;
+                    rigid.isKinematic = true;
+                    StartCoroutine("CloseAnimator");
+                    Destroy(this.gameObject);
                 }
             }
         }
-
+        IEnumerator CloseAnimator()
+        {
+            yield return new WaitForEndOfFrame();
+            anim.enabled = false;
+            this.enabled = false;
+        }
         //plays movement animations
         void MovementAnimationHandler()
         {

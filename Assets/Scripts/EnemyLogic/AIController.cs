@@ -59,7 +59,10 @@ namespace SA
 
         private void Update()
         {
-
+            if (!target)
+            {
+                return;
+            }
             delta = Time.deltaTime;
             dist = distanceFromTarget();
             angle = angleToTarget();
