@@ -10,7 +10,7 @@ namespace SA
             //Debug.Log("entered player collider");
             StateManager states = other.transform.GetComponentInParent<StateManager>();
 
-            if (states == null)
+            if (states == null || other.name == "ParryCollider")
             {
                 //Debug.Log("null");
                 return;
