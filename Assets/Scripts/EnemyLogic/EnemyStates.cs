@@ -157,6 +157,7 @@ namespace SA
 
             //isInvincible = true;
             states.staminaController.AddStamina(25f);
+            a_move.DisableEnDamageColliders();
             Debug.Log("EnemyStunned");
             takesDamage = true;
             anim.Play("Stun");
