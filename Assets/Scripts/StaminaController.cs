@@ -70,7 +70,7 @@ namespace SA
         {
             if (stamina < maxStamina)
             {
-                stamina += Time.deltaTime;
+                stamina += Time.deltaTime*2;
             }
             return;
 
