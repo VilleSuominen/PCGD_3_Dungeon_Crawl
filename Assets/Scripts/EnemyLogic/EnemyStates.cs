@@ -98,8 +98,10 @@ namespace SA
             {
                 if (!isDead)
                 {
+                    
                     isDead = true;
                     EnableRagdoll();
+                    states.audioController.EnemyDeathSound();
                 }
             }
 
@@ -141,10 +143,12 @@ namespace SA
             //}
             if (!takesDamage)
             {
+                states.audioController.SwordHitShieldSound();
                 Debug.Log("ShouldTakeDamage: "+ takesDamage);
                 return;
             }
             Debug.Log("ShouldTakeDamage: " + takesDamage);
+            states.audioController.SwordHitSkellySound();
             health -= v;
             isInvincible = true;
             Debug.Log("diddamage"+health);

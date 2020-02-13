@@ -46,6 +46,8 @@ namespace SA
         public WeaponManager weaponManager;
         [HideInInspector]
         public StaminaController staminaController;
+        [HideInInspector]
+        public AudioController audioController;
         Transform mTransform;
         [HideInInspector]
         public float delta;
@@ -67,6 +69,7 @@ namespace SA
             weaponManager = GetComponent<WeaponManager>();
             weaponManager.Init();
             staminaController = GetComponent<StaminaController>();
+            audioController = GetComponent<AudioController>();
 
             a_man = GetComponent<ActionManager>();
             a_man.Init(this);
@@ -323,9 +326,11 @@ namespace SA
             Debug.Log("PlayerIsBlocking" +isBlocking);
             if(isBlocking == true)
             {
+                audioController.SwordHitShieldSound();
                 staminaController.RemoveStamina(5f);
                 return;
             }
+            audioController.PlayerDamagedSound();
             health -= v;
             
             Debug.Log("diddamage to player" + health);
