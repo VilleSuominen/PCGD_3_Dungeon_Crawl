@@ -20,7 +20,7 @@ public class DoorController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        allEnemiesKilled = true;
+            allEnemiesKilled = false;
         counterOn = false;
         startPosition = transform.position;
         finalPosition = new Vector3(transform.position.x, -2, transform.position.z);
@@ -31,6 +31,12 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GameObject[] clones = GameObject.FindGameObjectsWithTag("Enemy");
+        if(clones.Length == 0)
+        {
+            allEnemiesKilled = true;
+        }
+
         if (allEnemiesKilled)
         {
             if (counterOn == false)
