@@ -36,7 +36,7 @@ namespace SA
 
         [HideInInspector]
         public Animator anim;
-        //[HideInInspector]
+        [HideInInspector]
         public Rigidbody rigid;
         [HideInInspector]
         public AnimationMove a_move;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7956978725218022424}
   - component: {fileID: 1384816483585674798}
   - component: {fileID: 4614872585592713943}
+  - component: {fileID: 5000852139434554179}
   m_Layer: 0
   m_Name: Vase
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6356694701262964235}
   m_LocalRotation: {x: -0.6377714, y: 0.30536473, z: 0.30536473, w: 0.6377714}
-  m_LocalPosition: {x: 6.32644, y: 1.02391, z: -0.13852787}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1.0000002, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,3 +79,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!136 &5000852139434554179
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356694701262964235}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.17449425
+  m_Height: 0.7151461
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.0000018201126, z: 0.35757294}
