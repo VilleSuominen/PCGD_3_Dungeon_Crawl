@@ -116,8 +116,6 @@ namespace SA
             eStates.canBeParried = false;
         }
 
-
-
         public void EnableParryCollider()
         {
             if(states == null)
@@ -136,5 +134,13 @@ namespace SA
             states.weaponManager.currentWeapon.wDo.DisableParryCollider();
         }
 
+        public void RemoveStamina()
+        {
+            if(states == null)
+            {
+                return;
+            }
+            states.staminaController.RemoveStamina(25);
+        }
     }
 }

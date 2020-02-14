@@ -48,7 +48,7 @@ namespace SA
             a_move.Init(null, this);
             
             InitRagdoll();
-            ignoreLayers = ~(1 << 9);
+            ignoreLayers = ~(0 << 10);
         }
 
         void InitRagdoll()
@@ -124,8 +124,9 @@ namespace SA
 
         public void SetDestination(Vector3 d)
         {
-            if (!hasDestination)
+            if (!hasDestination && canMove)
             {
+                anim.SetFloat("vertical", 1f);
                 hasDestination = true;
                 agent.isStopped = false;
                 agent.SetDestination(d);

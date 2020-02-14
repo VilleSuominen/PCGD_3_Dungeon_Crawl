@@ -63,6 +63,10 @@ namespace SA
             {
                 return;
             }
+            if (eStates.agent.isStopped)
+            {
+                eStates.anim.SetFloat("vertical", 0);
+            }
             delta = Time.deltaTime;
             dist = distanceFromTarget();
             angle = angleToTarget();
@@ -120,13 +124,14 @@ namespace SA
         }
         void InSight()
         {
+
             LookTowardsTarget();
             HandleCoolDowns();
             float d2 = Vector3.Distance(eStates.targetDestination, target.position);
-            if (d2 > 2 || dist>sight *.5)
-            {
+            if (d2 > 1.2 || dist>sight)
+            {              
+                
                 GoToDestination();
-                eStates.anim.SetFloat("vertical", 1f);
             }
             if (dist < 1.5)
             {
@@ -144,6 +149,7 @@ namespace SA
             if (attack != null)
             {
                 aiState = AIState.attacking;
+                eStates.anim.SetFloat("speed", attack.animSpeed);
                 eStates.anim.Play(attack.targetAnim);
                 eStates.anim.SetBool("canMove", false);
                 eStates.canMove = false;
@@ -241,17 +247,22 @@ namespace SA
             RaycastHit hit;
             Vector3 origin = transform.position;
             origin.y += 0.5f;
+            origin.z += 0.5f;
             Vector3 dir = targetDir;
             
             dir.y += 0.5f;
-            Debug.DrawRay(origin, dir);
+            
             if (Physics.Raycast(origin,dir,out hit, sight, eStates.ignoreLayers))
             {
+                Debug.DrawRay(origin, dir);
                 StateManager st = hit.transform.GetComponentInParent<StateManager>();
+                Debug.Log(st);
+                Debug.Log(hit.collider.gameObject.name);
                 if(st != null)
                 {
                     aiState = AIState.inSight;
-                    eStates.SetDestination(target.position);
+                    eStates.SetDestination(target.position);                    
+                    Debug.Log("DestinationSet");
                 }
             }
             
@@ -286,6 +297,7 @@ namespace SA
     public class AIAttack
     {
         public int weight;
+        public float animSpeed;
         public string targetAnim;
         public float minDistance;
         public float minAngle;

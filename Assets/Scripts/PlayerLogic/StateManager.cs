@@ -211,14 +211,14 @@ namespace SA
             string targetAnim = null;
             targetAnim = slot.targetAnim;
 
-            if (string.IsNullOrEmpty(targetAnim)||staminaController.stamina<=10f)
+            if (string.IsNullOrEmpty(targetAnim)||staminaController.stamina<=25f)
             {
                 return;
             }
 
             canMove = false;
             inAction = true;
-            staminaController.RemoveStamina(10f);
+            //staminaController.RemoveStamina(10f);
             anim.CrossFade(targetAnim, 0.2f);
             //rigid.velocity = Vector3.zero;
         }
