@@ -128,12 +128,12 @@ namespace SA
             LookTowardsTarget();
             HandleCoolDowns();
             float d2 = Vector3.Distance(eStates.targetDestination, target.position);
-            if (d2 > 1.2 || dist>sight)
+            if (d2 > 1.2 || dist>sight*0.3)
             {              
                 
                 GoToDestination();
             }
-            if (dist < 1.5)
+            if (dist < 1.2)
             {
                 eStates.agent.isStopped = true;
             }
@@ -158,9 +158,6 @@ namespace SA
                 return;
             }
 
-            
-            
-            
         }
 
         void HandleCoolDowns()

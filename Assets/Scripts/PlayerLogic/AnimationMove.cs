@@ -142,5 +142,59 @@ namespace SA
             }
             states.staminaController.RemoveStamina(25);
         }
+
+        public void EnableShieldCollider()
+        {
+            if (states == null)
+            {
+                return;
+            }
+            states.weaponManager.currentWeapon.wDo.EnableShieldCollider();
+
+        }
+
+        public void DisableShieldCollider()
+        {
+            if (states == null)
+            {
+                return;
+            }
+            states.weaponManager.currentWeapon.wDo.DisableShieldCollider();
+        }
+
+        public void EnableEnShieldCollider()
+        {
+            if(eStates == null)
+            {
+                return;
+            }
+            eStates.enemyWeaponManager.enemyWeapon.ewDo.EnableShieldCollider();
+        }
+
+        public void DisableEnShieldCollider()
+        {
+            if(eStates == null)
+            {
+                return;
+            }
+            eStates.enemyWeaponManager.enemyWeapon.ewDo.DisableShieldCollider();
+        }
+        public void EnableCollisionCollider()
+        {
+            if (eStates == null)
+            {
+                return;
+            }
+            eStates.enemyWeaponManager.enemyWeapon.ewDo.EnableCollisionCollider();
+        }
+
+        public void DisableCollisionCollider()
+        {
+            if (eStates == null)
+            {
+                return;
+            }
+            eStates.enemyWeaponManager.enemyWeapon.ewDo.DisableCollisionCollider();
+        }
     }
 }

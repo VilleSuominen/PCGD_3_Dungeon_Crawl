@@ -46,7 +46,7 @@ namespace SA
                 a_move = anim.gameObject.AddComponent<AnimationMove>();
             }
             a_move.Init(null, this);
-            
+            a_move.EnableEnShieldCollider();
             InitRagdoll();
             ignoreLayers = ~(0 << 10);
         }
@@ -91,9 +91,18 @@ namespace SA
 
         public void Tick()
         {
+            
             delta = Time.deltaTime;
             canMove = anim.GetBool("canMove");
             //Debug.Log(canBeParried);
+            if (states.isBlocking)
+            {
+                rigid.isKinematic = false;
+            }
+            if (!states.isBlocking)
+            {
+                rigid.isKinematic = true;
+            }
             if (health <= 0)
             {
                 if (!isDead)
@@ -145,6 +154,8 @@ namespace SA
             if (!takesDamage)
             {
                 states.audioController.SwordHitShieldSound();
+                rigid.isKinematic = false;
+                //rigid.AddForce(-targetDestination * 900);
                 Debug.Log("ShouldTakeDamage: "+ takesDamage);
                 return;
             }

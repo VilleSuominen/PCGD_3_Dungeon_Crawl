@@ -8,6 +8,8 @@ namespace SA
     public class EnWeaponDo : MonoBehaviour
     {
         public GameObject[] damageCollider;//add colliders to this list
+        public GameObject collisionCollider;
+        public GameObject shieldCollider;
         
 
         public void EnableDamageEnColliders()//method that activates the damage collider so damage can be done
@@ -27,7 +29,26 @@ namespace SA
                 Debug.Log("enemy collider disabled");
             }
         }
-        
+
+        public void EnableCollisionCollider()
+        {
+            collisionCollider.SetActive(true);
+        }
+
+        public void DisableCollisionCollider()
+        {
+            collisionCollider.SetActive(false);
+        }
+
+        public void EnableShieldCollider()
+        {
+            shieldCollider.SetActive(true);
+        }
+
+        public void DisableShieldCollider()
+        {
+            shieldCollider.SetActive(false);
+        }
 
     }
 }

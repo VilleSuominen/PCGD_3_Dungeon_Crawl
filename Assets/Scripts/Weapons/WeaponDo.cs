@@ -8,6 +8,7 @@ namespace SA
     {
         public GameObject[] damageCollider;//add colliders to this list
         public GameObject parryCollider;
+        public GameObject shieldCollider;
 
         public void EnableDamageColliders()//method that activates the damage collider so damage can be done
         {
@@ -38,6 +39,17 @@ namespace SA
             parryCollider.SetActive(false);
             //Debug.Log("parry disabled");
         }
+
+        public void EnableShieldCollider()
+        {
+            shieldCollider.SetActive(true);
+        }
+
+        public void DisableShieldCollider()
+        {
+            shieldCollider.SetActive(false);
+        }
+
 
     }
 }

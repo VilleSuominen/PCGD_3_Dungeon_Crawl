@@ -13,6 +13,7 @@ namespace SA
             
             currentWeapon.wDo.DisableDamageColliders();
             currentWeapon.wDo.DisableParryCollider();
+            currentWeapon.wDo.DisableShieldCollider();
             
         }
     }

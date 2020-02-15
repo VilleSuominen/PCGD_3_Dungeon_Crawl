@@ -148,10 +148,12 @@ namespace SA
                 if(isBlocking == true)
                 {
                     moveSpeed = 1f;
-                    staminaController.DrainStaminaOverTime();
+                    weaponManager.currentWeapon.wDo.EnableShieldCollider();
+                    staminaController.DrainStaminaOverTime();                    
                 }
                 else
                 {
+                    weaponManager.currentWeapon.wDo.DisableShieldCollider();
                     moveSpeed = 2f;
                     staminaController.drainTime = false;
                 }
@@ -259,6 +261,25 @@ namespace SA
             anim.SetFloat("vertical", moveAmount, 0.2f, delta);
 
         }
+        //Dead Dream
+        public void DodgeStep()
+        {
+            moveSpeed = 5;
+            Quaternion lookrotation = Quaternion.LookRotation(-moveDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, delta / rotateSpeed);
+            rigid.velocity = moveDir * (moveSpeed * 5);
+        }
+        //Another dead dream
+        public void ShieldChargeAttack()
+        {
+            Debug.Log("fooorce");
+            moveSpeed = 10;
+            Quaternion lookrotation = Quaternion.LookRotation(moveDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, delta / rotateSpeed);
+            rigid.velocity = moveDir * (moveSpeed * 2);
+            weaponManager.currentWeapon.wDo.EnableShieldCollider();
+            Debug.Log("enableShield");
+        }
 
         //checks if player is on ground and not airborne using raycasting
         public bool OnGround()
@@ -317,7 +338,6 @@ namespace SA
                 // Set the player's rotation to this new rotation.
                 rigid.MoveRotation(newRotation);
 
-
             }
         }
 
@@ -328,6 +348,7 @@ namespace SA
             {
                 audioController.SwordHitShieldSound();
                 staminaController.RemoveStamina(5f);
+                rigid.AddForce(lookDir * 900);
                 return;
             }
             audioController.PlayerDamagedSound();
