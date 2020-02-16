@@ -105,7 +105,7 @@ MonoBehaviour:
   - weight: 60
     animSpeed: 1
     targetAnim: Attack
-    minDistance: 2
+    minDistance: 1.5
     minAngle: 0
     maxAngle: 35
     cooldown: 1
@@ -113,7 +113,7 @@ MonoBehaviour:
   - weight: 40
     animSpeed: 4
     targetAnim: Attack
-    minDistance: 2
+    minDistance: 1.5
     minAngle: 0
     maxAngle: 35
     cooldown: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   fov_angle: 90
   frameCount: 10
   attackCount: 10
+  angle: 0
   aiState: 0
 --- !u!114 &1518408939290735895
 MonoBehaviour:
@@ -145,7 +146,10 @@ MonoBehaviour:
   isDead: 0
   isAttacking: 0
   canBeParried: 0
+  isStunned: 0
   takesDamage: 0
+  hitEnemy: 0
+  walkAnimSpeed: 2
   hasDestination: 0
   targetDestination: {x: 0, y: 0, z: 0}
   anim: {fileID: 0}
@@ -157,6 +161,7 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 0
+  aicontroller: {fileID: 0}
 --- !u!114 &1518408939290735894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,50 +225,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.031081539, y: 0.009725684, z: 0.21742564}
   m_Center: {x: 0.000000078660314, y: 0.00001110476, z: 0.06974389}
---- !u!1 &8726588689607118407
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2747744139562712042}
-  - component: {fileID: 4458590246860354233}
-  m_Layer: 0
-  m_Name: ShieldCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2747744139562712042
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8726588689607118407}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.0673, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5794105412045652279}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4458590246860354233
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8726588689607118407}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.15514839, y: 0.027006038, z: 0.23388913}
-  m_Center: {x: 2.774786e-17, y: 0.00000011874363, z: -0.000000059604645}
 --- !u!1001 &8054364321912399590
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -276,11 +237,6 @@ PrefabInstance:
       propertyPath: collisionCollider
       value: 
       objectReference: {fileID: 5844455784891718666}
-    - target: {fileID: 1801998431675170975, guid: 297781ea390de3e42ad89c41077e0de2,
-        type: 3}
-      propertyPath: shieldCollider
-      value: 
-      objectReference: {fileID: 8726588689607118407}
     - target: {fileID: 5831676971098848498, guid: 297781ea390de3e42ad89c41077e0de2,
         type: 3}
       propertyPath: m_Name
@@ -346,12 +302,6 @@ PrefabInstance:
 --- !u!4 &681107026617690119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7400855192997646049, guid: 297781ea390de3e42ad89c41077e0de2,
-    type: 3}
-  m_PrefabInstance: {fileID: 8054364321912399590}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5794105412045652279 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4588628715055704017, guid: 297781ea390de3e42ad89c41077e0de2,
     type: 3}
   m_PrefabInstance: {fileID: 8054364321912399590}
   m_PrefabAsset: {fileID: 0}

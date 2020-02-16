@@ -18,7 +18,8 @@ namespace SA
         public int attackCount= 30;
         int _attack;
         float dist;
-        float angle;
+        
+        public float angle;
         Vector3 targetDir;
         float delta;
 
@@ -70,10 +71,15 @@ namespace SA
             delta = Time.deltaTime;
             dist = distanceFromTarget();
             angle = angleToTarget();
+            
             //Debug.Log(eStates.agent.isStopped);
             if (target)
             {
                 targetDir = target.position - transform.position;
+            }
+            if (eStates.hitEnemy)
+            {
+                aiState = AIState.inSight;
             }
             switch (aiState)
             {
@@ -128,7 +134,7 @@ namespace SA
             LookTowardsTarget();
             HandleCoolDowns();
             float d2 = Vector3.Distance(eStates.targetDestination, target.position);
-            if (d2 > 1.2 || dist>sight*0.3)
+            if (d2 > 1.2 || dist>sight*0.25)
             {              
                 
                 GoToDestination();
@@ -160,6 +166,8 @@ namespace SA
 
         }
 
+        
+
         void HandleCoolDowns()
         {
             for(int i = 0; i<ai_attack.Length; i++)
@@ -186,7 +194,7 @@ namespace SA
                 dir = transform.forward;
             }
             Quaternion targetRotation = Quaternion.LookRotation(dir);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation,delta*5);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation,delta*2);
         }
 
         public AIAttack HandleAttacks()

@@ -162,23 +162,23 @@ namespace SA
             states.weaponManager.currentWeapon.wDo.DisableShieldCollider();
         }
 
-        public void EnableEnShieldCollider()
-        {
-            if(eStates == null)
-            {
-                return;
-            }
-            eStates.enemyWeaponManager.enemyWeapon.ewDo.EnableShieldCollider();
-        }
+        //public void EnableEnShieldCollider()
+        //{
+        //    if(eStates == null)
+        //    {
+        //        return;
+        //    }
+        //    eStates.enemyWeaponManager.enemyWeapon.ewDo.EnableShieldCollider();
+        //}
 
-        public void DisableEnShieldCollider()
-        {
-            if(eStates == null)
-            {
-                return;
-            }
-            eStates.enemyWeaponManager.enemyWeapon.ewDo.DisableShieldCollider();
-        }
+        //public void DisableEnShieldCollider()
+        //{
+        //    if(eStates == null)
+        //    {
+        //        return;
+        //    }
+        //    eStates.enemyWeaponManager.enemyWeapon.ewDo.DisableShieldCollider();
+        //}
         public void EnableCollisionCollider()
         {
             if (eStates == null)

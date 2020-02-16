@@ -40,15 +40,15 @@ namespace SA
             collisionCollider.SetActive(false);
         }
 
-        public void EnableShieldCollider()
-        {
-            shieldCollider.SetActive(true);
-        }
+        //public void EnableShieldCollider()
+        //{
+        //    shieldCollider.SetActive(true);
+        //}
 
-        public void DisableShieldCollider()
-        {
-            shieldCollider.SetActive(false);
-        }
+        //public void DisableShieldCollider()
+        //{
+        //    shieldCollider.SetActive(false);
+        //}
 
     }
 }

@@ -22,6 +22,8 @@ namespace SA
         public float moveAmount;
         public float toGround = .5f;
         public float health;
+        public float blockAnimSpeed;
+        public float regularAnimSpeed;
 
         int floorMask;
         float camRayLength = 100f;
@@ -147,12 +149,14 @@ namespace SA
             {                
                 if(isBlocking == true)
                 {
+                    anim.SetFloat("a_speed", blockAnimSpeed);
                     moveSpeed = 1f;
                     weaponManager.currentWeapon.wDo.EnableShieldCollider();
                     staminaController.DrainStaminaOverTime();                    
                 }
                 else
                 {
+                    anim.SetFloat("a_speed", regularAnimSpeed);
                     weaponManager.currentWeapon.wDo.DisableShieldCollider();
                     moveSpeed = 2f;
                     staminaController.drainTime = false;
@@ -226,7 +230,11 @@ namespace SA
         }
 
         void BlockAction(Action slot)
-        {            
+        {      
+            if(staminaController.stamina < 5)
+            {
+                return;
+            }
             isBlocking = true;
         }
 
@@ -261,7 +269,7 @@ namespace SA
             anim.SetFloat("vertical", moveAmount, 0.2f, delta);
 
         }
-        //Dead Dream
+        
         public void DodgeStep()
         {
             moveSpeed = 5;
@@ -269,7 +277,7 @@ namespace SA
             transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, delta / rotateSpeed);
             rigid.velocity = moveDir * (moveSpeed * 5);
         }
-        //Another dead dream
+        
         public void ShieldChargeAttack()
         {
             Debug.Log("fooorce");
@@ -279,6 +287,15 @@ namespace SA
             rigid.velocity = moveDir * (moveSpeed * 2);
             weaponManager.currentWeapon.wDo.EnableShieldCollider();
             Debug.Log("enableShield");
+        }
+
+        public void SlashStunAttack()
+        {
+            moveSpeed = 10;
+            Quaternion lookrotation = Quaternion.LookRotation(moveDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, delta / rotateSpeed);
+            rigid.velocity = moveDir * (moveSpeed * 2);
+            anim.Play("Attack1");
         }
 
         //checks if player is on ground and not airborne using raycasting

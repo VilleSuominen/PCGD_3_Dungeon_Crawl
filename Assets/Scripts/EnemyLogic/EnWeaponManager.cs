@@ -12,7 +12,7 @@ namespace SA
         {
             enemyWeapon.ewDo.DisableDamageEnColliders();
             enemyWeapon.ewDo.DisableCollisionCollider();
-            enemyWeapon.ewDo.DisableShieldCollider();
+            //enemyWeapon.ewDo.DisableShieldCollider();
         }
 
         [System.Serializable]

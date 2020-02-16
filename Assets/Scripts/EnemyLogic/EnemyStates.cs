@@ -12,7 +12,10 @@ namespace SA
         public bool isDead;
         public bool isAttacking;
         public bool canBeParried = false;
-        public bool takesDamage = false;
+        public bool isStunned;
+        public bool takesDamage = true;
+        public bool hitEnemy;
+        public float walkAnimSpeed;
 
         public bool hasDestination;
         public Vector3 targetDestination;
@@ -26,6 +29,7 @@ namespace SA
         [HideInInspector]
         public EnWeaponManager enemyWeaponManager;
         public LayerMask ignoreLayers;
+        public AIController aicontroller;
 
 
         List<Rigidbody> ragdollRigids = new List<Rigidbody>();
@@ -38,6 +42,7 @@ namespace SA
             rigid = GetComponent<Rigidbody>();
             a_move = anim.GetComponent<AnimationMove>();
             agent = GetComponent<NavMeshAgent>();
+            aicontroller = GetComponent<AIController>();
             rigid.isKinematic = true;
             enemyWeaponManager = GetComponent<EnWeaponManager>();
             enemyWeaponManager.Init();
@@ -46,7 +51,7 @@ namespace SA
                 a_move = anim.gameObject.AddComponent<AnimationMove>();
             }
             a_move.Init(null, this);
-            a_move.EnableEnShieldCollider();
+            //a_move.EnableEnShieldCollider();
             InitRagdoll();
             ignoreLayers = ~(0 << 10);
         }
@@ -95,7 +100,7 @@ namespace SA
             delta = Time.deltaTime;
             canMove = anim.GetBool("canMove");
             //Debug.Log(canBeParried);
-            if (states.isBlocking)
+            if (states.isBlocking && !isDead)
             {
                 rigid.isKinematic = false;
             }
@@ -119,9 +124,13 @@ namespace SA
                 isInvincible = !canMove;
                 
             }
-            if(canMove == true)
-            {
+            if(canMove == true && aicontroller.angle <= 90)
+            {                
                 takesDamage = false;
+            }
+            if(aicontroller.angle > 90)
+            {
+                takesDamage = true;
             }
             if(canMove == false)
             {
@@ -135,6 +144,7 @@ namespace SA
         {
             if (!hasDestination && canMove)
             {
+                anim.SetFloat("walk_speed", walkAnimSpeed);
                 anim.SetFloat("vertical", 1f);
                 hasDestination = true;
                 agent.isStopped = false;
@@ -143,7 +153,19 @@ namespace SA
             }
             
         }
-
+        void BackDamage()
+        {
+            if (aicontroller.angle < 90 || canMove)
+            {
+                takesDamage = false;
+            }
+            else
+            {
+                takesDamage = true;
+            }
+            
+            
+        }
         public void DoDamage(float v)
         {
             //if (isInvincible)
@@ -151,6 +173,7 @@ namespace SA
             //    Debug.Log("isinvincible");
             //    return;
             //}
+            hitEnemy = true;
             if (!takesDamage)
             {
                 states.audioController.SwordHitShieldSound();
@@ -170,7 +193,7 @@ namespace SA
 
         public void Parried()
         {
-
+            
             //isInvincible = true;
             states.staminaController.AddStamina(25f);
             a_move.DisableEnDamageColliders();
