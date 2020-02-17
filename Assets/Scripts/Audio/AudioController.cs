@@ -9,6 +9,7 @@ public class AudioController : MonoBehaviour
     public AudioClip swordHitShield;
     public AudioClip hitPlayer;
     public AudioClip enemyDeath;
+    public AudioClip parrySound;
 
 
     void Start()
@@ -36,5 +37,10 @@ public class AudioController : MonoBehaviour
     public void EnemyDeathSound()
     {
         source.PlayOneShot(enemyDeath, 0.1f);
+    }
+
+    public void Parry()
+    {
+        source.PlayOneShot(parrySound, 0.1f);
     }
 }
