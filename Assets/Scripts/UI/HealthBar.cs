@@ -8,7 +8,7 @@ namespace SA
     public class HealthBar : MonoBehaviour
     {
 
-        public GameObject player;
+        GameObject player;
         StateManager stateManager;
         Slider bar;
         GameObject fillArea;
@@ -16,6 +16,7 @@ namespace SA
         // Start is called before the first frame update
         void Start()
         {
+            player = GameObject.Find("Controller");
             bar = GetComponent<Slider>();
             stateManager = player.GetComponent<StateManager>();
             bar.maxValue = 100;
