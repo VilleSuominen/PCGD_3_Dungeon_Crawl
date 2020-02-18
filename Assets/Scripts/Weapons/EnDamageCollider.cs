@@ -10,8 +10,15 @@ namespace SA
             //Debug.Log("entered player collider");
             StateManager states = other.transform.GetComponentInParent<StateManager>();
 
-            if (states == null || other.name == "ParryCollider")
+            if (states == null || other.name == "ParryCollider" || other.name == "ShieldCollider")
             {
+                if(other.name == "ShieldCollider")
+                {
+                    states.audioController.SwordHitShieldSound();
+                    states.staminaController.RemoveStamina(5f);
+                    states.rigid.AddForce(states.lookDir * 900);
+                    return;
+                }
                 //Debug.Log("null");
                 return;
             }

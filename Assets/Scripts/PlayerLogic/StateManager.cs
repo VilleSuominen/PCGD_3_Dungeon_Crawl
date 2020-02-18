@@ -389,14 +389,7 @@ namespace SA
 
         public void DoDamage(float v)
         {
-            Debug.Log("PlayerIsBlocking" +isBlocking);
-            if(isBlocking == true)
-            {
-                audioController.SwordHitShieldSound();
-                staminaController.RemoveStamina(5f);
-                rigid.AddForce(lookDir * 900);
-                return;
-            }
+            
             audioController.PlayerDamagedSound();
             health -= v;
             
