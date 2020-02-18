@@ -193,9 +193,10 @@ namespace SA
 
         public void Parried()
         {
-            
+
             //isInvincible = true;
-            states.staminaController.AddStamina(25f);
+            states.audioController.Parry();
+            //states.staminaController.AddStamina(25f);
             a_move.DisableEnDamageColliders();
             Debug.Log("EnemyStunned");
             takesDamage = true;

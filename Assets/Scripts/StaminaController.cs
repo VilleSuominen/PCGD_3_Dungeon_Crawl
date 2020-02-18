@@ -45,15 +45,6 @@ namespace SA
             drainTime = true;
         }
 
-        //calling this method adds a chunk of stamina according to the value passed to it from the caller 
-        public void AddStamina(float v)
-        {
-            if(stamina >= maxStamina)
-            {
-                return;
-            }
-            stamina += v;
-        }
 
         //calling this method removes a chunk of stamina according to the value passed to it from the caller 
         public void RemoveStamina(float v)
@@ -70,7 +61,7 @@ namespace SA
         {
             if (stamina < maxStamina)
             {
-                stamina += Time.deltaTime*2;
+                stamina += Time.deltaTime*4;
             }
             return;
 

@@ -111,7 +111,7 @@ MonoBehaviour:
     cooldown: 1
     _cool: 0
   - weight: 40
-    animSpeed: 4
+    animSpeed: 2
     targetAnim: Attack
     minDistance: 1.5
     minAngle: 0

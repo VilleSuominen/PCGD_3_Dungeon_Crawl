@@ -23,7 +23,7 @@ public class AudioController : MonoBehaviour
         source.PlayOneShot(swordHitSkelly, 0.1f);
     }
 
-    // Tätä voi käyttää kummankin shieldiin?
+    // Tätä voi käyttää kummankin shieldiin? no mikä ettei
     public void SwordHitShieldSound()
     {
         source.PlayOneShot(swordHitShield, 0.1f);

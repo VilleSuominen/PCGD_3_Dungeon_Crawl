@@ -263,9 +263,10 @@ MonoBehaviour:
   v_rot: 0
   h_rot: 0
   lookDir: {x: 0, y: 0, z: 0}
-  rb: 0
-  lb: 0
-  x: 0
+  block: 0
+  backstep: 0
+  attack: 0
+  charge: 0
   moveDir: {x: 0, y: 0, z: 0}
   moveSpeed: 1
   rotateSpeed: 0.02
@@ -310,9 +311,12 @@ MonoBehaviour:
   - input: 1
     type: 1
     targetAnim: shield
-  - input: 0
+  - input: 2
     type: 0
-    targetAnim: 
+    targetAnim: walk
+  - input: 3
+    type: 0
+    targetAnim: shield
 --- !u!114 &95514511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +468,19 @@ MonoBehaviour:
   swordHitShield: {fileID: 8300000, guid: 4ae4fe17d19c04e10920bfaca3bd8290, type: 3}
   hitPlayer: {fileID: 8300000, guid: 2d07eba8eab06cb45898cb11da4a54e2, type: 3}
   enemyDeath: {fileID: 8300000, guid: d11b969481efd4a70bbdd1a563373729, type: 3}
+  parrySound: {fileID: 8300000, guid: d1b052b3f49cc39488615111cdb9c31a, type: 3}
+--- !u!114 &2007395267102270186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638988017639656232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ff7b2c0c12be94894ac3593ccfb7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7170940647460248254
 PrefabInstance:
   m_ObjectHideFlags: 0

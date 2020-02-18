@@ -77,7 +77,7 @@ namespace SA
             {
                 targetDir = target.position - transform.position;
             }
-            if (eStates.hitEnemy)
+            if (eStates.hitEnemy && eStates.canMove)
             {
                 aiState = AIState.inSight;
             }
@@ -251,11 +251,12 @@ namespace SA
         {
             RaycastHit hit;
             Vector3 origin = transform.position;
-            origin.y += 0.5f;
-            origin.z += 0.5f;
+            origin.y += 2.5f;
+            //origin.z += 1.5f;
             Vector3 dir = targetDir;
             
-            dir.y += 0.5f;
+            dir.y -= 1.0f;
+            //dir.z += 1.5f;
             
             if (Physics.Raycast(origin,dir,out hit, sight, eStates.ignoreLayers))
             {

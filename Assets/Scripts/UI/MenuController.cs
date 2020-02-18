@@ -29,7 +29,7 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mainMenu.activeSelf == false && Input.GetKeyDown("escape"))
+        if (mainMenu.activeSelf == false && Input.GetButtonDown("Cancel"))
         {
             if (pauseMenu.activeSelf == true && helpMenu.activeSelf == false)   // Closes the pause menu when pressing esc
             {

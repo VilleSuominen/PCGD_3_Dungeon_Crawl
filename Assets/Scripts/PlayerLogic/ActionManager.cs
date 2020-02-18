@@ -48,7 +48,7 @@ namespace SA
 
         void SlotToEmpty()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Action a = GetAction((ActionInput)i);
                 a.targetAnim = null;
@@ -58,7 +58,7 @@ namespace SA
 
         ActionManager()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 4; i++)
             {
                 Action a = new Action();
                 a.input = (ActionInput)i;
@@ -89,26 +89,30 @@ namespace SA
         {
             
 
-            if (st.rb)
+            if (st.block)
             {
-                return ActionInput.rb;
+                return ActionInput.block;
             }
-            if (st.lb)
+            if (st.backstep)
             {
-                return ActionInput.lb;
+                return ActionInput.backstep;
             }
-            if (st.x)
+            if (st.attack)
             {
-                return ActionInput.x;
+                return ActionInput.attack;
+            }
+            if (st.charge)
+            {
+                return ActionInput.charge;
             }
 
-            return ActionInput.rb;
+            return ActionInput.block;
         }
     }
 
     public enum ActionInput
     {
-        x,rb,lb
+        attack,block,backstep,charge
     }
 
     public enum ActionTypes
@@ -121,6 +125,7 @@ namespace SA
     {
         public ActionInput input;
         public ActionTypes type;
+        //public float animSpeed;
         public string targetAnim;
     }
 }

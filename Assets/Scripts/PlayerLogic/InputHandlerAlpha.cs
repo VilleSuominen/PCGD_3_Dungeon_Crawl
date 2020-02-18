@@ -9,11 +9,12 @@ namespace SA
         
         float vertical; //vertical movement axis from input device
         float horizontal; //horizontal movement axis from input device
-        float v_rotation;
-        float h_rotation;
-        bool x_input; //attack input x-button on 360 controller
-        bool rb_input; //block input right bumper on 360 controller
-        bool lb_input; //dodge input lef bumper on 360 controller
+        float v_rotation; //vertical rotation axis
+        float h_rotation; //horizontal rotation axis
+        bool attack; //attack input button 5
+        bool block; //block input right bumper on 360 controller
+        bool backstep; //backstep input lef bumper on 360 controller
+        bool charge;
 
         public Transform moveAnchor;
         float delta;
@@ -51,9 +52,10 @@ namespace SA
             horizontal = Input.GetAxis("Horizontal");
             v_rotation = Input.GetAxis("v_rot");
             h_rotation = Input.GetAxis("h_rot");
-            x_input = Input.GetButtonDown("x_input");
-            rb_input = Input.GetButton("RB");            
-            lb_input = Input.GetButtonDown("LB");                  
+            attack = Input.GetButtonDown("attack");
+            block = Input.GetButton("block");            
+            //backstep = Input.GetButtonDown("backstep");
+            //charge = Input.GetButtonDown("charge");
             
         }
 
@@ -74,9 +76,10 @@ namespace SA
             states.moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical)); //Clamps the given value between the given minimum float and maximum float values. Returns the given value if it is within the min and max range
 
             //passes the input button variables to the statemanager class
-            states.x = x_input; 
-            states.rb = rb_input;
-            states.lb = lb_input;
+            states.attack = attack; 
+            states.block = block;
+            states.backstep = backstep;
+            states.charge = charge;
         }
     }
 }

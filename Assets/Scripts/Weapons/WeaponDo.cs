@@ -48,8 +48,18 @@ namespace SA
         public void DisableShieldCollider()
         {
             shieldCollider.SetActive(false);
+            Collider triggerCollider = shieldCollider.GetComponent<Collider>();
+            triggerCollider.isTrigger = false;
         }
-
+        public void ShieldIsTrigger()
+        {
+            if(shieldCollider == true)
+            {
+                Collider triggerCollider = shieldCollider.GetComponentInChildren<Collider>();
+                triggerCollider.isTrigger = true;
+            }
+            return;
+        }
 
     }
 }

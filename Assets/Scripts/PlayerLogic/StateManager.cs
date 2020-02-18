@@ -16,7 +16,7 @@ namespace SA
         public float v_rot;
         public float h_rot;
         public Vector3 lookDir;
-        public bool rb, lb, x;
+        public bool block, backstep, attack, charge;
         public Vector3 moveDir;
         public float moveSpeed = 2f;
         public float rotateSpeed = .02f;
@@ -188,7 +188,7 @@ namespace SA
                 return;
             }
 
-            if(rb == false && rb == false && x == false)
+            if(block == false && backstep == false && attack == false && charge == false)
             {
                 return;
             }
@@ -218,14 +218,38 @@ namespace SA
             string targetAnim = null;
             targetAnim = slot.targetAnim;
 
-            if (string.IsNullOrEmpty(targetAnim)||staminaController.stamina<=25f)
+            if (string.IsNullOrEmpty(targetAnim)&&staminaController.stamina<15f)
             {
                 return;
             }
+            if(targetAnim == "walk")
+            {
+                if (staminaController.stamina > 25f)
+                {
+                    BackStep();
+                }
+                else
+                {
+                    return;
+                }
+                
+            }
 
+            if(targetAnim == "shield")
+            {
+                if (staminaController.stamina >= 75f)
+                {
+                    ShieldChargeAttack();
+                }
+                else
+                {
+                    return;
+                }
+                
+            }        
+            
             canMove = false;
-            inAction = true;
-            //staminaController.RemoveStamina(10f);
+            inAction = true;            
             anim.CrossFade(targetAnim, 0.2f);
             //rigid.velocity = Vector3.zero;
         }
@@ -272,22 +296,25 @@ namespace SA
 
         }
         
-        public void DodgeStep()
+        public void BackStep()
         {
-            moveSpeed = 5;
+            staminaController.RemoveStamina(25);
+            moveSpeed = 5;            
             Quaternion lookrotation = Quaternion.LookRotation(-moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, delta / rotateSpeed);
-            rigid.velocity = moveDir * (moveSpeed * 5);
+            rigid.velocity = moveDir * (moveSpeed * 2);
         }
         
         public void ShieldChargeAttack()
         {
             Debug.Log("fooorce");
+            staminaController.RemoveStamina(75);
             moveSpeed = 10;
             Quaternion lookrotation = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, delta / rotateSpeed);
             rigid.velocity = moveDir * (moveSpeed * 2);
             weaponManager.currentWeapon.wDo.EnableShieldCollider();
+            weaponManager.currentWeapon.wDo.ShieldIsTrigger();
             Debug.Log("enableShield");
         }
 

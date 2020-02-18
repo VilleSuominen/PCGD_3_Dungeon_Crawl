@@ -11,7 +11,7 @@ namespace SA {
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             Debug.Log("stateEnter");
-            states.staminaController.RemoveStamina(25);
+            states.staminaController.RemoveStamina(15);
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
