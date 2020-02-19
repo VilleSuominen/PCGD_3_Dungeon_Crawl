@@ -2884,7 +2884,7 @@ Transform:
   - {fileID: 1114017506}
   - {fileID: 378153636}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &495071621
 GameObject:
@@ -4488,7 +4488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 2020058904}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &2008036620
@@ -4575,7 +4575,7 @@ PrefabInstance:
     - target: {fileID: 8598777193909758773, guid: d034f4b0cdcacae4ab338ffc6f33a7f7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8598777193909758773, guid: d034f4b0cdcacae4ab338ffc6f33a7f7,
         type: 3}
@@ -4684,6 +4684,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d034f4b0cdcacae4ab338ffc6f33a7f7, type: 3}
+--- !u!1 &2020058904 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8598777194210277860, guid: d034f4b0cdcacae4ab338ffc6f33a7f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2020058903}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2062831403
 GameObject:
   m_ObjectHideFlags: 0

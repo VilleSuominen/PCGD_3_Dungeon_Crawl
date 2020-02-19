@@ -170,7 +170,7 @@ namespace SA
             {
                 //lookDir = mTransform.forward;
                 //lookDir = transform.forward;
-                Turning();
+                //Turning();
             }
             else
             {

@@ -100,10 +100,7 @@ namespace SA
             delta = Time.deltaTime;
             canMove = anim.GetBool("canMove");
             //Debug.Log(canBeParried);
-            if (states.isBlocking && !isDead)
-            {
-                rigid.isKinematic = false;
-            }
+            
             if (!states.isBlocking)
             {
                 rigid.isKinematic = true;
@@ -196,7 +193,7 @@ namespace SA
 
             //isInvincible = true;
             states.audioController.Parry();
-            //states.staminaController.AddStamina(25f);
+            states.staminaController.RemoveStamina(15f);
             a_move.DisableEnDamageColliders();
             Debug.Log("EnemyStunned");
             takesDamage = true;
