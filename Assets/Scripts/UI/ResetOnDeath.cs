@@ -4,28 +4,34 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ResetOnDeath : MonoBehaviour
+namespace SA
 {
-    string text;
-        
-    // Start is called before the first frame update
-    void Start()
+    public class ResetOnDeath : MonoBehaviour
     {
-        text = GetComponent<Text>().text;
-    }
+        string text;
+        GameObject player;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(text == "YOU DIED")
+        // Start is called before the first frame update
+        void Start()
         {
-            StartCoroutine("Reset");
+            text = GetComponent<Text>().text;
+            player = GameObject.Find("Controller");
         }
-    }
 
-    IEnumerator Reset()
-    {
-        yield return new WaitForSecondsRealtime(3);
-        SceneManager.LoadScene(0);
+        // Update is called once per frame
+        void Update()
+        {
+            if (player != null && player.GetComponent<StateManager>().isDead == true)
+            {
+                StartCoroutine("Reset");
+            }
+        }
+
+        IEnumerator Reset()
+        {
+            Debug.Log("Dead!");
+            yield return new WaitForSecondsRealtime(3);
+            SceneManager.LoadScene(0);
+        }
     }
 }
