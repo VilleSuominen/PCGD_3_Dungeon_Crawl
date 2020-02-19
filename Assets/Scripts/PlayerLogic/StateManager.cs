@@ -25,10 +25,7 @@ namespace SA
         public float health;
         public float blockAnimSpeed;
         public float regularAnimSpeed;
-
-        int floorMask;
-        float camRayLength = 100f;
-
+        
         [Header("States")]
         public bool onGround;
         public bool inAction;
@@ -51,6 +48,8 @@ namespace SA
         public StaminaController staminaController;
         [HideInInspector]
         public AudioController audioController;
+        [HideInInspector]
+        public MouseTurning mouseTurning;
         Transform mTransform;
         [HideInInspector]
         public float delta;
@@ -62,13 +61,13 @@ namespace SA
         public void Init()
         {            
             SetupAnimator();
-            floorMask = LayerMask.GetMask("Floor");
+            
             rigid = GetComponent<Rigidbody>();            
             mTransform = this.transform;
             rigid.angularDrag = 999;
             rigid.drag = 4;
             health = 100;
-
+            mouseTurning = GetComponent<MouseTurning>();
             weaponManager = GetComponent<WeaponManager>();
             weaponManager.Init();
             staminaController = GetComponent<StaminaController>();
@@ -85,6 +84,7 @@ namespace SA
             a_move.Init(this, null);
 
             gameObject.layer = 8;
+            mouseTurning.enabled = false;
             ignoreLayers = ~(1 << 9);
         }
 
@@ -164,16 +164,30 @@ namespace SA
                 }
                 rigid.velocity = moveDir * (moveSpeed * moveAmount);
             }
+            if (Input.GetMouseButtonDown(2))
+            {
+                mouseTurning.enabled = true;
+                Debug.Log(mouseTurning.enabled);
+            }
+            if (Input.GetButtonDown("activatePad"))
+            {
+                mouseTurning.enabled = false;
+                Debug.Log(mouseTurning.enabled);
+            }
             
             Vector3 lookDirection = lookDir;
-            if (lookDir == Vector3.zero)
+            if(lookDir == Vector3.zero)
             {
-                //lookDir = mTransform.forward;
-                //lookDir = transform.forward;
-                //Turning();
+                lookDir = transform.forward;
             }
-            else
+            if (mouseTurning.enabled)
             {
+                Cursor.visible = true;
+                mouseTurning.Turning();
+            }
+            if(!mouseTurning.enabled)
+            {
+                Cursor.visible = false;
                 Quaternion lookRotation = Quaternion.LookRotation(lookDir);
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, delta / rotateSpeed);
             }
@@ -361,31 +375,7 @@ namespace SA
             }
         }
 
-        public void Turning()
-        {
-
-            // Create a ray from the mouse cursor on screen in the direction of the camera.
-            Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            // Create a RaycastHit variable to store information about what was hit by the ray.
-            RaycastHit floorHit;
-
-            // Perform the raycast and if it hits something on the floor layer...
-            if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
-            {
-                // Create a vector from the player to the point on the floor the raycast from the mouse hit.
-                Vector3 playerToMouse = floorHit.point - transform.position;
-
-                // Ensure the vector is entirely along the floor plane.
-                playerToMouse.y = 0f;
-
-                // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
-                Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
-
-                // Set the player's rotation to this new rotation.
-                rigid.MoveRotation(newRotation);
-
-            }
-        }
+        
 
         public void DoDamage(float v)
         {
@@ -403,5 +393,7 @@ namespace SA
         }
     }
 
+
+    
 
 }
