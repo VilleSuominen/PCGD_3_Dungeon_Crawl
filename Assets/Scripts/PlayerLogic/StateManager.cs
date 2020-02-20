@@ -22,9 +22,7 @@ namespace SA
         public float rotateSpeed = .02f;
         public float moveAmount;
         public float toGround = .5f;
-        public float health;
-        public float blockAnimSpeed;
-        public float regularAnimSpeed;
+        public float health;        
         
         [Header("States")]
         public bool onGround;
@@ -33,6 +31,10 @@ namespace SA
         public bool isTwoHanded;
         public bool isBlocking;
         public bool isDead;
+        public bool lockOn;
+
+        GameObject enemy;
+        public Transform lockOnTarget;
 
         [HideInInspector]
         public Animator anim;
@@ -55,7 +57,7 @@ namespace SA
         public float delta;
         [HideInInspector]
         public LayerMask ignoreLayers;
-
+        
         float _delay;
 
         public void Init()
@@ -71,8 +73,7 @@ namespace SA
             weaponManager = GetComponent<WeaponManager>();
             weaponManager.Init();
             staminaController = GetComponent<StaminaController>();
-            audioController = GetComponent<AudioController>();
-
+            audioController = GetComponent<AudioController>();            
             a_man = GetComponent<ActionManager>();
             a_man.Init(this);
 
@@ -82,7 +83,8 @@ namespace SA
                 a_move = activeModel.AddComponent<AnimationMove>();
             }           
             a_move.Init(this, null);
-
+            enemy = GameObject.FindGameObjectWithTag("Enemy");
+            lockOnTarget = enemy.transform;
             gameObject.layer = 8;
             mouseTurning.enabled = false;
             ignoreLayers = ~(1 << 9);
@@ -145,21 +147,20 @@ namespace SA
             anim.applyRootMotion = false;
 
             rigid.drag = (moveAmount > 0 || onGround == false) ? 0 : 4;
-
+            anim.SetFloat("a_speed", moveSpeed);
             if (onGround)
             {                
                 if(isBlocking == true)
-                {
-                    anim.SetFloat("a_speed", blockAnimSpeed);
-                    moveSpeed = 1f;
+                {                    
+                    moveSpeed = 1f;                    
                     weaponManager.currentWeapon.wDo.EnableShieldCollider();
                     staminaController.DrainStaminaOverTime();                    
                 }
                 else
                 {
-                    anim.SetFloat("a_speed", regularAnimSpeed);
+                    
                     weaponManager.currentWeapon.wDo.DisableShieldCollider();
-                    moveSpeed = 2f;
+                    moveSpeed = 2f;                    
                     staminaController.drainTime = false;
                 }
                 rigid.velocity = moveDir * (moveSpeed * moveAmount);
@@ -176,14 +177,25 @@ namespace SA
             }
             
             Vector3 lookDirection = lookDir;
-            if(lookDir == Vector3.zero)
+
+            if (lockOn && lockOnTarget != null)
+            {
+                
+                LookTowardsTarget();
+            }
+
+            if (lookDir == Vector3.zero)
             {
                 lookDir = transform.forward;
             }
             if (mouseTurning.enabled)
             {
                 Cursor.visible = true;
-                mouseTurning.Turning();
+                if (!lockOn)
+                {
+                    mouseTurning.Turning();
+                }
+                
             }
             if(!mouseTurning.enabled)
             {
@@ -296,12 +308,14 @@ namespace SA
                 }
             }
         }
+
         IEnumerator CloseAnimator()
         {
             yield return new WaitForEndOfFrame();
             anim.enabled = false;
             this.enabled = false;
         }
+
         //plays movement animations
         void MovementAnimationHandler()
         {
@@ -373,7 +387,19 @@ namespace SA
             }
         }
 
-        
+        void LookTowardsTarget()
+        {
+            
+            Vector3 dir = lockOnTarget.position - transform.position;
+            //dir.Normalize();
+            dir.y = 0;
+            if (dir == Vector3.zero)
+            {
+                dir = transform.forward;
+            }
+            Quaternion targetRotation = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, delta / rotateSpeed);
+        }
 
         public void DoDamage(float v)
         {

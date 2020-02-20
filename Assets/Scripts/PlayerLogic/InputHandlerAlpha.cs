@@ -15,6 +15,7 @@ namespace SA
         bool block; //block input right bumper on 360 controller
         bool backstep; //backstep input lef bumper on 360 controller
         bool charge;
+        bool lockOn;
 
         public Transform moveAnchor;
         float delta;
@@ -53,7 +54,8 @@ namespace SA
             v_rotation = Input.GetAxis("v_rot");
             h_rotation = Input.GetAxis("h_rot");
             attack = Input.GetButtonDown("attack");
-            block = Input.GetButton("block");            
+            block = Input.GetButton("block");
+            //lockOn = Input.GetButtonDown("lockOn");
             //backstep = Input.GetButtonDown("backstep");
             //charge = Input.GetButtonDown("charge");
             
@@ -80,6 +82,15 @@ namespace SA
             states.block = block;
             states.backstep = backstep;
             states.charge = charge;
+
+            if (lockOn)
+            {
+                states.lockOn = !states.lockOn;
+                if(states.lockOnTarget == null)
+                {
+                    states.lockOn = false;
+                }
+            }
         }
     }
 }

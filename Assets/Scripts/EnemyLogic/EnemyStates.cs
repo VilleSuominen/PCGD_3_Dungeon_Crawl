@@ -14,8 +14,7 @@ namespace SA
         public bool canBeParried = false;
         public bool isStunned;
         public bool takesDamage = true;
-        public bool hitEnemy;
-        public float walkAnimSpeed;
+        public bool hitEnemy;        
 
         public bool hasDestination;
         public Vector3 targetDestination;
@@ -104,6 +103,10 @@ namespace SA
             {
                 rigid.isKinematic = true;
             }
+            if (health < 75)
+            {
+                agent.speed = 2f;                
+            }
             if (health <= 0)
             {
                 if (!isDead)
@@ -140,7 +143,7 @@ namespace SA
         {
             if (!hasDestination && canMove)
             {
-                anim.SetFloat("walk_speed", walkAnimSpeed);
+                anim.SetFloat("walk_speed", agent.speed*1.5f);
                 anim.SetFloat("vertical", 1f);
                 hasDestination = true;
                 agent.isStopped = false;

@@ -4814,6 +4814,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912161761}
   m_CullTransparentMesh: 0
+--- !u!4 &2085552825 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1518408939290735896, guid: bf2dd338f3c709e449715fedd8d85a71,
+    type: 3}
+  m_PrefabInstance: {fileID: 1518408939375878514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2115479229
 GameObject:
   m_ObjectHideFlags: 0
@@ -5264,6 +5270,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1820375947919815989, guid: 311f33f030c05ff4a849b798c752d5c9,
+        type: 3}
+      propertyPath: lockOnTarget
+      value: 
+      objectReference: {fileID: 2085552825}
     - target: {fileID: 2801959212193851696, guid: 311f33f030c05ff4a849b798c752d5c9,
         type: 3}
       propertyPath: moveAnchor

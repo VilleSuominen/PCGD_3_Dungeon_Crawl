@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 1750178417}
   - component: {fileID: 1750178423}
   - component: {fileID: 561142780}
+  - component: {fileID: 4555920248162457520}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Player
@@ -274,14 +275,14 @@ MonoBehaviour:
   moveAmount: 0
   toGround: 0.5
   health: 0
-  blockAnimSpeed: 4
-  regularAnimSpeed: 2
   onGround: 0
   inAction: 0
   canMove: 0
   isTwoHanded: 0
   isBlocking: 0
   isDead: 0
+  lockOn: 0
+  lockOnTarget: {fileID: 0}
   anim: {fileID: 0}
   rigid: {fileID: 0}
   a_move: {fileID: 0}
@@ -472,6 +473,18 @@ MonoBehaviour:
   enemyDeath: {fileID: 8300000, guid: d11b969481efd4a70bbdd1a563373729, type: 3}
   parrySound: {fileID: 8300000, guid: d1b052b3f49cc39488615111cdb9c31a, type: 3}
 --- !u!114 &561142780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170940648384676030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ee48045baa2954498ef8a11c98872b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4555920248162457520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

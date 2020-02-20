@@ -66,7 +66,7 @@ NavMeshAgent:
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 80
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -111,7 +111,7 @@ MonoBehaviour:
     cooldown: 1
     _cool: 0
   - weight: 40
-    animSpeed: 2
+    animSpeed: 3
     targetAnim: Attack
     minDistance: 1.5
     minAngle: 0
@@ -149,7 +149,6 @@ MonoBehaviour:
   isStunned: 0
   takesDamage: 0
   hitEnemy: 0
-  walkAnimSpeed: 2
   hasDestination: 0
   targetDestination: {x: 0, y: 0, z: 0}
   anim: {fileID: 0}

@@ -154,7 +154,7 @@ namespace SA
             if (attack != null)
             {
                 aiState = AIState.attacking;
-                eStates.anim.SetFloat("speed", attack.animSpeed);
+                eStates.anim.SetFloat("speed", attack.animSpeed*eStates.agent.speed);
                 eStates.anim.Play(attack.targetAnim);
                 eStates.anim.SetBool("canMove", false);
                 eStates.canMove = false;

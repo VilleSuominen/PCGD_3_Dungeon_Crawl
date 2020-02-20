@@ -35,7 +35,7 @@ namespace SA
                 Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
 
                 // Set the player's rotation to this new rotation.
-                states.rigid.MoveRotation(newRotation);
+                states.transform.rotation = Quaternion.Slerp(states.transform.rotation, newRotation, states.delta / states.rotateSpeed);
 
             }
         }
