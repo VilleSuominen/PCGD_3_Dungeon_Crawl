@@ -8,7 +8,7 @@ namespace SA
     {
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("entered collider");
+            
             EnemyStates eState = other.transform.GetComponentInParent<EnemyStates>();
 
             if(eState == null)

@@ -70,9 +70,8 @@ namespace SA
             }
             delta = Time.deltaTime;
             dist = distanceFromTarget();
-            angle = angleToTarget();
+            angle = angleToTarget();            
             
-            //Debug.Log(eStates.agent.isStopped);
             if (target)
             {
                 targetDir = target.position - transform.position;
@@ -251,24 +250,21 @@ namespace SA
         {
             RaycastHit hit;
             Vector3 origin = transform.position;
-            origin.y += 2.5f;
-            //origin.z += 1.5f;
+            origin.y += 2.5f;            
             Vector3 dir = targetDir;
             
-            dir.y -= 1.0f;
-            //dir.z += 1.5f;
+            dir.y -= 1.0f;           
             
             if (Physics.Raycast(origin,dir,out hit, sight, eStates.ignoreLayers))
             {
-                Debug.DrawRay(origin, dir);
+               
                 StateManager st = hit.transform.GetComponentInParent<StateManager>();
-                Debug.Log(st);
-                Debug.Log(hit.collider.gameObject.name);
+                
                 if(st != null)
                 {
                     aiState = AIState.inSight;
                     eStates.SetDestination(target.position);                    
-                    Debug.Log("DestinationSet");
+                    
                 }
             }
             

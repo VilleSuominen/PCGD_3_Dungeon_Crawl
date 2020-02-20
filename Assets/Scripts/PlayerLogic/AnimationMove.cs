@@ -17,8 +17,7 @@ namespace SA
         public void Init(StateManager st, EnemyStates eSt)
         {
             states = st;
-            eStates = eSt;
-            //anim = st.anim;            
+            eStates = eSt;                       
             if(st != null)
             {
                 anim = st.anim;
@@ -161,24 +160,7 @@ namespace SA
             }
             states.weaponManager.currentWeapon.wDo.DisableShieldCollider();
         }
-
-        //public void EnableEnShieldCollider()
-        //{
-        //    if(eStates == null)
-        //    {
-        //        return;
-        //    }
-        //    eStates.enemyWeaponManager.enemyWeapon.ewDo.EnableShieldCollider();
-        //}
-
-        //public void DisableEnShieldCollider()
-        //{
-        //    if(eStates == null)
-        //    {
-        //        return;
-        //    }
-        //    eStates.enemyWeaponManager.enemyWeapon.ewDo.DisableShieldCollider();
-        //}
+        
         public void EnableCollisionCollider()
         {
             if (eStates == null)

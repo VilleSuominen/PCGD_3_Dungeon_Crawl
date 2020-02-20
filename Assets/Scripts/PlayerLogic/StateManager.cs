@@ -285,8 +285,7 @@ namespace SA
             {
                 if (!isDead)
                 {
-                    isDead = true;
-                    Debug.Log("Blaaaaargh!!!");
+                    isDead = true;                    
                     GameObject.Find("GameUI/GeneralText").GetComponent<Text>().text = "YOU DIED";
                     //EnableRagdoll();
                     Collider controllerCollider = rigid.gameObject.GetComponent<Collider>();
@@ -321,7 +320,7 @@ namespace SA
         
         public void ShieldChargeAttack()
         {
-            Debug.Log("fooorce");
+            
             staminaController.RemoveStamina(75);
             moveSpeed = 10;
             Quaternion lookrotation = Quaternion.LookRotation(moveDir);
@@ -329,7 +328,7 @@ namespace SA
             rigid.velocity = moveDir * (moveSpeed * 2);
             weaponManager.currentWeapon.wDo.EnableShieldCollider();
             weaponManager.currentWeapon.wDo.ShieldIsTrigger();
-            Debug.Log("enableShield");
+            
         }
 
         public void SlashStunAttack()
@@ -355,8 +354,7 @@ namespace SA
             {
                 r = true;
                 Vector3 targetPosition = hit.point;
-                transform.position = targetPosition;
-                //targetPosition.y += toGround;
+                transform.position = targetPosition;                
             }
             return r;
         }
@@ -381,14 +379,12 @@ namespace SA
         {
             
             audioController.PlayerDamagedSound();
-            health -= v;
+            health -= v;           
             
-            Debug.Log("diddamage to player" + health);
             if(health <= -100)
             {
                 Debug.Log("Stoooop!!! He is already deeaaaaad!");
-            }            
-            //anim.Play("Damage");
+            }                        
             anim.applyRootMotion = true;
         }
     }

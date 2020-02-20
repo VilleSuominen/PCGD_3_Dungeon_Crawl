@@ -99,8 +99,7 @@ namespace SA
             
             delta = Time.deltaTime;
             canMove = anim.GetBool("canMove");
-            //Debug.Log(canBeParried);
-            
+                        
             if (!states.isBlocking)
             {
                 rigid.isKinematic = true;
@@ -165,18 +164,12 @@ namespace SA
         }
         public void DoDamage(float v)
         {
-            //if (isInvincible)
-            //{
-            //    Debug.Log("isinvincible");
-            //    return;
-            //}
+            
             hitEnemy = true;
             if (!takesDamage)
             {
                 states.audioController.SwordHitShieldSound();
-                rigid.isKinematic = false;
-                //rigid.AddForce(-targetDestination * 900);
-                Debug.Log("ShouldTakeDamage: "+ takesDamage);
+                rigid.isKinematic = false;               
                 return;
             }
             Debug.Log("ShouldTakeDamage: " + takesDamage);
