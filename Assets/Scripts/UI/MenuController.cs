@@ -1,64 +1,82 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class MenuController : MonoBehaviour
+namespace SA
 {
-
-    GameObject mainMenu;
-    GameObject pauseMenu;
-    GameObject helpMenu;
-    GameObject statusPanel;
-    GameObject logo;
-
-    // Start is called before the first frame update
-    void Start()
+    public class MenuController : MonoBehaviour
     {
-        mainMenu = transform.Find("MainMenuPanel").gameObject;
-        pauseMenu = transform.Find("PauseMenuPanel").gameObject;
-        helpMenu = transform.Find("HelpMenuPanel").gameObject;
-        statusPanel = transform.Find("StatusPanel").gameObject;
-        logo = transform.Find("Logo").gameObject;
+        EventSystem eventSystem;
 
-        if (mainMenu.activeSelf == true)
+        GameObject mainMenu;
+        GameObject pauseMenu;
+        GameObject helpMenu;
+        GameObject statusPanel;
+        GameObject logo;
+
+        public GameObject lastMenu;
+
+        // Start is called before the first frame update
+        void Start()
+        {
+            eventSystem = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+            mainMenu = transform.Find("MainMenuPanel").gameObject;
+            pauseMenu = transform.Find("PauseMenuPanel").gameObject;
+            helpMenu = transform.Find("HelpMenuPanel").gameObject;
+            statusPanel = transform.Find("StatusPanel").gameObject;
+            logo = transform.Find("Logo").gameObject;
+
+            if (mainMenu.activeSelf == true)
+            {
+                Time.timeScale = 0.0f;
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (mainMenu.activeSelf == false && Input.GetButtonDown("Cancel"))
+            {
+                if (pauseMenu.activeSelf == true && helpMenu.activeSelf == false)   // Closes the pause menu when pressing esc
+                {
+                    pauseMenu.SetActive(false);
+                    statusPanel.SetActive(true);
+                    Resume();
+                }
+
+                else     // Opens the pause menu if esc is pressed
+                {
+                    pauseMenu.SetActive(true);
+                    statusPanel.SetActive(false);
+                    Pause();
+                }
+            }
+
+            else if (mainMenu.activeSelf == true && logo.activeSelf == false && helpMenu.activeSelf == false)
+            {
+                logo.SetActive(true);
+            }
+        }
+
+        public void Resume()
+        {
+            Time.timeScale = 1.0f;
+        }
+
+        public void Pause()
         {
             Time.timeScale = 0.0f;
         }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (mainMenu.activeSelf == false && Input.GetButtonDown("Cancel"))
+        public void SetLastMenu(GameObject g)
         {
-            if (pauseMenu.activeSelf == true && helpMenu.activeSelf == false)   // Closes the pause menu when pressing esc
-            {
-                pauseMenu.SetActive(false);
-                statusPanel.SetActive(true);
-                Resume();
-            }
-
-            else     // Opens the pause menu if esc is pressed
-            {
-                pauseMenu.SetActive(true);
-                statusPanel.SetActive(false);
-                Pause();
-            }
+            lastMenu = g;
         }
 
-        else if (mainMenu.activeSelf == true && logo.activeSelf == false && helpMenu.activeSelf == false)
+        public void OpenLastMenu()
         {
-            logo.SetActive(true);
+            lastMenu.SetActive(true);
         }
-    }
-
-    public void Resume()
-    {
-        Time.timeScale = 1.0f;
-    }
-
-    public void Pause()
-    {
-        Time.timeScale = 0.0f;
     }
 }

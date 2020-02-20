@@ -552,6 +552,7 @@ GameObject:
   - component: {fileID: 8598777193774908387}
   - component: {fileID: 8598777193774908384}
   - component: {fileID: 8598777193774908385}
+  - component: {fileID: 2914405346400839949}
   m_Layer: 5
   m_Name: PauseMenuPanel
   m_TagString: Untagged
@@ -643,6 +644,19 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &2914405346400839949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598777193774908390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9d109245281fc4cba8a4db9f6a7546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedButton: {fileID: 8598777194210277860}
 --- !u!1 &8598777193778938844
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,6 +778,17 @@ MonoBehaviour:
       - m_Target: {fileID: 8598777195181583139}
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8598777193909758777}
+        m_MethodName: OpenLastMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -979,6 +1004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad51140a8fb1eab41bb13ffccd11524c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastMenu: {fileID: 0}
 --- !u!1 &8598777194025523407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,6 +1190,7 @@ GameObject:
   - component: {fileID: 8598777194066059548}
   - component: {fileID: 8598777194066059549}
   - component: {fileID: 8598777194066059554}
+  - component: {fileID: 7541800333933141342}
   m_Layer: 5
   m_Name: MainMenuPanel
   m_TagString: Untagged
@@ -1254,6 +1281,19 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!114 &7541800333933141342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598777194066059552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9d109245281fc4cba8a4db9f6a7546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedButton: {fileID: 8598777194117199597}
 --- !u!1 &8598777194117199597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,6 +2304,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 8598777193774908390}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8598777193909758777}
+        m_MethodName: SetLastMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8598777193774908390}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8598777194509333395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2541,6 +2603,28 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8598777194066059552}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8598777193909758777}
+        m_MethodName: SetLastMenu
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8598777194066059552}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3087,6 +3171,7 @@ GameObject:
   - component: {fileID: 8598777195181583132}
   - component: {fileID: 8598777195181583133}
   - component: {fileID: 8598777195181583138}
+  - component: {fileID: 68690092053629089}
   m_Layer: 5
   m_Name: HelpMenuPanel
   m_TagString: Untagged
@@ -3152,6 +3237,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &68690092053629089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598777195181583139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd9d109245281fc4cba8a4db9f6a7546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedButton: {fileID: 8598777193778938844}
 --- !u!1 &8598777195203548712
 GameObject:
   m_ObjectHideFlags: 0

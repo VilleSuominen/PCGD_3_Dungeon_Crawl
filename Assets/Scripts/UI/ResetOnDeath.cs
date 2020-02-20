@@ -29,7 +29,6 @@ namespace SA
 
         IEnumerator Reset()
         {
-            Debug.Log("Dead!");
             yield return new WaitForSecondsRealtime(3);
             SceneManager.LoadScene(0);
         }
