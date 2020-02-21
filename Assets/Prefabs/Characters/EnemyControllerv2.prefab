@@ -46,12 +46,12 @@ Rigidbody:
   m_GameObject: {fileID: 1518408939290735889}
   serializedVersion: 2
   m_Mass: 50
-  m_Drag: 4
+  m_Drag: 1
   m_AngularDrag: 999
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!195 &1518408939290735898
 NavMeshAgent:
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ai_attack:
-  - weight: 60
+  - weight: 75
     animSpeed: 1
     targetAnim: Attack
     minDistance: 1.5
@@ -110,8 +110,8 @@ MonoBehaviour:
     maxAngle: 35
     cooldown: 1
     _cool: 0
-  - weight: 40
-    animSpeed: 3
+  - weight: 25
+    animSpeed: 2
     targetAnim: Attack
     minDistance: 1.5
     minAngle: 0

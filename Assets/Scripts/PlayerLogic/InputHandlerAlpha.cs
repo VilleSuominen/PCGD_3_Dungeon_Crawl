@@ -27,6 +27,8 @@ namespace SA
         {
             states = GetComponent<StateManager>();
             states.Init();
+            GameObject anchor = GameObject.FindGameObjectWithTag("Anchor");
+            moveAnchor = anchor.transform;
         }
 
         // Update is called once per frame

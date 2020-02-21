@@ -46,13 +46,18 @@ namespace SA
 
         private void Start()
         {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            states = player.GetComponent<StateManager>();
+            target = player.transform;
             if (eStates == null)
             {
                 eStates = GetComponent<EnemyStates>();
             }
             eStates.Init();
         }
+
         public AIState aiState;
+
         public enum AIState
         {
             far,close,inSight,attacking
@@ -101,8 +106,7 @@ namespace SA
                     break;
             }
             eStates.Tick();
-        }
-       
+        }       
 
         void HandleCloseSight()
         {
@@ -121,12 +125,14 @@ namespace SA
             RayCastToTarget();
             
         }
+
         void GoToDestination()
         {
             eStates.hasDestination = false; 
             eStates.SetDestination(target.position);
 
         }
+
         void InSight()
         {
 
@@ -163,9 +169,7 @@ namespace SA
                 return;
             }
 
-        }
-
-        
+        }        
 
         void HandleCoolDowns()
         {

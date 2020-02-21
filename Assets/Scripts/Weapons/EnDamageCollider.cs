@@ -9,14 +9,20 @@ namespace SA
         {
             //Debug.Log("entered player collider");
             StateManager states = other.transform.GetComponentInParent<StateManager>();
+            EnemyStates eStates = transform.GetComponentInParent<EnemyStates>();
 
             if (states == null || other.name == "ParryCollider" || other.name == "ShieldCollider")
             {
                 if(other.name == "ShieldCollider")
                 {
+                    //states.LookTowardsTarget();
                     states.audioController.SwordHitShieldSound();
                     states.staminaController.RemoveStamina(5f);
-                    states.rigid.AddForce(states.lookDir * 900);
+                    eStates.agent.isStopped = true;
+                    states.rigid.AddForce(states.lookDir * 9000);
+                    eStates.rigid.isKinematic = false;
+                    eStates.rigid.AddForce(-eStates.rigid.transform.forward*15000);
+                    
                     return;
                 }
                 //Debug.Log("null");

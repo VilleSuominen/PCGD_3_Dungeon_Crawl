@@ -37,6 +37,8 @@ namespace SA
         public void Init()
         {
             health = 100;
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            states = player.GetComponent<StateManager>();
             anim = GetComponentInChildren<Animator>();
             rigid = GetComponent<Rigidbody>();
             a_move = anim.GetComponent<AnimationMove>();
@@ -95,7 +97,11 @@ namespace SA
 
         public void Tick()
         {
-            
+            if (states == null)
+            {
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                states = player.GetComponent<StateManager>();
+            }
             delta = Time.deltaTime;
             canMove = anim.GetBool("canMove");
                         

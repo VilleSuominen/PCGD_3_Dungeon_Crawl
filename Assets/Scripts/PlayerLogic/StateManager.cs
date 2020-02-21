@@ -244,7 +244,7 @@ namespace SA
             string targetAnim = null;
             targetAnim = slot.targetAnim;
 
-            if (string.IsNullOrEmpty(targetAnim)&&staminaController.stamina<15f)
+            if (string.IsNullOrEmpty(targetAnim)||staminaController.stamina<15f)
             {
                 return;
             }
@@ -275,7 +275,8 @@ namespace SA
             }        
             
             canMove = false;
-            inAction = true;            
+            inAction = true;
+            
             anim.CrossFade(targetAnim, 0.2f);
             //rigid.velocity = Vector3.zero;
         }
@@ -387,7 +388,7 @@ namespace SA
             }
         }
 
-        void LookTowardsTarget()
+        public void LookTowardsTarget()
         {
             
             Vector3 dir = lockOnTarget.position - transform.position;
@@ -403,7 +404,7 @@ namespace SA
 
         public void DoDamage(float v)
         {
-            
+            a_move.DisableParryCollider();
             audioController.PlayerDamagedSound();
             health -= v;           
             
