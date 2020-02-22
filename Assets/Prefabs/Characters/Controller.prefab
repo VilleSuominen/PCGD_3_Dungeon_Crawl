@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 1750178417}
   - component: {fileID: 1750178423}
   - component: {fileID: 561142780}
+  - component: {fileID: 8976837890409479319}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Player
@@ -483,6 +484,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ee48045baa2954498ef8a11c98872b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8976837890409479319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170940648384676030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ee48045baa2954498ef8a11c98872b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2007395267102270186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,22 +781,22 @@ PrefabInstance:
     - target: {fileID: 1917402193176701508, guid: c3ecc6a0226f1ff4882a07f6485dfd7c,
         type: 3}
       propertyPath: m_Size.z
-      value: 0.26949915
+      value: 0.3356009
       objectReference: {fileID: 0}
     - target: {fileID: 1917402193176701508, guid: c3ecc6a0226f1ff4882a07f6485dfd7c,
         type: 3}
       propertyPath: m_Center.x
-      value: -0.007563561
+      value: -0.007563564
       objectReference: {fileID: 0}
     - target: {fileID: 1917402193176701508, guid: c3ecc6a0226f1ff4882a07f6485dfd7c,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.023986876
+      value: 0.023986857
       objectReference: {fileID: 0}
     - target: {fileID: 1917402193176701508, guid: c3ecc6a0226f1ff4882a07f6485dfd7c,
         type: 3}
       propertyPath: m_Center.z
-      value: 0.003815297
+      value: -0.029235628
       objectReference: {fileID: 0}
     - target: {fileID: 1917402193176701562, guid: c3ecc6a0226f1ff4882a07f6485dfd7c,
         type: 3}

@@ -28,8 +28,16 @@ namespace SA
                 //Debug.Log("null");
                 return;
             }
-
-            states.DoDamage(25);
+            if (eStates.aicontroller != null)
+            {
+                states.DoDamage(25);
+            }
+            if(eStates.aicontrollerType2 != null)
+            {
+                states.DoDamage(10);
+            }
+            return;
+            
         }
     }
 }

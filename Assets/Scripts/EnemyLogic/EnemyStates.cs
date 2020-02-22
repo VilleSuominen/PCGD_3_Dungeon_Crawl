@@ -29,6 +29,7 @@ namespace SA
         public EnWeaponManager enemyWeaponManager;
         public LayerMask ignoreLayers;
         public AIController aicontroller;
+        public AIControllerType2 aicontrollerType2;
 
 
         List<Rigidbody> ragdollRigids = new List<Rigidbody>();
@@ -44,6 +45,10 @@ namespace SA
             a_move = anim.GetComponent<AnimationMove>();
             agent = GetComponent<NavMeshAgent>();
             aicontroller = GetComponent<AIController>();
+            if (aicontroller == null)
+            {
+                aicontrollerType2 = GetComponent<AIControllerType2>();
+            }            
             rigid.isKinematic = true;
             enemyWeaponManager = GetComponent<EnWeaponManager>();
             enemyWeaponManager.Init();
@@ -102,6 +107,7 @@ namespace SA
                 GameObject player = GameObject.FindGameObjectWithTag("Player");
                 states = player.GetComponent<StateManager>();
             }
+
             delta = Time.deltaTime;
             canMove = anim.GetBool("canMove");
                         
@@ -129,20 +135,32 @@ namespace SA
                 isInvincible = !canMove;
                 
             }
-            if(canMove == true && aicontroller.angle <= 90)
-            {                
-                takesDamage = false;
-            }
-            if(aicontroller.angle > 90)
-            {
-                takesDamage = true;
-            }
+            AIControllerSwitcher();
             if(canMove == false)
             {
                 anim.applyRootMotion = false;
                 
             }
             
+        }
+
+        void AIControllerSwitcher()
+        {
+            if(aicontroller != null)
+            {
+                if (canMove == true && aicontroller.angle <= 90)
+                {
+                    takesDamage = false;
+                }
+                if (aicontroller.angle > 90)
+                {
+                    takesDamage = true;
+                }
+            }
+            if(aicontroller == null)
+            {
+                takesDamage = true;
+            }
         }
 
         public void SetDestination(Vector3 d)

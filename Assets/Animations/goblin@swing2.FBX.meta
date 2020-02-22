@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 922417097181bf04c85d2e8436479806
+guid: 215ed359209206244ac5ba0ccf8acea9
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: walk
+    second: swing2
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -35,18 +35,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: walk
+      name: swing2
       takeName: Take 001
       internalID: 0
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -58,7 +58,35 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.79524887
+        functionName: EnableCollisionCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.7812971
+        functionName: EnableEnDamageColliders
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.70701355
+        functionName: DisableEnDamageColliders
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6900453
+        functionName: DisableCollisionCollider
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

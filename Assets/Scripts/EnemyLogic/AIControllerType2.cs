@@ -3,29 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SA
 {
-    public class AIController : MonoBehaviour
+    public class AIControllerType2 : MonoBehaviour
     {
         public AIAttack[] ai_attack;
         public EnemyStates eStates;
         public Transform target;
-        public StateManager states;        
+        public StateManager states;
         public float sight;
         public int closeCount = 10;
         int _close;
         public float fov_angle;
         public int frameCount = 30;
         int _frame;
-        public int attackCount= 30;
+        public int attackCount = 30;
         int _attack;
         float dist;
-        
+
         public float angle;
         Vector3 targetDir;
         float delta;
 
         float distanceFromTarget()
         {
-            if(target == null)
+            if (target == null)
             {
                 return 100;
             }
@@ -42,7 +42,7 @@ namespace SA
             }
             return a;
         }
-        
+
 
         private void Start()
         {
@@ -60,7 +60,7 @@ namespace SA
 
         public enum AIState
         {
-            far,close,inSight,attacking
+            far, close, inSight, attacking
         }
 
         private void Update()
@@ -75,8 +75,8 @@ namespace SA
             }
             delta = Time.deltaTime;
             dist = distanceFromTarget();
-            angle = angleToTarget();            
-            
+            angle = angleToTarget();
+
             if (target)
             {
                 targetDir = target.position - transform.position;
@@ -106,7 +106,7 @@ namespace SA
                     break;
             }
             eStates.Tick();
-        }       
+        }
 
         void HandleCloseSight()
         {
@@ -120,15 +120,15 @@ namespace SA
                     aiState = AIState.far;
                     return;
                 }
-               
+
             }
             RayCastToTarget();
-            
+
         }
 
         void GoToDestination()
         {
-            eStates.hasDestination = false; 
+            eStates.hasDestination = false;
             eStates.SetDestination(target.position);
 
         }
@@ -139,16 +139,16 @@ namespace SA
             LookTowardsTarget();
             HandleCoolDowns();
             float d2 = Vector3.Distance(eStates.targetDestination, target.position);
-            if (d2 > 1.2 || dist>sight*0.25)
-            {              
-                
+            if (d2 > 1.2 || dist > sight * 0.25)
+            {
+
                 GoToDestination();
             }
-            if (dist < 1.2)
+            if (dist < 1.0)
             {
                 eStates.agent.isStopped = true;
             }
-            
+
 
             if (_attack > 0)
             {
@@ -160,7 +160,7 @@ namespace SA
             if (attack != null)
             {
                 aiState = AIState.attacking;
-                eStates.anim.SetFloat("speed", attack.animSpeed*eStates.agent.speed);
+                eStates.anim.SetFloat("speed", attack.animSpeed * eStates.agent.speed);
                 eStates.anim.Play(attack.targetAnim);
                 eStates.anim.SetBool("canMove", false);
                 eStates.canMove = false;
@@ -169,11 +169,11 @@ namespace SA
                 return;
             }
 
-        }        
+        }
 
         void HandleCoolDowns()
         {
-            for(int i = 0; i<ai_attack.Length; i++)
+            for (int i = 0; i < ai_attack.Length; i++)
             {
                 AIAttack a = ai_attack[i];
                 if (a._cool > 0)
@@ -192,54 +192,54 @@ namespace SA
         {
             Vector3 dir = targetDir;
             dir.y = 0;
-            if(dir == Vector3.zero)
+            if (dir == Vector3.zero)
             {
                 dir = transform.forward;
             }
             Quaternion targetRotation = Quaternion.LookRotation(dir);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation,delta*2);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, delta * 2);
         }
 
         public AIAttack HandleAttacks()
         {
             int w = 0;
             List<AIAttack> l = new List<AIAttack>();
-            for(int  i = 0; i < ai_attack.Length; i++)
+            for (int i = 0; i < ai_attack.Length; i++)
             {
                 AIAttack a = ai_attack[i];
-                if(a._cool > 0)
+                if (a._cool > 0)
                 {
-                   
+
                     continue;
                 }
 
-                if(a.minDistance < dist)
+                if (a.minDistance < dist)
                 {
                     continue;
                 }
-                if(angle < a.minAngle)
+                if (angle < a.minAngle)
                 {
                     continue;
                 }
-                if(angle > a.maxAngle)
+                if (angle > a.maxAngle)
                 {
                     continue;
                 }
-                if(a.weight == 0)
+                if (a.weight == 0)
                 {
                     continue;
                 }
                 w += a.weight;
                 l.Add(a);
             }
-            if(l.Count == 0)
+            if (l.Count == 0)
             {
                 return null;
             }
 
             int ran = Random.Range(0, w + 1);
             int cw = 0;
-            for(int i = 0; i<l.Count; i++)
+            for (int i = 0; i < l.Count; i++)
             {
                 cw += l[i].weight;
                 if (cw > ran)
@@ -248,47 +248,48 @@ namespace SA
                 }
             }
             return null;
-        }            
+        }
 
         void RayCastToTarget()
         {
             RaycastHit hit;
             Vector3 origin = transform.position;
-            origin.y += 2.5f;            
+            origin.y += 2.5f;
             Vector3 dir = targetDir;
-            
-            dir.y -= 1.0f;           
-            
-            if (Physics.Raycast(origin,dir,out hit, sight, eStates.ignoreLayers))
+
+            dir.y -= 1.0f;
+
+            if (Physics.Raycast(origin, dir, out hit, sight, eStates.ignoreLayers))
             {
-               
+
                 StateManager st = hit.transform.GetComponentInParent<StateManager>();
-                
-                if(st != null)
+
+                if (st != null)
                 {
                     aiState = AIState.inSight;
-                    eStates.SetDestination(target.position);                     
+                    eStates.SetDestination(target.position);
+
                 }
             }
-            
+
         }
 
         void HandleFarSight()
         {
-            if(target == null)
+            if (target == null)
             {
                 return;
             }
 
             _frame++;
 
-            if(_frame > frameCount)
+            if (_frame > frameCount)
             {
                 _frame = 0;
 
-                if(dist < sight)
+                if (dist < sight)
                 {
-                    if(angle < fov_angle)
+                    if (angle < fov_angle)
                     {
                         aiState = AIState.close;
                     }
@@ -298,16 +299,4 @@ namespace SA
 
     }
 
-    [System.Serializable]
-    public class AIAttack
-    {
-        public int weight;
-        public float animSpeed;
-        public string targetAnim;
-        public float minDistance;
-        public float minAngle;
-        public float maxAngle;
-        public float cooldown;
-        public float _cool;
-    }
 }
