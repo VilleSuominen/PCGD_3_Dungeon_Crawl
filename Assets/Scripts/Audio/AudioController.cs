@@ -11,6 +11,11 @@ public class AudioController : MonoBehaviour
     public AudioClip enemyDeath;
     public AudioClip parrySound;
 
+    public AudioClip goblinHit;
+    public AudioClip goblinBlock;
+    public AudioClip goblinDeath;
+    public AudioClip playerDeath;
+
 
     void Start()
     {
@@ -43,4 +48,25 @@ public class AudioController : MonoBehaviour
     {
         source.PlayOneShot(parrySound, 0.1f);
     }
+
+    public void GoblinHit()
+    {
+        source.PlayOneShot(goblinHit, 0.1f);
+    }
+
+    public void GoblinBlock()
+    {
+        source.PlayOneShot(goblinBlock, 0.1f);
+    }
+
+    public void GoblinDeath()
+    {
+        source.PlayOneShot(goblinDeath, 0.1f);
+    }
+
+    public void PlayerDeath()
+    {
+        source.PlayOneShot(playerDeath, 0.1f);
+    }
+
 }
