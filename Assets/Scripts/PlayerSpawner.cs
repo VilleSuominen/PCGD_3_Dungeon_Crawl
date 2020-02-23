@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//spawns the player on the location where this scripts parent gameobject resides
 public class PlayerSpawner : MonoBehaviour
 {
     GameObject player;
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");

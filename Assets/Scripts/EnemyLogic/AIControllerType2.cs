@@ -43,7 +43,6 @@ namespace SA
             return a;
         }
 
-
         private void Start()
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -85,6 +84,10 @@ namespace SA
             {
                 aiState = AIState.inSight;
             }
+            if(eStates.takesDamage && !eStates.canMove)
+            {
+                aiState = AIState.far;
+            }
             switch (aiState)
             {
                 case AIState.far:
@@ -108,6 +111,7 @@ namespace SA
             eStates.Tick();
         }
 
+        //Enemys close range state
         void HandleCloseSight()
         {
             _close++;
@@ -133,6 +137,7 @@ namespace SA
 
         }
 
+        //Enemys state when player is insight
         void InSight()
         {
 
@@ -171,6 +176,7 @@ namespace SA
 
         }
 
+        //Takes care of the cooldown of attacks
         void HandleCoolDowns()
         {
             for (int i = 0; i < ai_attack.Length; i++)
@@ -188,6 +194,7 @@ namespace SA
             }
         }
 
+        //Turns the enemy towards the player
         void LookTowardsTarget()
         {
             Vector3 dir = targetDir;
@@ -200,6 +207,7 @@ namespace SA
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, delta * 2);
         }
 
+        //chooses what attack the enemy does
         public AIAttack HandleAttacks()
         {
             int w = 0;
@@ -250,6 +258,7 @@ namespace SA
             return null;
         }
 
+        //raycasts player when in range
         void RayCastToTarget()
         {
             RaycastHit hit;
@@ -274,6 +283,7 @@ namespace SA
 
         }
 
+        //when player is faaaaaaaaaaaaaar
         void HandleFarSight()
         {
             if (target == null)

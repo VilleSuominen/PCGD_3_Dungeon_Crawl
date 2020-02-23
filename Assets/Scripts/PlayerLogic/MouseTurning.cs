@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SA
 {
+    //mouuuuuse
     public class MouseTurning : MonoBehaviour
     {
         int floorMask;
@@ -14,6 +15,7 @@ namespace SA
             states = GetComponent<StateManager>();
             floorMask = LayerMask.GetMask("Floor");
         }
+
         public void Turning()
         {
 

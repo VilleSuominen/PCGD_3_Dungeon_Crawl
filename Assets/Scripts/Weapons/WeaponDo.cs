@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SA
 {
-    //this script goes to the weapons!!!!
+    //this script goes to the player weapons!!!!
     public class WeaponDo : MonoBehaviour
     {
         public GameObject[] damageCollider;//add colliders to this list
@@ -28,6 +28,7 @@ namespace SA
             }
         }
 
+        //it's colliders all the way down from here
         public void EnableParryCollider()
         {
             parryCollider.SetActive(true);
@@ -51,6 +52,7 @@ namespace SA
             Collider triggerCollider = shieldCollider.GetComponent<Collider>();
             triggerCollider.isTrigger = false;
         }
+
         public void ShieldIsTrigger()
         {
             if(shieldCollider == true)

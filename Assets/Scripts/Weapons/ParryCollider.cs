@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 namespace SA {
+
     public class ParryCollider : MonoBehaviour
     {
         private void OnTriggerEnter(Collider other)
@@ -16,7 +17,6 @@ namespace SA {
             }
             
             eSt.Parried();
-
             
         }
     }

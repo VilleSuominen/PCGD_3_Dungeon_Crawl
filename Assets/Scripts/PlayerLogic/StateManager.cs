@@ -10,7 +10,7 @@ namespace SA
     {
         public GameObject activeModel;
 
-        [Header("inputs")]
+        [Header("Inputs")]
         public float vertical;
         public float horizontal;
         public float v_rot;
@@ -133,8 +133,7 @@ namespace SA
                 else
                 {
                     return;
-                }
-                              
+                }                              
             }
 
             canMove = anim.GetBool("canMove");
@@ -157,8 +156,7 @@ namespace SA
                     staminaController.DrainStaminaOverTime();                    
                 }
                 else
-                {
-                    
+                {                    
                     weaponManager.currentWeapon.wDo.DisableShieldCollider();
                     moveSpeed = 2f;                    
                     staminaController.drainTime = false;
@@ -239,6 +237,7 @@ namespace SA
             
         }
 
+        //handles what attacks are used
         void AttackAction(Action slot)
         {
             string targetAnim = null;
@@ -281,6 +280,7 @@ namespace SA
             //rigid.velocity = Vector3.zero;
         }
 
+        //blocking
         void BlockAction(Action slot)
         {      
             if(staminaController.stamina < 5)
@@ -324,6 +324,7 @@ namespace SA
 
         }
         
+        //unused
         public void BackStep()
         {
             staminaController.RemoveStamina(25);
@@ -333,6 +334,7 @@ namespace SA
             rigid.velocity = moveDir * (moveSpeed * 2);
         }
         
+        //unused
         public void ShieldChargeAttack()
         {
             
@@ -346,6 +348,7 @@ namespace SA
             
         }
 
+        //unused
         public void SlashStunAttack()
         {
             moveSpeed = 10;
@@ -374,6 +377,7 @@ namespace SA
             return r;
         }
 
+        //unused
         public void HandleTwoHanded()
         {
             anim.SetBool("two_handed", isTwoHanded);
@@ -388,6 +392,7 @@ namespace SA
             }
         }
 
+        //unused
         public void LookTowardsTarget()
         {
             
@@ -402,6 +407,7 @@ namespace SA
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, delta / rotateSpeed);
         }
 
+        //Handles damage done to the player
         public void DoDamage(float v)
         {
             a_move.DisableParryCollider();

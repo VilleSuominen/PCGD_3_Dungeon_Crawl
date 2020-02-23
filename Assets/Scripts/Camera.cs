@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
+//does camera shit
 public class Camera : MonoBehaviour
 {
     public CinemachineVirtualCamera vcam;

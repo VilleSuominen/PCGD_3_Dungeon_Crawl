@@ -12,10 +12,10 @@ namespace SA
         float v_rotation; //vertical rotation axis
         float h_rotation; //horizontal rotation axis
         bool attack; //attack input button 5
-        bool block; //block input right bumper on 360 controller
-        bool backstep; //backstep input lef bumper on 360 controller
-        bool charge;
-        bool lockOn;
+        bool block; //block input right bumper on 360 controller unused
+        bool backstep; //backstep input lef bumper on 360 controller unused
+        bool charge; //unused
+        bool lockOn; //unused
 
         public Transform moveAnchor;
         float delta;
@@ -85,6 +85,7 @@ namespace SA
             states.backstep = backstep;
             states.charge = charge;
 
+            
             if (lockOn)
             {
                 states.lockOn = !states.lockOn;

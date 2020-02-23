@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SA
 {
-    //this script goes to the weapons!!!!
+    //this script goes to the enemy weapons!!!!
     public class EnWeaponDo : MonoBehaviour
     {
         public GameObject[] damageCollider;//add colliders to this list

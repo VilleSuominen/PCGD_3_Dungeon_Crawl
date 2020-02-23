@@ -6,6 +6,7 @@ namespace SA
 {
     public class EnemyStates : MonoBehaviour
     {
+        [Header("EnemyStates")]
         public bool isInvincible;
         public float health;
         public bool canMove;
@@ -16,6 +17,7 @@ namespace SA
         public bool takesDamage = true;
         public bool hitEnemy;        
 
+        [Header("NavMeshAgent")]
         public bool hasDestination;
         public Vector3 targetDestination;
 
@@ -35,6 +37,7 @@ namespace SA
         List<Rigidbody> ragdollRigids = new List<Rigidbody>();
         List<Collider> ragdollColliders = new List<Collider>();
 
+        //called on start, what components and states are initialized
         public void Init()
         {
             health = 100;
@@ -62,6 +65,7 @@ namespace SA
             ignoreLayers = ~(0 << 10);
         }
 
+        //initializes ragdoll
         void InitRagdoll()
         {
             Rigidbody [] rigs = GetComponentsInChildren<Rigidbody>();
@@ -79,6 +83,7 @@ namespace SA
             }
         }
 
+        //enables ragdoll duh
         public void EnableRagdoll()
         {
             
@@ -93,6 +98,7 @@ namespace SA
             StartCoroutine("CloseAnimator");
         }
 
+        //closes the animator so shit don't go crazy after enemy is killed
         IEnumerator CloseAnimator()
         {
             yield return new WaitForEndOfFrame();
@@ -100,6 +106,7 @@ namespace SA
             this.enabled = false;
         }
 
+        //this method is called on the update
         public void Tick()
         {
             if (states == null)
@@ -122,8 +129,7 @@ namespace SA
             if (health <= 0)
             {
                 if (!isDead)
-                {
-                    
+                {                    
                     isDead = true;
                     EnableRagdoll();
                     states.audioController.EnemyDeathSound();
@@ -132,18 +138,19 @@ namespace SA
 
             if (isInvincible)
             {
-                isInvincible = !canMove;
-                
+                isInvincible = !canMove;                
             }
+
             AIControllerSwitcher();
+
             if(canMove == false)
             {
-                anim.applyRootMotion = false;
-                
+                anim.applyRootMotion = false;                
             }
             
         }
 
+        //checks which type of enemy aicontroller is being used
         void AIControllerSwitcher()
         {
             if(aicontroller != null)
@@ -163,6 +170,7 @@ namespace SA
             }
         }
 
+        //sets destination for the navmesh agent
         public void SetDestination(Vector3 d)
         {
             if (!hasDestination && canMove)
@@ -173,22 +181,10 @@ namespace SA
                 agent.isStopped = false;
                 agent.SetDestination(d);
                 targetDestination = d;
-            }
-            
+            }            
         }
-        void BackDamage()
-        {
-            if (aicontroller.angle < 90 || canMove)
-            {
-                takesDamage = false;
-            }
-            else
-            {
-                takesDamage = true;
-            }
-            
-            
-        }
+        
+        //This method checks if the enemy is in a state where it can be damaged
         public void DoDamage(float v)
         {
             
@@ -208,9 +204,9 @@ namespace SA
             anim.applyRootMotion = true;
         }
 
+        //Parry method, these things happen when enemy is parried
         public void Parried()
         {
-
             //isInvincible = true;
             states.audioController.Parry();
             states.staminaController.RemoveStamina(15f);
@@ -220,7 +216,6 @@ namespace SA
             anim.Play("Stun");
             anim.applyRootMotion = true;
             anim.SetBool("canMove", false);
-
         }
 
     }

@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace SA
 {
-
-
+    
     public class AnimationMove : MonoBehaviour
     {
         Animator anim;
