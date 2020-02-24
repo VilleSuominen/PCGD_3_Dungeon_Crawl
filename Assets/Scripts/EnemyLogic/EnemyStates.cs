@@ -132,7 +132,14 @@ namespace SA
                 {                    
                     isDead = true;
                     EnableRagdoll();
-                    states.audioController.EnemyDeathSound();
+                    if (aicontroller)
+                    {
+                        states.audioController.EnemyDeathSound();
+                    }
+                    if (aicontrollerType2)
+                    {
+                        states.audioController.GoblinDeath();
+                    }
                 }
             }
 
@@ -190,18 +197,31 @@ namespace SA
             
             hitEnemy = true;
             if (!takesDamage)
-            {
-                states.audioController.SwordHitShieldSound();
-                rigid.isKinematic = false;               
+            {                
+                rigid.isKinematic = false;
                 return;
             }
-            Debug.Log("ShouldTakeDamage: " + takesDamage);
-            states.audioController.SwordHitSkellySound();
-            health -= v;
-            isInvincible = true;
-            Debug.Log("diddamage"+health);
-            //anim.Play("Damage");
-            anim.applyRootMotion = true;
+            if (aicontrollerType2)
+            {
+                Debug.Log("ShouldTakeDamage: " + takesDamage);
+                states.audioController.GoblinHit();
+                health -= v;
+                isInvincible = true;
+                Debug.Log("diddamage" + health);
+                //anim.Play("Damage");
+                anim.applyRootMotion = true;
+            }
+            if (aicontroller)
+            {
+                Debug.Log("ShouldTakeDamage: " + takesDamage);
+                states.audioController.SwordHitSkellySound();
+                health -= v;
+                isInvincible = true;
+                Debug.Log("diddamage" + health);
+                //anim.Play("Damage");
+                anim.applyRootMotion = true;
+            }
+            
         }
 
         //Parry method, these things happen when enemy is parried

@@ -15,13 +15,22 @@ namespace SA
             {
                 if(other.name == "ShieldCollider")
                 {
-                    //states.LookTowardsTarget();
-                    states.audioController.SwordHitShieldSound();
                     states.staminaController.RemoveStamina(5f);
                     eStates.agent.isStopped = true;
                     states.rigid.AddForce(states.lookDir * 9000);
                     eStates.rigid.isKinematic = false;
-                    eStates.rigid.AddForce(-eStates.rigid.transform.forward*15000);
+                    eStates.rigid.AddForce(-eStates.rigid.transform.forward * 15000);
+                    if (eStates.aicontroller)
+                    {
+                        states.audioController.SwordHitShieldSound();
+                        return;
+                    }
+                    if (eStates.aicontrollerType2)
+                    {
+                        states.audioController.GoblinBlock();
+                        return;
+                    }
+                    //states.LookTowardsTarget();                  
                     
                     return;
                 }
