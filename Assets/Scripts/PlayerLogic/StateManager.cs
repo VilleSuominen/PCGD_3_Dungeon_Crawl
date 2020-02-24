@@ -84,7 +84,11 @@ namespace SA
             }           
             a_move.Init(this, null);
             enemy = GameObject.FindGameObjectWithTag("Enemy");
-            lockOnTarget = enemy.transform;
+            if(enemy != null)
+            {
+                lockOnTarget = enemy.transform;
+            }
+            
             gameObject.layer = 8;
             mouseTurning.enabled = false;
             ignoreLayers = ~(1 << 9);

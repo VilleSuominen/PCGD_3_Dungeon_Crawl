@@ -309,16 +309,13 @@ MonoBehaviour:
   actionSlots:
   - input: 0
     type: 0
-    targetAnim: 
+    targetAnim: oh_attack_1
   - input: 1
     type: 1
     targetAnim: shield
   - input: 2
     type: 0
     targetAnim: walk
-  - input: 3
-    type: 0
-    targetAnim: shield
 --- !u!114 &95514511
 MonoBehaviour:
   m_ObjectHideFlags: 0

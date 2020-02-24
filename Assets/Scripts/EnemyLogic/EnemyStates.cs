@@ -122,10 +122,11 @@ namespace SA
             {
                 rigid.isKinematic = true;
             }
-            if (health < 75)
-            {
-                agent.speed = 2f;                
-            }
+            //too hard
+            //if (health < 75)
+            //{
+            //    agent.speed = 2f;                
+            //}
             if (health <= 0)
             {
                 if (!isDead)
