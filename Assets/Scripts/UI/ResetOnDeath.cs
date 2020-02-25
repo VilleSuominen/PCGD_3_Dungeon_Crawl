@@ -8,22 +8,26 @@ namespace SA
 {
     public class ResetOnDeath : MonoBehaviour
     {
-        string text;
         GameObject player;
+        bool death = false;
 
         // Start is called before the first frame update
         void Start()
         {
-            text = GetComponent<Text>().text;
             player = GameObject.Find("Controller");
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (player != null && player.GetComponent<StateManager>().isDead == true)
+            if (death == false)
             {
-                StartCoroutine("Reset");
+                if (player == null || player.GetComponent<StateManager>().isDead == true)
+                {
+                    death = true;
+                    GetComponent<Text>().text = "YOU DIED";
+                    StartCoroutine("Reset");
+                }
             }
         }
 
