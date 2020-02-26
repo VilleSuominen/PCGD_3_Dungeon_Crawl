@@ -18,7 +18,7 @@ namespace SA
         public Vector3 lookDir;
         public bool block, backstep, attack, charge;
         public Vector3 moveDir;
-        public float moveSpeed = 2f;
+        public float moveSpeed = 3f;
         public float rotateSpeed = .02f;
         public float moveAmount;
         public float toGround = .5f;
@@ -162,7 +162,7 @@ namespace SA
                 else
                 {                    
                     weaponManager.currentWeapon.wDo.DisableShieldCollider();
-                    moveSpeed = 2f;                    
+                    moveSpeed = 3f;                    
                     staminaController.drainTime = false;
                 }
                 rigid.velocity = moveDir * (moveSpeed * moveAmount);
