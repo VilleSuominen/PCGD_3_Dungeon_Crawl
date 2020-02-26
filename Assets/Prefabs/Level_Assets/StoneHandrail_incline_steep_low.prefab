@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2035352139243584391}
   - component: {fileID: 7017737708646613425}
   - component: {fileID: 3627801408519355720}
+  - component: {fileID: 1149515055602448830}
   m_Layer: 0
   m_Name: StoneHandrail_incline_steep_low
   m_TagString: Untagged
@@ -57,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 993b5e8efed077849adced866b8a0ff4, type: 3}
+  - {fileID: 2100000, guid: 5b92a432f506cbb4192202152af4fe06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1149515055602448830
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054667758226049428}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.13919543, y: 0.21847625, z: 0.7436114}
+  m_Center: {x: 0, y: 0.000000007450577, z: 0.3718057}

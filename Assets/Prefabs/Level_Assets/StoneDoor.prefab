@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8804991625514837428}
   - component: {fileID: 534410499716472706}
   - component: {fileID: 6077065568431448955}
+  - component: {fileID: 8735156807830744654}
   m_Layer: 0
   m_Name: StoneDoor
   m_TagString: Untagged
@@ -59,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 840797da2f4e1a948ab51fe78b950083, type: 2}
+  - {fileID: 2100000, guid: 5b92a432f506cbb4192202152af4fe06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,6 +81,33 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8735156807830744654
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5506429975371126695}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 6274059880062070182, guid: f0c87bf40edf5a64e82b4a799290af84, type: 3}
+--- !u!65 &1167852829008412172
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7951372374088227087}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9414871, y: 1.5965923, z: 0.12503226}
+  m_Center: {x: 0, y: 0.79829615, z: -0.058332127}
 --- !u!1001 &2123761811943407622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,7 +184,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 02173e975c04b9440bf1343f433fa9ac, type: 2}
+      objectReference: {fileID: 2100000, guid: 5b92a432f506cbb4192202152af4fe06, type: 2}
     - target: {fileID: -927199367670048503, guid: ccc85adf8ed714d43aa078cbcf67b677,
         type: 3}
       propertyPath: m_Name
@@ -164,6 +192,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ccc85adf8ed714d43aa078cbcf67b677, type: 3}
+--- !u!1 &7951372374088227087 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: ccc85adf8ed714d43aa078cbcf67b677,
+    type: 3}
+  m_PrefabInstance: {fileID: 2123761811943407622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6342100524119419676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: ccc85adf8ed714d43aa078cbcf67b677,
@@ -246,7 +280,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 2878a1295a913c34abc37befe2a4883e, type: 2}
+      objectReference: {fileID: 2100000, guid: 5b92a432f506cbb4192202152af4fe06, type: 2}
     - target: {fileID: -927199367670048503, guid: 3aa1e650cd762214c86e1b1a0ef0d50a,
         type: 3}
       propertyPath: m_Name

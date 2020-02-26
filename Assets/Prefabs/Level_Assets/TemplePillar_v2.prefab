@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7298121179253332928}
   - component: {fileID: 1734770090310197750}
   - component: {fileID: 5417739504496844047}
+  - component: {fileID: 9070252156055123015}
   m_Layer: 0
   m_Name: TemplePillar_v2
   m_TagString: Untagged
@@ -57,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 670224309865224971, guid: 79a88fa433cbd994291f08f576f41722, type: 3}
+  - {fileID: 2100000, guid: 5b92a432f506cbb4192202152af4fe06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,3 +79,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &9070252156055123015
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5986263927438223827}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8242329, y: 0.8158437, z: 5.013901}
+  m_Center: {x: -0.000000029802322, y: -0.00000002980233, z: 2.5069506}
