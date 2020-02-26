@@ -14,6 +14,7 @@ namespace SA
         GameObject helpMenu;
         GameObject dialogPanel;
         GameObject statusPanel;
+        GameObject creditsPanel;
         GameObject logo;
 
         public GameObject lastMenu;
@@ -27,6 +28,7 @@ namespace SA
             helpMenu = transform.Find("HelpMenuPanel").gameObject;
             dialogPanel = transform.Find("DialogPanel").gameObject;
             statusPanel = transform.Find("StatusPanel").gameObject;
+            creditsPanel = transform.Find("CreditsPanel").gameObject;
             logo = transform.Find("Logo").gameObject;
 
             if (mainMenu.activeSelf == true)
@@ -38,7 +40,7 @@ namespace SA
         // Update is called once per frame
         void Update()
         {
-            if (mainMenu.activeSelf == false && dialogPanel.activeSelf == false && Input.GetButtonDown("Cancel"))
+            if (mainMenu.activeSelf == false && dialogPanel.activeSelf == false && creditsPanel.activeSelf == false && Input.GetButtonDown("Cancel"))
             {
                 if (pauseMenu.activeSelf == true && helpMenu.activeSelf == false)   // Closes the pause menu when pressing esc
                 {
