@@ -132,6 +132,7 @@ namespace SA
                 if (!isDead)
                 {                    
                     isDead = true;
+                    a_move.DisableEnDamageColliders();
                     EnableRagdoll();
                     if (aicontroller)
                     {
