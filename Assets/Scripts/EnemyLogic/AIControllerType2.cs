@@ -84,10 +84,10 @@ namespace SA
             {
                 aiState = AIState.inSight;
             }
-            if(eStates.takesDamage && !eStates.canMove)
-            {
-                aiState = AIState.far;
-            }
+            //if(eStates.takesDamage && !eStates.canMove)
+            //{
+            //    aiState = AIState.far;
+            //}
             switch (aiState)
             {
                 case AIState.far:
