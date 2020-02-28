@@ -33,7 +33,7 @@ namespace SA
         public bool isDead;
         public bool lockOn;
 
-        GameObject enemy;
+        GameObject[] enemy;        
         public Transform lockOnTarget;
 
         [HideInInspector]
@@ -83,15 +83,37 @@ namespace SA
                 a_move = activeModel.AddComponent<AnimationMove>();
             }           
             a_move.Init(this, null);
-            enemy = GameObject.FindGameObjectWithTag("Enemy");
+            enemy = GameObject.FindGameObjectsWithTag("Enemy");
+            
             if(enemy != null)
-            {
-                lockOnTarget = enemy.transform;
+            {                
+                lockOnTarget = NearestEnemy();
+                Debug.Log(lockOnTarget);
             }
             
             gameObject.layer = 8;
             mouseTurning.enabled = false;
             ignoreLayers = ~(1 << 9);
+        }
+
+        Transform NearestEnemy()
+        {
+            Transform bestTarget = null;
+            float closestDistanceSqr = Mathf.Infinity;
+            Vector3 currentPosition = transform.position;
+            foreach (GameObject ene in enemy)
+            {
+                Transform potentialTarget = ene.transform;
+                Vector3 directionToTarget = potentialTarget.position - currentPosition;
+                float dSqrToTarget = directionToTarget.sqrMagnitude;
+                if (dSqrToTarget < closestDistanceSqr)
+                {
+                    closestDistanceSqr = dSqrToTarget;
+                    bestTarget = potentialTarget;
+                }
+            }
+            return bestTarget;
+            
         }
 
         //sets up the animator for the current model in use
@@ -179,7 +201,7 @@ namespace SA
             }
             
             Vector3 lookDirection = lookDir;
-
+            
             if (lockOn && lockOnTarget != null)
             {
                 
@@ -333,7 +355,8 @@ namespace SA
         public void BackStep()
         {
             staminaController.RemoveStamina(25);
-            moveSpeed = 5;            
+            moveSpeed = 5;
+            anim.SetFloat("a_speed", moveSpeed*2);
             Quaternion lookrotation = Quaternion.LookRotation(-moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, delta / rotateSpeed);
             rigid.velocity = moveDir * (moveSpeed * 2);
@@ -345,6 +368,7 @@ namespace SA
             
             staminaController.RemoveStamina(75);
             moveSpeed = 10;
+            anim.SetFloat("a_speed", moveSpeed * 2);
             Quaternion lookrotation = Quaternion.LookRotation(moveDir);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, delta / rotateSpeed);
             rigid.velocity = moveDir * (moveSpeed * 2);
@@ -400,6 +424,9 @@ namespace SA
         //unused
         public void LookTowardsTarget()
         {
+            
+            lockOnTarget = NearestEnemy();
+            Debug.Log(lockOnTarget);
             
             Vector3 dir = lockOnTarget.position - transform.position;
             //dir.Normalize();

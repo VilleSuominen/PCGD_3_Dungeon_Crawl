@@ -28,13 +28,13 @@ namespace SA
             if (Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
             {
                 // Create a vector from the player to the point on the floor the raycast from the mouse hit.
-                Vector3 playerToMouse = floorHit.point - transform.position;
+                states.lookDir = floorHit.point - transform.position;
 
                 // Ensure the vector is entirely along the floor plane.
-                playerToMouse.y = 0f;
+                states.lookDir.y = 0f;
 
                 // Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
-                Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
+                Quaternion newRotation = Quaternion.LookRotation(states.lookDir);
 
                 // Set the player's rotation to this new rotation.
                 states.transform.rotation = Quaternion.Slerp(states.transform.rotation, newRotation, states.delta / states.rotateSpeed);

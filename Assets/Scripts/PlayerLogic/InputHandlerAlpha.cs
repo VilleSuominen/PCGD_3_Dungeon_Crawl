@@ -57,9 +57,9 @@ namespace SA
             h_rotation = Input.GetAxis("h_rot");
             attack = Input.GetButtonDown("attack");
             block = Input.GetButton("block");
-            //lockOn = Input.GetButtonDown("lockOn");
-            //backstep = Input.GetButtonDown("backstep");
-            //charge = Input.GetButtonDown("charge");
+            lockOn = Input.GetButtonDown("lockOn");
+            backstep = Input.GetButtonDown("backstep");
+            charge = Input.GetButtonDown("charge");
             
         }
 
