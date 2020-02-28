@@ -11,8 +11,8 @@ namespace SA
         public GameObject activeModel;
 
         [Header("Inputs")]
-        public float vertical;
-        public float horizontal;
+        public Vector2 movement;
+        public Vector2 rotation;
         public float v_rot;
         public float h_rot;
         public Vector3 lookDir;

@@ -1,95 +1,124 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SA
 {
     public class InputHandlerAlpha : MonoBehaviour
     {
-        
-        float vertical; //vertical movement axis from input device
-        float horizontal; //horizontal movement axis from input device
-        float v_rotation; //vertical rotation axis
-        float h_rotation; //horizontal rotation axis
-        bool attack; //attack input button 5
-        bool block; //block input right bumper on 360 controller unused
-        bool backstep; //backstep input lef bumper on 360 controller unused
-        bool charge; //unused
-        bool lockOn; //unused
+        NewControls controls;
+        Vector2 movement; //vertical movement axis from input device
+        Vector2 rotation; //horizontal movement axis from input device       
+        bool attack; //attack input button 5        
+        bool block; //block input right bumper on 360 controller
+        bool backstep; //backstep input lef bumper on 360 controller
+        bool charge;
+        bool lockOn;
 
         public Transform moveAnchor;
         float delta;
-
         StateManager states;
+
+        private void Awake()
+        {
+            controls = new NewControls();
+        }
+
+        private void OnEnable()
+        {
+            controls.PlayerInputPad.Block.Enable();
+            controls.PlayerInputPad.Attack.Enable();
+            controls.PlayerInputPad.Movement.Enable();
+            controls.PlayerInputPad.Rotation.Enable();
+            controls.PlayerInputPad.BackDash.Enable();
+            controls.PlayerInputPad.ShieldCharge.Enable();
+            controls.PlayerInputPad.LockOn.Enable();
+            controls.PlayerInputPad.LockOn.performed += cont => lockOn = true;
+            controls.PlayerInputPad.LockOn.canceled += cont => lockOn = false;
+            controls.PlayerInputPad.BackDash.performed += cont => backstep = true;
+            controls.PlayerInputPad.BackDash.canceled += cont => backstep = false;
+            controls.PlayerInputPad.ShieldCharge.performed += cont => charge = true;
+            controls.PlayerInputPad.ShieldCharge.canceled += cont => charge = false;
+            controls.PlayerInputPad.Block.performed += cont => block = true;
+            controls.PlayerInputPad.Block.canceled += cont => block = false;
+            controls.PlayerInputPad.Attack.performed += cont => attack = true;
+            controls.PlayerInputPad.Attack.canceled += cont => attack = false;
+            controls.PlayerInputPad.Movement.performed += cont => movement = cont.ReadValue<Vector2>();
+            controls.PlayerInputPad.Movement.canceled += cont => movement = Vector2.zero;
+            controls.PlayerInputPad.Rotation.performed += cont => rotation = cont.ReadValue<Vector2>();
+            controls.PlayerInputPad.Rotation.canceled += cont => rotation = Vector2.zero;
+        }
+
+        private void OnDisable()
+        {
+
+            controls.PlayerInputPad.Block.Disable();
+            controls.PlayerInputPad.Attack.Disable();
+            controls.PlayerInputPad.Movement.Disable();
+            controls.PlayerInputPad.Rotation.Disable();
+            controls.PlayerInputPad.BackDash.Disable();
+            controls.PlayerInputPad.ShieldCharge.Disable();
+            controls.PlayerInputPad.LockOn.Disable();
+        }
 
         // Start is called before the first frame update
         void Start()
         {
-            states = GetComponent<StateManager>();
-            states.Init();
             GameObject anchor = GameObject.FindGameObjectWithTag("Anchor");
             moveAnchor = anchor.transform;
+            states = GetComponent<StateManager>();
+            states.Init();
         }
 
         // Update is called once per frame
         void FixedUpdate()
         {
-            delta = Time.fixedDeltaTime;
-            GetInput();
+
+            if (moveAnchor == null)
+            {
+                GameObject anchor = GameObject.FindGameObjectWithTag("Anchor");
+                moveAnchor = anchor.transform;
+            }
+
+            delta = Time.fixedDeltaTime;          
             UpdateStates();
             states.FixedTick(delta);
-            
+
         }
 
         private void Update()
         {
             delta = Time.deltaTime;
             states.Tick(delta);
-            
-        }
 
-        //Gets the user input
-        void GetInput()
-        {
-            vertical = Input.GetAxis("Vertical");
-            horizontal = Input.GetAxis("Horizontal");
-            v_rotation = Input.GetAxis("v_rot");
-            h_rotation = Input.GetAxis("h_rot");
-            attack = Input.GetButtonDown("attack");
-            block = Input.GetButton("block");
-            lockOn = Input.GetButtonDown("lockOn");
-            backstep = Input.GetButtonDown("backstep");
-            charge = Input.GetButtonDown("charge");
-            
         }
 
         //updates player action states from the statemanager
         void UpdateStates()
         {
-            states.horizontal = horizontal; //passes the horizontal axis input variable to the statemanager class
-            states.vertical = vertical; //passes the vertical axis input variable to the statemanager class   
-            states.v_rot = v_rotation;
-            states.h_rot = h_rotation;
+            states.rotation = rotation;
+            states.movement = movement;
 
-            Vector3 v = moveAnchor.forward * vertical; //the players movement vector vertical from the transform of the moveanchor object
-            Vector3 h = moveAnchor.right * horizontal; //the players movement vector horizontal from the transform of the moveanchor object
-            Vector3 vr = moveAnchor.forward * v_rotation;
-            Vector3 hr = moveAnchor.right * h_rotation;
+            Vector3 v = moveAnchor.forward * movement.y;
+            Vector3 h = moveAnchor.right * movement.x;
+            Vector3 vr = moveAnchor.forward * rotation.y;
+            Vector3 hr = moveAnchor.right * rotation.x;
             states.lookDir = (vr + hr);
-            states.moveDir = (v +h).normalized; //passes the normalized movement to the statemanager class moveDir variable
-            states.moveAmount = Mathf.Clamp01(Mathf.Abs(horizontal) + Mathf.Abs(vertical)); //Clamps the given value between the given minimum float and maximum float values. Returns the given value if it is within the min and max range
+            states.moveDir = (v + h).normalized; //passes the normalized movement to the statemanager class moveDir variable
+            states.moveAmount = Mathf.Clamp01(Mathf.Abs(movement.x) + Mathf.Abs(movement.y)); //Clamps the given value between the given minimum float and maximum float values. Returns the given value if it is within the min and max range
 
             //passes the input button variables to the statemanager class
-            states.attack = attack; 
+
+            states.attack = attack;
             states.block = block;
             states.backstep = backstep;
             states.charge = charge;
 
-            
             if (lockOn)
             {
                 states.lockOn = !states.lockOn;
-                if(states.lockOnTarget == null)
+                if (states.lockOnTarget == null)
                 {
                     states.lockOn = false;
                 }

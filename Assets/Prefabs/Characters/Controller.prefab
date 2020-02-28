@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 1750178417}
   - component: {fileID: 1750178423}
   - component: {fileID: 561142780}
+  - component: {fileID: 2113533283735363121}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Player
@@ -259,8 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeModel: {fileID: 0}
-  vertical: 0
-  horizontal: 0
+  movement: {x: 0, y: 0}
+  rotation: {x: 0, y: 0}
   v_rot: 0
   h_rot: 0
   lookDir: {x: 0, y: 0, z: 0}
@@ -316,6 +317,9 @@ MonoBehaviour:
   - input: 2
     type: 0
     targetAnim: walk
+  - input: 3
+    type: 0
+    targetAnim: shield
 --- !u!114 &95514511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,6 +488,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ee48045baa2954498ef8a11c98872b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2113533283735363121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7170940648384676030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 94905d4e7d3ecaa4d8329602e9785021,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: PlayerInputPad
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &2007395267102270186
 MonoBehaviour:
   m_ObjectHideFlags: 0
