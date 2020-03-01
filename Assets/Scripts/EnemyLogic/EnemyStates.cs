@@ -233,6 +233,7 @@ namespace SA
         //Parry method, these things happen when enemy is parried
         public void Parried()
         {
+            
             //isInvincible = true;
             states.audioController.Parry();
             states.staminaController.RemoveStamina(15f);

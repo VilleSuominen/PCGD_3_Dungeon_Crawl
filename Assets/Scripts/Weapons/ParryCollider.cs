@@ -15,7 +15,10 @@ namespace SA {
             {
                 return;
             }
-            
+            if (eSt.aicontrollerType2)
+            {
+                return;
+            }
             eSt.Parried();
             
         }

@@ -7,19 +7,24 @@ namespace SA
     {
         private void OnTriggerEnter(Collider other)
         {
-            
+
             EnemyStates eState = other.transform.GetComponentInParent<EnemyStates>();
+
             StateManager states = GetComponentInParent<StateManager>();
 
-            if (eState == null)
+            if (other.gameObject.tag == "Player")
             {
-                
-                states.DoDamage(100);
-                return;
+                StateManager otherstates = other.transform.GetComponentInParent<StateManager>();
+                otherstates.DoDamage(100);
             }
-                        
-            eState.DoDamage(100);
-            eState.EnableRagdoll();
+
+
+            if (eState.isStunned || eState.aicontrollerType2)
+            {
+                eState.DoDamage(100);
+                eState.EnableRagdoll();
+            }
+            eState.Parried();
         }
     }
 }
