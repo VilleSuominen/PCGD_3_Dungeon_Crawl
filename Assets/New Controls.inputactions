@@ -17,7 +17,7 @@
                     "name": "Rotation",
                     "type": "Value",
                     "id": "fbaa9c8c-8f1b-4e77-bf62-009db0dd5089",
-                    "expectedControlType": "Stick",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 },
@@ -27,7 +27,7 @@
                     "id": "bfc57bbd-f634-4372-a3ac-19646b4e5a1a",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": ""
                 },
                 {
                     "name": "Block",
@@ -43,7 +43,7 @@
                     "id": "34c2dc58-6053-4c87-b0dd-3fb58fee4ec6",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press(behavior=2)"
                 },
                 {
                     "name": "ShieldCharge",
@@ -51,7 +51,7 @@
                     "id": "54d94229-4699-4e77-8ec4-4b2a1fa925a8",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press(behavior=2)"
                 },
                 {
                     "name": "LockOn",
@@ -59,7 +59,15 @@
                     "id": "608cb228-b795-413f-a184-9a4133de2e18",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Press"
+                    "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "e566713f-85b7-4937-bd2e-faa540ef0c92",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
                 }
             ],
             "bindings": [
@@ -142,9 +150,20 @@
                 },
                 {
                     "name": "",
+                    "id": "de9e7f16-eb4a-4c3a-bd00-7dc6e79ac5f8",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e4d84d87-596d-40a8-8c76-0f2769883729",
                     "path": "<Gamepad>/rightShoulder",
-                    "interactions": "Press",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
@@ -155,7 +174,7 @@
                     "name": "",
                     "id": "761031ae-3dbd-49da-95aa-292c8198a19c",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
@@ -247,6 +266,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "LockOn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "201de47b-def0-4da2-8e91-4465bb5d7f61",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

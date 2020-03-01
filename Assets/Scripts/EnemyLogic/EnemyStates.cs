@@ -42,7 +42,11 @@ namespace SA
         {
             health = 100;
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            states = player.GetComponent<StateManager>();
+            if (player = null)
+            {
+                return;
+            }
+            //states = player.GetComponent<StateManager>();
             anim = GetComponentInChildren<Animator>();
             rigid = GetComponent<Rigidbody>();
             a_move = anim.GetComponent<AnimationMove>();

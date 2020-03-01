@@ -144,7 +144,13 @@ namespace SA
             delta = d;
 
             isBlocking = false;
-
+            if(enemy == null)
+            {
+                enemy = GameObject.FindGameObjectsWithTag("Enemy");
+                lockOnTarget = NearestEnemy();
+                Debug.Log(lockOnTarget);
+            }
+            
             CheckAction();
             anim.SetBool("block", isBlocking);            
             if (inAction)
@@ -189,16 +195,16 @@ namespace SA
                 }
                 rigid.velocity = moveDir * (moveSpeed * moveAmount);
             }
-            if (Input.GetMouseButtonDown(2))
-            {
-                mouseTurning.enabled = true;
-                Debug.Log(mouseTurning.enabled);
-            }
-            if (Input.GetButtonDown("activatePad"))
-            {
-                mouseTurning.enabled = false;
-                Debug.Log(mouseTurning.enabled);
-            }
+            //if (Input.GetMouseButtonDown(2))
+            //{
+            //    mouseTurning.enabled = true;
+            //    Debug.Log(mouseTurning.enabled);
+            //}
+            //if (Input.GetButtonDown("activatePad"))
+            //{
+            //    mouseTurning.enabled = false;
+            //    Debug.Log(mouseTurning.enabled);
+            //}
             
             Vector3 lookDirection = lookDir;
             
@@ -223,7 +229,7 @@ namespace SA
             }
             if(!mouseTurning.enabled)
             {
-                Cursor.visible = false;
+                Cursor.visible = true;
                 Quaternion lookRotation = Quaternion.LookRotation(lookDir);
                 transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, delta / rotateSpeed);
             }
@@ -302,7 +308,7 @@ namespace SA
             canMove = false;
             inAction = true;
             
-            anim.CrossFade(targetAnim, 0.2f);
+            anim.Play(targetAnim);
             //rigid.velocity = Vector3.zero;
         }
 
@@ -426,7 +432,7 @@ namespace SA
         {
             
             lockOnTarget = NearestEnemy();
-            Debug.Log(lockOnTarget);
+            //Debug.Log(lockOnTarget);
             
             Vector3 dir = lockOnTarget.position - transform.position;
             //dir.Normalize();

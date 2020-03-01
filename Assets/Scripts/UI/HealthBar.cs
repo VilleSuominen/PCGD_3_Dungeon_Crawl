@@ -16,18 +16,41 @@ namespace SA
         // Start is called before the first frame update
         void Start()
         {
-            player = GameObject.Find("Controller");
-            bar = GetComponent<Slider>();
-            stateManager = player.GetComponent<StateManager>();
-            bar.maxValue = 100;
-            bar.minValue = 0;
-            bar.value = bar.maxValue;
-            fillArea = transform.Find("Fill Area").gameObject;
+            if(player == null)
+            {
+                return;
+            }
+            else
+            {
+                player = GameObject.Find("Controller");
+                bar = GetComponent<Slider>();
+                stateManager = player.GetComponent<StateManager>();
+                bar.maxValue = 100;
+                bar.minValue = 0;
+                bar.value = bar.maxValue;
+                fillArea = transform.Find("Fill Area").gameObject;
+            }
+            
         }
             
         // Update is called once per frame
         void Update()
         {
+            if (player == null)
+            {
+                player = GameObject.Find("Controller");
+                if (player == null)
+                {
+                    return;
+                }
+                bar = GetComponent<Slider>();
+                stateManager = player.GetComponent<StateManager>();
+                bar.maxValue = 100;
+                bar.minValue = 0;
+                bar.value = bar.maxValue;
+                fillArea = transform.Find("Fill Area").gameObject;
+            }
+
             bar.value = stateManager.health;
             if(bar.value == bar.minValue)
             {

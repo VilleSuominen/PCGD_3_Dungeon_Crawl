@@ -24,6 +24,10 @@ public class Camera : MonoBehaviour
         if (player == null)
         {
             GameObject players = GameObject.FindGameObjectWithTag("Player");
+            if (player == null)
+            {
+                return;
+            }
             player = players.transform;
             vcam = GetComponent<CinemachineVirtualCamera>();
             vcam.Follow = player;

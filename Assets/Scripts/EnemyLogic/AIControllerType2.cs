@@ -9,6 +9,7 @@ namespace SA
         public EnemyStates eStates;
         public Transform target;
         public StateManager states;
+        GameObject player;
         public float sight;
         public int closeCount = 10;
         int _close;
@@ -43,16 +44,27 @@ namespace SA
             return a;
         }
 
-        private void Start()
+        private void Awake()
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            states = player.GetComponent<StateManager>();
-            target = player.transform;
             if (eStates == null)
             {
                 eStates = GetComponent<EnemyStates>();
             }
             eStates.Init();
+        }
+
+        private void Start()
+        {
+            
+
+            player = GameObject.FindGameObjectWithTag("Player");
+            if ( player == null)
+            {
+                return;
+            }            
+            states = player.GetComponent<StateManager>();
+            target = player.transform;
+            
         }
 
         public AIState aiState;
@@ -64,6 +76,18 @@ namespace SA
 
         private void Update()
         {
+            if(player == null)
+            {
+                player = GameObject.FindGameObjectWithTag("Player");
+                states = player.GetComponent<StateManager>();
+                target = player.transform;
+                if (player == null)
+                {
+                    return;
+                }
+                
+            }            
+            
             if (!target)
             {
                 return;

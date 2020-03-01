@@ -20,9 +20,18 @@ namespace SA
         // Update is called once per frame
         void Update()
         {
+            if (player == null)
+            {
+                player = GameObject.Find("Controller");
+                if (player == null)
+                {
+                    return;
+                }
+                
+            }
             if (death == false)
             {
-                if (player == null || player.GetComponent<StateManager>().isDead == true)
+                if (player == null && player.GetComponent<StateManager>().isDead == true)
                 {
                     death = true;
                     GetComponent<Text>().text = "YOU DIED";

@@ -15,16 +15,36 @@ namespace SA
         // Start is called before the first frame update
         void Start()
         {
-            player = GameObject.Find("Controller");
-            bar = GetComponent<Slider>();
-            staminaController = player.GetComponent<StaminaController>();
-            bar.minValue = staminaController.minStamina;
-            bar.maxValue = staminaController.maxStamina;
+            if (player == null)
+            {
+                return;
+            }
+            else
+            {
+                player = GameObject.Find("Controller");
+                bar = GetComponent<Slider>();
+                staminaController = player.GetComponent<StaminaController>();
+                bar.minValue = staminaController.minStamina;
+                bar.maxValue = staminaController.maxStamina;
+            }
+            
         }
 
        // Update is called once per frame
         void Update()
         {
+            if(player == null)
+            {
+                player = GameObject.Find("Controller");
+                if (player == null)
+                {
+                    return;
+                }
+                bar = GetComponent<Slider>();
+                staminaController = player.GetComponent<StaminaController>();
+                bar.minValue = staminaController.minStamina;
+                bar.maxValue = staminaController.maxStamina;
+            }
             bar.value = staminaController.stamina;
         }
     }
