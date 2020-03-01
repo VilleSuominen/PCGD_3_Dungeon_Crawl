@@ -67,5 +67,14 @@ namespace SA
 
         }
 
+        public void AddStamina(float v)
+        {
+            if (stamina >= maxStamina)
+            {
+                return;
+            }
+            stamina += v;
+        }
+
     }
 }

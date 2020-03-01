@@ -21,8 +21,14 @@ namespace SA
                 twoPlayers = true;
                 players[0].transform.position = transform.position;
                 players[1].transform.position = Player2spawn.transform.position;
+                player1 = players[0];
+                player2 = players[1];
                 Debug.Log(twoPlayers);
                 Debug.Log(players.Length);
+            }
+            if(players.Length == 1)
+            {
+                player1 = players[0];
             }
 
         }

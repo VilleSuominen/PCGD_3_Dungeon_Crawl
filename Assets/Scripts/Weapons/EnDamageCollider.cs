@@ -13,8 +13,9 @@ namespace SA
 
             if (states == null || other.name == "ParryCollider" || other.name == "ShieldCollider")
             {
-                if(other.name == "ShieldCollider")
+                if (other.name == "ShieldCollider")
                 {
+                    states.a_move.EnableCollisionCollider();
                     states.staminaController.RemoveStamina(5f);
                     eStates.agent.isStopped = true;
                     states.rigid.AddForce(states.lookDir * 9000);
@@ -31,22 +32,23 @@ namespace SA
                         return;
                     }
                     //states.LookTowardsTarget();                  
-                    
+
                     return;
                 }
                 //Debug.Log("null");
                 return;
             }
+            states.a_move.DisableCollisionCollider();
             if (eStates.aicontroller != null)
             {
                 states.DoDamage(25);
             }
-            if(eStates.aicontrollerType2 != null)
+            if (eStates.aicontrollerType2 != null)
             {
                 states.DoDamage(10);
             }
             return;
-            
+
         }
     }
 }

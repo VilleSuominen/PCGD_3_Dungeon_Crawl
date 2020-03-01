@@ -173,7 +173,7 @@ namespace SA
 
                 GoToDestination();
             }
-            if (dist < 1.0)
+            if (dist < 1.2)
             {
                 eStates.agent.isStopped = true;
             }
