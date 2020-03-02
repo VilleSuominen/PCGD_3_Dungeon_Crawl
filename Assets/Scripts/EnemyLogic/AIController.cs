@@ -18,7 +18,7 @@ namespace SA
         public int attackCount= 30;
         int _attack;
         float dist;
-        
+        GameObject player;
         public float angle;
         Vector3 targetDir;
         float delta;
@@ -46,7 +46,7 @@ namespace SA
 
         private void Start()
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player = GameObject.FindGameObjectWithTag("Player");
             states = player.GetComponent<StateManager>();
             target = player.transform;
             if (eStates == null)
@@ -65,6 +65,19 @@ namespace SA
 
         private void Update()
         {
+            if (player == null || player.CompareTag("DeadPlayer"))
+            {
+                player = GameObject.FindGameObjectWithTag("Player");
+                if (player == null)
+                {
+
+                    return;
+                }
+                states = player.GetComponent<StateManager>();
+                target = player.transform;
+                aiState = AIState.far;
+
+            }
             if (!target)
             {
                 return;

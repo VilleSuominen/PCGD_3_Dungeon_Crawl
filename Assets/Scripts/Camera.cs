@@ -7,12 +7,16 @@ using Cinemachine;
 public class Camera : MonoBehaviour
 {
     public CinemachineVirtualCamera vcam;
-
+    GameObject players;
     Transform player;
     // Start is called before the first frame update
     void Start()
     {
-        GameObject players = GameObject.FindGameObjectWithTag("Player");
+        players = GameObject.FindGameObjectWithTag("Player");
+        if(players == null)
+        {
+            return;
+        }
         player = players.transform;
         vcam = GetComponent<CinemachineVirtualCamera>();
         vcam.Follow = player;
@@ -21,16 +25,37 @@ public class Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player == null)
+        if (players == null)
         {
-            GameObject players = GameObject.FindGameObjectWithTag("Player");
-            if (player == null)
+            players = GameObject.FindGameObjectWithTag("Player");
+            if(players == null)
+            {
+                return;
+            }
+            if (players.CompareTag("DeadPlayer"))
+            {
+                players = GameObject.FindGameObjectWithTag("Player");
+                player = players.transform;
+                vcam = GetComponent<CinemachineVirtualCamera>();
+                vcam.Follow = player;
+
+            }
+            player = players.transform;
+            vcam = GetComponent<CinemachineVirtualCamera>();
+            vcam.Follow = player;
+
+        }
+        if (players.CompareTag("DeadPlayer"))
+        {
+            players = GameObject.FindGameObjectWithTag("Player");
+            if (players == null)
             {
                 return;
             }
             player = players.transform;
             vcam = GetComponent<CinemachineVirtualCamera>();
             vcam.Follow = player;
+
         }
     }
 }

@@ -69,8 +69,8 @@ namespace SA
 
             Vector3 delta = anim.deltaPosition;
             delta.y = 0;
-            Vector3 v = (delta * multiplier) / d;
-            rigid.velocity = v;
+            Vector3 v = (delta * multiplier) / Time.deltaTime;
+            //rigid.velocity = v;
         }
         //these are triggered through the animation event system
         public void EnableDamageColliders()

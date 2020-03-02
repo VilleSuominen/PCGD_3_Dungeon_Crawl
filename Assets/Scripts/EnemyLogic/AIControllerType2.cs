@@ -78,7 +78,7 @@ namespace SA
 
         private void Update()
         {
-            if(player == null)
+            if(player == null||player.CompareTag("DeadPlayer"))
             {
                 player = GameObject.FindGameObjectWithTag("Player");
                 if (player == null)
