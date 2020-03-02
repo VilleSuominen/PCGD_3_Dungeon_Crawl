@@ -17,7 +17,15 @@ namespace SA
                 return;
             }
 
-            eState.DoDamage(10);
+            if (eState.aicontroller)
+            {
+                eState.DoDamage(20);
+            }
+            if (eState.aicontrollerType2)
+            {
+                eState.DoDamage(15);
+            }
+            
         }
     }
 }

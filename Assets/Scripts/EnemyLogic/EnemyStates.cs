@@ -236,7 +236,7 @@ namespace SA
             
             //isInvincible = true;
             states.audioController.Parry();
-            states.staminaController.RemoveStamina(15f);
+            states.staminaController.AddStamina(25f);
             a_move.DisableEnDamageColliders();
             Debug.Log("EnemyStunned");
             takesDamage = true;

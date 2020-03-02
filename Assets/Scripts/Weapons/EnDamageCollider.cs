@@ -41,11 +41,11 @@ namespace SA
             states.a_move.DisableCollisionCollider();
             if (eStates.aicontroller != null)
             {
-                states.DoDamage(25);
+                states.DoDamage(30);
             }
             if (eStates.aicontrollerType2 != null)
             {
-                states.DoDamage(10);
+                states.DoDamage(20);
             }
             return;
 
