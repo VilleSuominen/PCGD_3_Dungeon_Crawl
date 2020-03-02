@@ -15,6 +15,7 @@ namespace SA
         GameObject player2;
         GameObject[] players;
         bool twoPlayers;
+        
 
         private void Awake()
         {
@@ -40,7 +41,7 @@ namespace SA
         // Start is called before the first frame update
         void Start()
         {
-
+            
         }
 
         // Update is called once per frame

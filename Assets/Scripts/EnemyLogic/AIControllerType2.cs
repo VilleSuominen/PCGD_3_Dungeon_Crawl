@@ -19,6 +19,7 @@ namespace SA
         public int attackCount = 30;
         int _attack;
         float dist;
+        
 
         public float angle;
         Vector3 targetDir;
@@ -51,12 +52,13 @@ namespace SA
                 eStates = GetComponent<EnemyStates>();
             }
             eStates.Init();
+            
         }
 
         private void Start()
         {
-            
 
+            
             player = GameObject.FindGameObjectWithTag("Player");
             if ( player == null)
             {
@@ -79,17 +81,19 @@ namespace SA
             if(player == null)
             {
                 player = GameObject.FindGameObjectWithTag("Player");
-                states = player.GetComponent<StateManager>();
-                target = player.transform;
                 if (player == null)
                 {
+                    
                     return;
                 }
+                states = player.GetComponent<StateManager>();
+                target = player.transform;      
                 
             }            
             
             if (!target)
             {
+                
                 return;
             }
             if (eStates.agent.isStopped)
@@ -104,6 +108,7 @@ namespace SA
             {
                 targetDir = target.position - transform.position;
             }
+            
             if (eStates.hitEnemy && eStates.canMove)
             {
                 aiState = AIState.inSight;
@@ -312,9 +317,10 @@ namespace SA
         {
             if (target == null)
             {
+                
                 return;
             }
-
+            
             _frame++;
 
             if (_frame > frameCount)
