@@ -1,0 +1,260 @@
+fileFormatVersion: 2
+guid: 033dbdeb003fe6c44bc2484edcf9e6c3
+ModelImporter:
+  serializedVersion: 26
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: playerV2_model(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: char_v2
+      parentName: playerV2_model(Clone)
+      position: {x: -0, y: 0.22241384, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root
+      parentName: playerV2_model(Clone)
+      position: {x: -4.406814e-15, y: -4.4068134e-15, z: 0.000000029185012}
+      rotation: {x: -0.7071068, y: -3.988743e-14, z: 4.993602e-14, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Pelvis
+      parentName: Root
+      position: {x: 4.5148354e-14, y: 0.00000005837003, z: 0.24860273}
+      rotation: {x: 0.7071068, y: -0.000000053385072, z: -0.7071067, w: -0.000000053385083}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ThighL
+      parentName: Pelvis
+      position: {x: 0.017577706, y: -0.0032376298, z: 0.031633273}
+      rotation: {x: -0.038118187, y: 0.99921244, z: 0.01102357, w: -0.00014230238}
+      scale: {x: 1, y: 1, z: 1}
+    - name: KneeL
+      parentName: ThighL
+      position: {x: -0.11869915, y: -0.000000011920928, z: 0.0000000047683715}
+      rotation: {x: 0.04146436, y: 0.0014878772, z: 0.07401834, w: 0.9963934}
+      scale: {x: 1.000001, y: 1, z: 1}
+    - name: AnkleL
+      parentName: KneeL
+      position: {x: -0.08115544, y: 5.9604643e-10, z: 0.0000000023841857}
+      rotation: {x: -0.029254086, y: -0.008094983, z: -0.28270495, w: 0.9587266}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigLLegDigit11
+      parentName: AnkleL
+      position: {x: -0.026870448, y: 0, z: -0.0000000023841857}
+      rotation: {x: 0.00016700423, y: -0.00028157036, z: -0.50953096, w: 0.8604523}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigLLegDigit12
+      parentName: CATRigLLegDigit11
+      position: {x: -0.025877222, y: 0, z: -0.0000000023841857}
+      rotation: {x: 0, y: -1.926751e-15, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigSpine
+      parentName: Pelvis
+      position: {x: -0.017191906, y: 0, z: 8.7925435e-16}
+      rotation: {x: 1.4210856e-14, y: 5.0172086e-14, z: 1.4210855e-14, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Chest
+      parentName: CATRigSpine
+      position: {x: -0.09228084, y: 4.5474734e-15, z: 1.1350699e-14}
+      rotation: {x: 4.0079045e-21, y: 1.13287675e-14, z: -4.540462e-35, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigLArmCollarbone
+      parentName: Chest
+      position: {x: -0.0070649716, y: 0.0000000024080373, z: 0.03824056}
+      rotation: {x: 0.000000003725745, y: 0.70689535, z: 0.000000003700539, w: 0.7073182}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ShoulderL
+      parentName: CATRigLArmCollarbone
+      position: {x: -0.033610698, y: 4.5474734e-15, z: 0}
+      rotation: {x: 0.000012925857, y: 0.000298643, z: 0.042817887, w: 0.99908286}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ElbowL
+      parentName: ShoulderL
+      position: {x: -0.063510016, y: 0.0000000023841857, z: 0}
+      rotation: {x: -0.000028335411, y: -0.00017360065, z: -0.06570414, w: 0.99783915}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PalmL
+      parentName: ElbowL
+      position: {x: -0.06966636, y: -0.00000012874602, z: -0.000000038146972}
+      rotation: {x: 0.9997198, y: 0.023672681, z: -0.0001300829, w: -0.000035333993}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigPauldron
+      parentName: ShoulderL
+      position: {x: 0.05395464, y: -0.0030926242, z: 0.0027585982}
+      rotation: {x: -0.0033394978, y: 0.13192832, z: -0.028257878, w: 0.9908508}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigPauldron2
+      parentName: CATRigPauldron
+      position: {x: -0.026664566, y: 0.00004103005, z: -0.0026831436}
+      rotation: {x: -0.00091581856, y: -0.59124213, z: -0.008884424, w: 0.80644464}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigPauldron3
+      parentName: CATRigPauldron2
+      position: {x: -0.032151945, y: -0.000022407472, z: 0.0013794135}
+      rotation: {x: 0.00075806346, y: 0.48952127, z: 0.007355961, w: 0.87196004}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigRArmCollarbone
+      parentName: Chest
+      position: {x: -0.0070649716, y: 0.0000000024080373, z: -0.03824056}
+      rotation: {x: -0.000000003725745, y: -0.70689535, z: 0.000000003700539, w: 0.7073182}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ShoulderR
+      parentName: CATRigRArmCollarbone
+      position: {x: -0.033610698, y: 0, z: 0}
+      rotation: {x: 0.00000038151472, y: -0.00029855943, z: 0.030280985, w: 0.9995414}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ElbowR
+      parentName: ShoulderR
+      position: {x: -0.06351002, y: -0.000000026524066, z: 0.000000038146972}
+      rotation: {x: 0.000028337874, y: 0.00017376899, z: -0.065710045, w: 0.9978388}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PalmR
+      parentName: ElbowR
+      position: {x: -0.069666356, y: -0.0000001835823, z: 0.000000038146972}
+      rotation: {x: 0.9997198, y: 0.02367308, z: 0.00012987027, w: 0.00003533885}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigPauldron 1
+      parentName: ShoulderR
+      position: {x: 0.053954627, y: -0.0030925977, z: -0.00275856}
+      rotation: {x: 0.0033395032, y: -0.13192812, z: -0.028257705, w: 0.99085087}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigPauldron2 1
+      parentName: CATRigPauldron 1
+      position: {x: -0.026664572, y: 0.000041024086, z: 0.0026831436}
+      rotation: {x: 0.0009153076, y: 0.59124196, z: -0.008883903, w: 0.8064448}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigPauldron3 1
+      parentName: CATRigPauldron2 1
+      position: {x: -0.032152023, y: -0.000022414923, z: -0.0013794326}
+      rotation: {x: -0.0007578237, y: -0.4895209, z: 0.0073562437, w: 0.8719602}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigSpine 1
+      parentName: Chest
+      position: {x: -0.029478187, y: -4.5474734e-15, z: 1.5459389e-15}
+      rotation: {x: 3.552714e-14, y: 1.239731e-13, z: 3.5527137e-14, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: CATRigSpine 1
+      position: {x: -0.038703345, y: -4.5474734e-15, z: 1.6185968e-14}
+      rotation: {x: 2.1316297e-14, y: 8.51298e-14, z: 2.1316282e-14, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ThighR
+      parentName: Pelvis
+      position: {x: 0.017577706, y: -0.0032376298, z: -0.031633273}
+      rotation: {x: -0.038117625, y: 0.9992124, z: -0.011028062, w: 0.00032462628}
+      scale: {x: 1, y: 1, z: 1}
+    - name: KneeR
+      parentName: ThighR
+      position: {x: -0.11869916, y: -0.000000011920928, z: -0.0000000023841857}
+      rotation: {x: -0.041496683, y: -0.0010447813, z: 0.07402198, w: 0.99639237}
+      scale: {x: 1, y: 1, z: 1}
+    - name: AnkleR
+      parentName: KneeR
+      position: {x: -0.081155434, y: 5.9604643e-10, z: 0}
+      rotation: {x: 0.029342767, y: 0.007847119, z: -0.28270215, w: 0.9587267}
+      scale: {x: 0.999999, y: 1.000001, z: 1}
+    - name: CATRigRLegDigit11
+      parentName: AnkleR
+      position: {x: -0.02687045, y: 0, z: 0}
+      rotation: {x: -0.00016700405, y: 0.0002815672, z: -0.50953466, w: 0.8604501}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CATRigRLegDigit12
+      parentName: CATRigRLegDigit11
+      position: {x: -0.025877222, y: 0, z: -0.0000000023841857}
+      rotation: {x: -2.7380778e-29, y: -1.926751e-15, z: -1.4210855e-14, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pauldron1
+      parentName: playerV2_model(Clone)
+      position: {x: -0, y: 0.22241384, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

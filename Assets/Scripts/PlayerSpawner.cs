@@ -47,7 +47,7 @@ namespace SA
         // Update is called once per frame
         void Update()
         {
-
+            
         }
         void OnPlayerJoined()
         {

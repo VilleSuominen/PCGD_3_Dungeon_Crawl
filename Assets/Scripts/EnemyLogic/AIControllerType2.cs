@@ -129,7 +129,7 @@ namespace SA
                     InSight();
                     break;
                 case AIState.attacking:
-                    if (eStates.canMove)
+                    if (eStates.canMove&&!states.isDead)
                     {
                         aiState = AIState.inSight;
                     }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Anchor
+  - DeadPlayer
   layers:
   - Default
   - TransparentFX

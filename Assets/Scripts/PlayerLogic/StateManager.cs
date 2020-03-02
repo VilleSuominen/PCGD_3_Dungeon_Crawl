@@ -18,7 +18,7 @@ namespace SA
         public Vector3 lookDir;
         public bool block, backstep, attack, charge;
         public Vector3 moveDir;
-        public float moveSpeed = 3f;
+        public float moveSpeed = 2.5f;
         public float rotateSpeed = .02f;
         public float moveAmount;
         public float toGround = .5f;
@@ -57,14 +57,50 @@ namespace SA
         public float delta;
         [HideInInspector]
         public LayerMask ignoreLayers;
-        
+
+        List<Rigidbody> ragdollRigids = new List<Rigidbody>();
+        List<Collider> ragdollColliders = new List<Collider>();
+
         float _delay;
+
+
+        void InitRagdoll()
+        {
+            Rigidbody[] rigs = GetComponentsInChildren<Rigidbody>();
+            for (int i = 0; i < rigs.Length; i++)
+            {
+                if (rigs[i] == rigid)
+                {
+                    continue;
+                }
+                ragdollRigids.Add(rigs[i]);
+                rigs[i].isKinematic = true;
+                Collider col = rigs[i].GetComponent<Collider>();
+                col.isTrigger = true;
+                ragdollColliders.Add(col);
+            }
+        }
+
+        public void EnableRagdoll()
+        {
+
+            for (int i = 0; i < ragdollRigids.Count; i++)
+            {
+                ragdollRigids[i].isKinematic = false;
+                ragdollColliders[i].isTrigger = false;
+            }
+            Collider controllerCollider = rigid.gameObject.GetComponent<Collider>();
+            controllerCollider.enabled = false;
+            rigid.isKinematic = true;
+            StartCoroutine("CloseAnimator");
+        }
 
         public void Init()
         {            
             SetupAnimator();
             
-            rigid = GetComponent<Rigidbody>();            
+            rigid = GetComponent<Rigidbody>();
+            //rigid.isKinematic = true;
             mTransform = this.transform;
             rigid.angularDrag = 999;
             rigid.drag = 4;
@@ -90,7 +126,7 @@ namespace SA
                 lockOnTarget = NearestEnemy();
                 Debug.Log(lockOnTarget);
             }
-            
+            InitRagdoll();
             gameObject.layer = 8;
             mouseTurning.enabled = false;
             ignoreLayers = ~(1 << 9);
@@ -156,6 +192,7 @@ namespace SA
             if (inAction)
             {
                 anim.applyRootMotion = true;
+                
                 _delay += delta;
                 if(_delay > 0.3f)
                 {
@@ -179,6 +216,7 @@ namespace SA
 
             rigid.drag = (moveAmount > 0 || onGround == false) ? 0 : 4;
             anim.SetFloat("a_speed", moveSpeed);
+            
             if (onGround)
             {                
                 if(isBlocking == true)
@@ -190,7 +228,7 @@ namespace SA
                 else
                 {                    
                     weaponManager.currentWeapon.wDo.DisableShieldCollider();
-                    moveSpeed = 3f;                    
+                    moveSpeed = 2.5f;                    
                     staminaController.drainTime = false;
                 }
                 rigid.velocity = moveDir * (moveSpeed * moveAmount);
@@ -274,7 +312,7 @@ namespace SA
         {
             string targetAnim = null;
             targetAnim = slot.targetAnim;
-
+            
             if (string.IsNullOrEmpty(targetAnim)||staminaController.stamina<15f)
             {
                 return;
@@ -308,7 +346,7 @@ namespace SA
             canMove = false;
             inAction = true;
             
-            anim.Play(targetAnim);
+            anim.CrossFade(targetAnim, 0.3f);
             //rigid.velocity = Vector3.zero;
         }
 
@@ -333,12 +371,15 @@ namespace SA
                     isDead = true;
                     audioController.PlayerDeath();
                     GameObject.Find("GameUI/GeneralText").GetComponent<Text>().text = "YOU DIED";
-                    //EnableRagdoll();
+                    EnableRagdoll();
                     Collider controllerCollider = rigid.gameObject.GetComponent<Collider>();
                     controllerCollider.enabled = false;
+                    InputHandlerAlpha input = rigid.gameObject.GetComponent<InputHandlerAlpha>();
+                    input.enabled = false;
+                    rigid.gameObject.tag = "DeadPlayer";
                     rigid.isKinematic = true;
                     StartCoroutine("CloseAnimator");
-                    Destroy(this.gameObject);
+                    
                 }
             }
         }
