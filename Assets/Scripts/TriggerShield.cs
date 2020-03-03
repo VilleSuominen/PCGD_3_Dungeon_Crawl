@@ -3,26 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace SA
 {
+
+
     public class TriggerShield : MonoBehaviour
     {
+        EnemyStates eState;
+        StateManager states;
+
         private void OnTriggerEnter(Collider other)
         {
 
-            EnemyStates eState = other.transform.GetComponentInParent<EnemyStates>();
-
-            StateManager states = GetComponentInParent<StateManager>();
-
-            if (other.gameObject.tag == "Player")
+            eState = other.transform.GetComponentInParent<EnemyStates>();
+            
+            StateManager otherstates = other.transform.GetComponentInParent<StateManager>();
+            
+            if (otherstates)
             {
-                StateManager otherstates = other.transform.GetComponentInParent<StateManager>();
-                otherstates.DoDamage(100);
+                if (otherstates != GetComponentInParent<StateManager>())
+                {
+                    Debug.Log("player");
+
+                    otherstates.DoDamage(100);
+                }
             }
-
-
-            if (eState.isStunned || eState.aicontrollerType2)
+            
+            if (eState.aicontrollerType2 || eState.isStunned)
             {
+                Debug.Log("Enemy");
+
                 eState.DoDamage(100);
                 eState.EnableRagdoll();
+                
+                    
             }
             eState.Parried();
         }

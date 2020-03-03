@@ -66,6 +66,12 @@ namespace SA
             moveAnchor = anchor.transform;
             states = GetComponent<StateManager>();
             states.Init();
+            
+            if (this.CompareTag("DeadPlayer"))
+            {
+                Destroy(gameObject);
+            }
+            
         }
         void CheckActions()
         {

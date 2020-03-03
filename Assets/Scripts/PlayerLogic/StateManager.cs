@@ -70,7 +70,7 @@ namespace SA
                 DontDestroyOnLoad(gameObject);                
             }
             
-        }
+        }        
 
         void InitRagdoll()
         {
