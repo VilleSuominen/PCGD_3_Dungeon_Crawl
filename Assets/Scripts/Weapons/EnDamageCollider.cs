@@ -38,14 +38,17 @@ namespace SA
                 //Debug.Log("null");
                 return;
             }
+            Debug.Log(other);
             states.a_move.DisableCollisionCollider();
             if (eStates.aicontroller != null)
             {
                 states.DoDamage(30);
+                states.a_move.DisableEnDamageColliders();
             }
             if (eStates.aicontrollerType2 != null)
             {
                 states.DoDamage(20);
+                states.a_move.DisableEnDamageColliders();
             }
             return;
 

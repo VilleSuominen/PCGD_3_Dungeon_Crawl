@@ -98,7 +98,7 @@ namespace SA
             {
                 aiState = AIState.inSight;
             }
-            if (eStates.takesDamage && !eStates.canMove)
+            if (eStates.isStunned && !eStates.canMove)
             {
                 aiState = AIState.far;
             }

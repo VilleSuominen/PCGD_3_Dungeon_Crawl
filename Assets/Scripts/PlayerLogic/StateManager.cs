@@ -85,15 +85,17 @@ namespace SA
                 rigs[i].isKinematic = true;
                 Collider col = rigs[i].GetComponent<Collider>();
                 col.isTrigger = true;
+                col.enabled = false;
                 ragdollColliders.Add(col);
             }
         }
 
         public void EnableRagdoll()
         {
-
+            
             for (int i = 0; i < ragdollRigids.Count; i++)
             {
+                ragdollColliders[i].enabled = true;
                 ragdollRigids[i].isKinematic = false;
                 ragdollColliders[i].isTrigger = false;
             }
@@ -499,8 +501,8 @@ namespace SA
         {
             a_move.DisableParryCollider();
             audioController.PlayerDamagedSound();
-            health -= v;           
-            
+            health -= v;
+            Debug.Log(health);
             if(health <= -100)
             {
                 Debug.Log("Stoooop!!! He is already deeaaaaad!");
