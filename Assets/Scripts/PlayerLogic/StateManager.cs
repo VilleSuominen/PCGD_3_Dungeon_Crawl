@@ -63,14 +63,7 @@ namespace SA
 
         float _delay;
 
-        private void Awake()
-        {
-            if (!isDead)
-            {
-                DontDestroyOnLoad(gameObject);                
-            }
-            
-        }        
+                
 
         void InitRagdoll()
         {
