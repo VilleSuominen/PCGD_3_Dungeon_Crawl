@@ -75,20 +75,28 @@ namespace SA
 
             }
 
-            if(playerFound == true)
+            if(playerFound == true && p1HealthBar.value > 0)
             {
                 p1HealthBar.value = p1sm.health;
                 p1StaminaBar.value = p1sc.stamina;
                 Vector3 namePos = Camera.main.WorldToScreenPoint(player1Anchor.transform.position);
                 player1UI.transform.position = namePos;
+                if(p1sm.health <= 0)
+                {
+                    player1UI.SetActive(false);
+                }
             }
             
-            if(twoPlayers == true)
+            if(twoPlayers == true && p2HealthBar.value > 0)
             {
                 p2HealthBar.value = p2sm.health;
                 p2StaminaBar.value = p2sc.stamina;
                 Vector3 namePos = Camera.main.WorldToScreenPoint(player2Anchor.transform.position);
                 player2UI.transform.position = namePos;
+                if (p2sm.health <= 0)
+                {
+                    player2UI.SetActive(false);
+                }
             }
         }
     }
