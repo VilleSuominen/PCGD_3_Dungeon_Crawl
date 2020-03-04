@@ -13,7 +13,7 @@ namespace SA
         GameObject pauseMenu;
         GameObject helpMenu;
         GameObject dialogPanel;
-        GameObject statusPanel;
+        GameObject playerUIs;
         GameObject creditsPanel;
         GameObject logo;
 
@@ -27,13 +27,13 @@ namespace SA
             pauseMenu = transform.Find("PauseMenuPanel").gameObject;
             helpMenu = transform.Find("HelpMenuPanel").gameObject;
             dialogPanel = transform.Find("DialogPanel").gameObject;
-            statusPanel = transform.Find("StatusPanel").gameObject;
+            playerUIs = transform.Find("PlayerUIs").gameObject;
             creditsPanel = transform.Find("CreditsPanel").gameObject;
             logo = transform.Find("Logo").gameObject;
 
             if (mainMenu.activeSelf == true)
             {
-                Time.timeScale = 0.0f;
+                Pause();
             }
         }
 
@@ -45,14 +45,12 @@ namespace SA
                 if (pauseMenu.activeSelf == true && helpMenu.activeSelf == false)   // Closes the pause menu when pressing esc
                 {
                     pauseMenu.SetActive(false);
-                    statusPanel.SetActive(true);
                     Resume();
                 }
 
                 else     // Opens the pause menu if esc is pressed
                 {
                     pauseMenu.SetActive(true);
-                    statusPanel.SetActive(false);
                     Pause();
                 }
             }
@@ -66,11 +64,13 @@ namespace SA
         public void Resume()
         {
             Time.timeScale = 1.0f;
+            playerUIs.SetActive(true);
         }
 
         public void Pause()
         {
             Time.timeScale = 0.0f;
+            playerUIs.SetActive(false);
         }
 
         public void SetLastMenu(GameObject g)

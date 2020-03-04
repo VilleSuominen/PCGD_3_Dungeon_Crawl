@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SA {
 
@@ -17,11 +18,35 @@ namespace SA {
         int enemiesAlive;
         bool allEnemiesKilled;
         bool counterOn;
+
         GameObject[] enemies;
+        GameObject doorExit;
+        int sceneIndex;
 
         // Start is called before the first frame update
         void Start()
-        {            
+        {
+            sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            switch (sceneIndex)
+            {
+                case 0:
+                    doorExit = GameObject.Find("Level1/LevelBorders/RoomExit");
+                    break;
+                case 1:
+                    doorExit = GameObject.Find("Level2/RoomExit");
+                    break;
+                case 2:
+                    doorExit = GameObject.Find("Level3/RoomBorders/RoomExit");
+                    break;
+                case 3:
+                    doorExit = GameObject.Find("Level4/RoomBorders/RoomExit");
+                    break;
+                case 4:
+                    doorExit = GameObject.Find("Level5/RoomBorders/RoomExit");
+                    break;
+            }
+
+            doorExit.SetActive(false);
             allEnemiesKilled = false;
             counterOn = false;
             startPosition = transform.position;
@@ -52,6 +77,7 @@ namespace SA {
                 if (enemiesAlive == 0)
                 {
                     allEnemiesKilled = true;
+                    doorExit.SetActive(true);
                 }
             }
 

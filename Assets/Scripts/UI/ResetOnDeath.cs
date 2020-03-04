@@ -9,33 +9,56 @@ namespace SA
     public class ResetOnDeath : MonoBehaviour
     {
         GameObject player;
-        bool death = false;
+        GameObject[] players;
+        bool setup1Done;
+        bool setup2Done;
+        float p1health;
+        float p2health;
+        GameObject ui;
+        PlayerUIManager playerUIManager;
 
         // Start is called before the first frame update
         void Start()
         {
-            player = GameObject.Find("Controller");
+
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (player == null)
+            if (Time.timeScale == 1.0f)
             {
-                player = GameObject.Find("Controller");
-                if (player == null)
+                if (setup1Done == false)
                 {
-                    return;
+                    ui = GameObject.Find("GameUI/PlayerUIs");
+
+                    if (ui != null && ui.GetComponent<PlayerUIManager>().playerFound == true)
+                    {
+                        playerUIManager = ui.GetComponent<PlayerUIManager>();
+                        p1health = ui.transform.Find("Player1UI/HealthBar").GetComponent<Slider>().value;
+                        setup1Done = true;
+                    }
                 }
-                
-            }
-            if (death == false)
-            {
-                if (player == null && player.GetComponent<StateManager>().isDead == true)
+
+                else
                 {
-                    death = true;
-                    GetComponent<Text>().text = "YOU DIED";
-                    StartCoroutine("Reset");
+                    if (playerUIManager.twoPlayers == true && setup2Done == false)
+                    {
+                        p2health = ui.transform.Find("Player2UI/HealthBar").GetComponent<Slider>().value;
+                        setup2Done = true;
+                    }
+
+                    if (playerUIManager.twoPlayers == false && p1health == 0)
+                    {
+                        GetComponent<Text>().text = "YOU DIED";
+                        StartCoroutine("Reset");
+                    }
+
+                    else if (playerUIManager.twoPlayers == true && p1health == 0 && p2health == 0)
+                    {
+                        GetComponent<Text>().text = "YOU DIED";
+                        StartCoroutine("Reset");
+                    }
                 }
             }
         }

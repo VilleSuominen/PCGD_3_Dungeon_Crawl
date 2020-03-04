@@ -47,7 +47,7 @@ namespace SA
 
             else if (endReached == true)     // Closes the panel
             { 
-                Time.timeScale = 1.0f;
+                GameObject.Find("GameUI").GetComponent<MenuController>().Resume();
                 gameObject.SetActive(false);
             }
 
