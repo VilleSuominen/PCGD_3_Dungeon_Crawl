@@ -40,6 +40,10 @@ namespace SA
         // Update is called once per frame
         void Update()
         {
+            if (Time.timeScale == 1.0f)
+            {
+                playerUIs.SetActive(true);
+            }
             if (mainMenu.activeSelf == false && dialogPanel.activeSelf == false && creditsPanel.activeSelf == false && Input.GetButtonDown("Cancel"))
             {
                 if (pauseMenu.activeSelf == true && helpMenu.activeSelf == false)   // Closes the pause menu when pressing esc
@@ -64,13 +68,11 @@ namespace SA
         public void Resume()
         {
             Time.timeScale = 1.0f;
-            playerUIs.SetActive(true);
         }
 
         public void Pause()
         {
             Time.timeScale = 0.0f;
-            playerUIs.SetActive(false);
         }
 
         public void SetLastMenu(GameObject g)

@@ -4531,6 +4531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c922114654e0417409114e0252dd3cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorExit: {fileID: 2838531074439797175}
 --- !u!114 &92768165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4543,6 +4544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c922114654e0417409114e0252dd3cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorExit: {fileID: 2838531074439797175}
 --- !u!1001 &114194355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11753,3 +11755,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb14cd01960d5e4fa56db1a60bf6914, type: 3}
+--- !u!1 &2838531074439797175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2838531074623119470, guid: deb14cd01960d5e4fa56db1a60bf6914,
+    type: 3}
+  m_PrefabInstance: {fileID: 2838531074439797174}
+  m_PrefabAsset: {fileID: 0}

@@ -52,9 +52,9 @@ namespace SA
                     player1Anchor = player1.transform.Find("UIAnchor").gameObject;
                     p1sm = player1.GetComponent<StateManager>();
                     p1sc = player1.GetComponent<StaminaController>();
-                    p1HealthBar.minValue = 1;
+                    p1HealthBar.minValue = 0;
                     p1HealthBar.maxValue = 100;
-                    p1StaminaBar.minValue = 1;
+                    p1StaminaBar.minValue = 0;
                     p1StaminaBar.maxValue = p1sc.maxStamina;
                     playerFound = true;
                 }
