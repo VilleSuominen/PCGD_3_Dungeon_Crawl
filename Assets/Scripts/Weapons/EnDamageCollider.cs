@@ -20,7 +20,7 @@ namespace SA
                     eStates.agent.isStopped = true;
                     states.rigid.AddForce(states.lookDir * 9000);
                     eStates.rigid.isKinematic = false;
-                    eStates.rigid.AddForce(-eStates.rigid.transform.forward * 15000);
+                    eStates.rigid.AddForce(-eStates.rigid.transform.forward * 1000);
                     if (eStates.aicontroller)
                     {
                         states.audioController.SwordHitShieldSound();
