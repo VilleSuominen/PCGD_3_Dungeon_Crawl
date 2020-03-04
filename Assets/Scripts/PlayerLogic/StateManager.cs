@@ -249,11 +249,11 @@ namespace SA
             
             Vector3 lookDirection = lookDir;
             
-            if (lockOn && lockOnTarget != null)
-            {
+            //if (lockOn && lockOnTarget != null)
+            //{
                 
-                LookTowardsTarget();
-            }
+            //    LookTowardsTarget();
+            //}
 
             if (lookDir == Vector3.zero)
             {

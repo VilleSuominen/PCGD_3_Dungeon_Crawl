@@ -79,7 +79,7 @@ namespace SA
             block = (blockV >= 0.9) ? true : false;
             charge = (chargeV >= 0.9) ? true : false;
             //backstep = (backstepV >= 0.9) ? true : false;
-            lockOn = (lockOnV >= 0.9) ? true : false;
+            //lockOn = (lockOnV >= 0.9) ? true : false;
 
         }
         // Update is called once per frame
