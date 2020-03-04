@@ -66,9 +66,9 @@ namespace SA
                     player2Anchor = player2.transform.Find("UIAnchor").gameObject;
                     p2sm = player2.GetComponent<StateManager>();
                     p2sc = player2.GetComponent<StaminaController>();
-                    p2HealthBar.minValue = 1;
+                    p2HealthBar.minValue = 0;
                     p2HealthBar.maxValue = 100;
-                    p2StaminaBar.minValue = 1;
+                    p2StaminaBar.minValue = 0;
                     p2StaminaBar.maxValue = p2sc.maxStamina;
                     twoPlayers = true;
                 }

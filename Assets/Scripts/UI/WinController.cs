@@ -8,50 +8,19 @@ namespace SA
 {
     public class WinController : MonoBehaviour
     {
+        Text genText;
 
-        int enemiesAlive;
-        bool allEnemiesKilled;
-        GameObject[] enemies;
-        GameObject player;
-
-        // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
-            player = GameObject.Find("Controller");
+            genText = GameObject.Find("GameUI/GeneralText").GetComponent<Text>();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnTriggerEnter(Collider other)
         {
-            if (allEnemiesKilled == false)
-            {
-                enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                if (enemies == null)
-                {
-                    allEnemiesKilled = true;
-                    return;
-                }
-                enemiesAlive = 0;
-                for (int i = 0; i < enemies.Length; i++)
-                {
-                    if (enemies[i].GetComponent<EnemyStates>().isDead == false)
-                    {
-                        enemiesAlive++;
-                    }
-                }
-                if (enemiesAlive == 0)
-                {
-                    allEnemiesKilled = true;
-                }
-            }
-
-            else
-            {
-                GetComponent<Text>().text = "YOU WIN!";
-                StartCoroutine("Reset");
-            }
+            genText.text = "You've Won!";
+            StartCoroutine("Reset");
         }
-
+        
         IEnumerator Reset()
         {
             yield return new WaitForSecondsRealtime(3);
