@@ -48,13 +48,13 @@ namespace SA
                         setup2Done = true;
                     }
 
-                    if (playerUIManager.twoPlayers == false && p1health == 0)
+                    if (playerUIManager.twoPlayers == false && p1health <= 0)
                     {
                         GetComponent<Text>().text = "YOU DIED";
                         StartCoroutine("Reset");
                     }
 
-                    else if (playerUIManager.twoPlayers == true && p1health == 0 && p2health == 0)
+                    else if (playerUIManager.twoPlayers == true && p1health <= 0 && p2health <= 0)
                     {
                         GetComponent<Text>().text = "YOU DIED";
                         StartCoroutine("Reset");

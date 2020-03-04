@@ -373,7 +373,6 @@ namespace SA
                 {
                     isDead = true;
                     audioController.PlayerDeath();
-                    GameObject.Find("GameUI/GeneralText").GetComponent<Text>().text = "YOU DIED";
                     EnableRagdoll();
                     Collider controllerCollider = rigid.gameObject.GetComponent<Collider>();
                     controllerCollider.enabled = false;
