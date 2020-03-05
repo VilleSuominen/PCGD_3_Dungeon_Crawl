@@ -9,6 +9,7 @@ namespace SA
     public class WinController : MonoBehaviour
     {
         Text genText;
+        public Font font;
 
         void Awake()
         {
@@ -17,6 +18,8 @@ namespace SA
 
         private void OnTriggerEnter(Collider other)
         {
+            genText.font = font;
+            genText.color = Color.black;
             genText.text = "You've Won!";
             StartCoroutine("Reset");
         }

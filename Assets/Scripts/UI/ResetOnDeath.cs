@@ -36,7 +36,11 @@ namespace SA
                     {
                         playerUIManager = ui.GetComponent<PlayerUIManager>();
                         p1health = ui.transform.Find("Player1UI/HealthBar").GetComponent<Slider>().value;
-                        setup1Done = true;
+
+                        if (p1health != 0)
+                        {
+                            setup1Done = true;
+                        }
                     }
                 }
 
@@ -45,7 +49,11 @@ namespace SA
                     if (playerUIManager.twoPlayers == true && setup2Done == false)
                     {
                         p2health = ui.transform.Find("Player2UI/HealthBar").GetComponent<Slider>().value;
-                        setup2Done = true;
+
+                        if (p2health != 0)
+                        {
+                            setup2Done = true;
+                        }
                     }
 
                     if (playerUIManager.twoPlayers == false && p1health <= 0)

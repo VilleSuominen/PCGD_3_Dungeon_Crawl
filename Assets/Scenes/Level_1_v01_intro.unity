@@ -21945,6 +21945,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2277397685622178860, guid: d034f4b0cdcacae4ab338ffc6f33a7f7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2315215521331744432, guid: d034f4b0cdcacae4ab338ffc6f33a7f7,
         type: 3}
       propertyPath: delay
@@ -22003,7 +22008,7 @@ PrefabInstance:
     - target: {fileID: 5990766629856832299, guid: d034f4b0cdcacae4ab338ffc6f33a7f7,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6026761790573040208, guid: d034f4b0cdcacae4ab338ffc6f33a7f7,
         type: 3}
@@ -22043,7 +22048,7 @@ PrefabInstance:
     - target: {fileID: 8598777193705807543, guid: d034f4b0cdcacae4ab338ffc6f33a7f7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8598777193705807543, guid: d034f4b0cdcacae4ab338ffc6f33a7f7,
         type: 3}
